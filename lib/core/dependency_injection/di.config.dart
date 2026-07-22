@@ -68,6 +68,9 @@ import 'package:e_commerce/features/auth/presentation/logic/sign_up_cubit/sign_u
     as _i927;
 import 'package:e_commerce/features/cart/data/data_source/cart_remote_data_source/cart_remote_data_source.dart'
     as _i676;
+import 'package:e_commerce/features/cart/data/repo/cart_repo_impl.dart'
+    as _i197;
+import 'package:e_commerce/features/cart/domain/repo/cart_repo.dart' as _i571;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart'
     as _i555;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart'
@@ -194,6 +197,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i699.GetWishListCubit>(
       () => _i699.GetWishListCubit(gh<_i733.WishListRepo>()),
+    );
+    gh.lazySingleton<_i571.CartRepo>(
+      () => _i197.CartRepoImpl(gh<_i676.CartRemoteDataSource>()),
     );
     gh.lazySingleton<_i756.AuthCubit>(
       () => _i756.AuthCubit(gh<_i74.SupabaseService>()),
