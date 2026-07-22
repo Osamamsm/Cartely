@@ -1,0 +1,106 @@
+import 'package:e_commerce/core/supabase/supabase_service.dart';
+import 'package:e_commerce/features/cart/data/models/cart_item_model.dart';
+import 'package:e_commerce/features/cart/data/models/cart_operation_result_model.dart';
+import 'package:injectable/injectable.dart';
+
+abstract class CartRemoteDataSource {
+  Future<List<CartItemModel>> getCartItems();
+  Future<CartOperationResultModel> addCartItem(
+    String productItemId,
+    int quantity,
+  );
+  Future<CartOperationResultModel> updateCartItem(
+    String cartItemId,
+    int newQuantity,
+  );
+  Future<CartOperationResultModel> removeCartItem(String cartItemId);
+  Future<CartOperationResultModel> clearCart();
+}
+
+@LazySingleton(as: CartRemoteDataSource)
+class CartRemoteDataSourceImpl implements CartRemoteDataSource {
+  final SupabaseService _supabaseService;
+
+  CartRemoteDataSourceImpl(this._supabaseService);
+
+  @override
+  Future<CartOperationResultModel> addCartItem(
+    String productItemId,
+    int quantity,
+  ) async {
+    final user = _supabaseService.currentUser;
+    if (user == null) {
+      throw Exception('User not found');
+    }
+    final response = await _supabaseService.rpc(
+      function: 'add_to_cart',
+      params: {
+        'p_user_id': user.id,
+        'p_product_item_id': productItemId,
+        'p_quantity': quantity,
+      },
+    );
+    return CartOperationResultModel.fromJson(response);
+  }
+
+  @override
+  Future<CartOperationResultModel> clearCart() async {
+    final user = _supabaseService.currentUser;
+    if (user == null) {
+      throw Exception('User not found');
+    }
+    final response = await _supabaseService.rpc(
+      function: 'clear_cart',
+      params: {'p_user_id': user.id},
+    );
+    return CartOperationResultModel.fromJson(response);
+  }
+
+  @override
+  Future<List<CartItemModel>> getCartItems() async {
+    final user = _supabaseService.currentUser;
+    if (user == null) {
+      throw Exception('User not found');
+    }
+    final response = await _supabaseService.rpc(
+      function: 'get_cart_items',
+      params: {'p_user_id': user.id},
+    );
+    return (response as List)
+        .map((e) => CartItemModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  @override
+  Future<CartOperationResultModel> removeCartItem(String cartItemId) async {
+    final user = _supabaseService.currentUser;
+    if (user == null) {
+      throw Exception('User not found');
+    }
+    final response = await _supabaseService.rpc(
+      function: 'remove_cart_item',
+      params: {'p_user_id': user.id, 'p_cart_item_id': cartItemId},
+    );
+    return CartOperationResultModel.fromJson(response);
+  }
+
+  @override
+  Future<CartOperationResultModel> updateCartItem(
+    String cartItemId,
+    int newQuantity,
+  ) async {
+    final user = _supabaseService.currentUser;
+    if (user == null) {
+      throw Exception('User not found');
+    }
+    final response = await _supabaseService.rpc(
+      function: 'update_cart_item',
+      params: {
+        'p_user_id': user.id,
+        'p_cart_item_id': cartItemId,
+        'p_new_quantity': newQuantity,
+      },
+    );
+    return CartOperationResultModel.fromJson(response);
+  }
+}
