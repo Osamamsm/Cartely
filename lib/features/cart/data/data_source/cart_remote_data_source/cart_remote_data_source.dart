@@ -5,15 +5,15 @@ import 'package:injectable/injectable.dart';
 
 abstract class CartRemoteDataSource {
   Future<List<CartItemModel>> getCartItems();
-  Future<CartOperationResultModel> addCartItem(
+  Future<CartOperationResultModel> addToCart(
     String productItemId,
     int quantity,
   );
   Future<CartOperationResultModel> updateCartItem(
-    String cartItemId,
+    String productItemId,
     int newQuantity,
   );
-  Future<CartOperationResultModel> removeCartItem(String cartItemId);
+  Future<CartOperationResultModel> removeCartItem(String productItemId);
   Future<CartOperationResultModel> clearCart();
 }
 
@@ -24,7 +24,7 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   CartRemoteDataSourceImpl(this._supabaseService);
 
   @override
-  Future<CartOperationResultModel> addCartItem(
+  Future<CartOperationResultModel> addToCart(
     String productItemId,
     int quantity,
   ) async {
@@ -72,21 +72,21 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   }
 
   @override
-  Future<CartOperationResultModel> removeCartItem(String cartItemId) async {
+  Future<CartOperationResultModel> removeCartItem(String productItemId) async {
     final user = _supabaseService.currentUser;
     if (user == null) {
       throw Exception('User not found');
     }
     final response = await _supabaseService.rpc(
       function: 'remove_cart_item',
-      params: {'p_user_id': user.id, 'p_cart_item_id': cartItemId},
+      params: {'p_user_id': user.id, 'p_product_item_id': productItemId},
     );
     return CartOperationResultModel.fromJson(response);
   }
 
   @override
   Future<CartOperationResultModel> updateCartItem(
-    String cartItemId,
+    String productItemId,
     int newQuantity,
   ) async {
     final user = _supabaseService.currentUser;
@@ -97,7 +97,7 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       function: 'update_cart_item',
       params: {
         'p_user_id': user.id,
-        'p_cart_item_id': cartItemId,
+        'p_product_item_id': productItemId,
         'p_new_quantity': newQuantity,
       },
     );

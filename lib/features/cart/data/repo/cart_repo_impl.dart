@@ -14,12 +14,12 @@ class CartRepoImpl implements CartRepo {
 
   @override
   Future<Either<Failure, CartOperationResult>> addToCart(
-    String productId,
+    String productItemId,
     int quantity,
   ) async {
     try {
-      final result = await _cartRemoteDataSource.addCartItem(
-        productId,
+      final result = await _cartRemoteDataSource.addToCart(
+        productItemId,
         quantity,
       );
       return Right(result.toEntity());
@@ -50,10 +50,10 @@ class CartRepoImpl implements CartRepo {
 
   @override
   Future<Either<Failure, CartOperationResult>> removeFromCart(
-    String productId,
+    String productItemId,
   ) async {
     try {
-      final result = await _cartRemoteDataSource.removeCartItem(productId);
+      final result = await _cartRemoteDataSource.removeCartItem(productItemId);
       return Right(result.toEntity());
     } catch (e) {
       return Left(ExceptionMapper.mapExceptionToFailure(e));
@@ -62,11 +62,14 @@ class CartRepoImpl implements CartRepo {
 
   @override
   Future<Either<Failure, CartOperationResult>> updateCartItem(
-    String productId,
-    int quantity,
+    String productItemId,
+    int newQuantity,
   ) async {
     try {
-      final result = await _cartRemoteDataSource.updateCartItem(productId, quantity);
+      final result = await _cartRemoteDataSource.updateCartItem(
+        productItemId,
+        newQuantity,
+      );
       return Right(result.toEntity());
     } catch (e) {
       return Left(ExceptionMapper.mapExceptionToFailure(e));

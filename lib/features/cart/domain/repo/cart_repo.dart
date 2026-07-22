@@ -5,12 +5,14 @@ import 'package:e_commerce/features/cart/domain/entities/cart_operation_result.d
 
 abstract class CartRepo {
   Future<Either<Failure, CartOperationResult>> addToCart(
-    String productId,
+    String productItemId,
     int quantity,
   );
-  Future<Either<Failure, CartOperationResult>> removeFromCart(String productId);
+  Future<Either<Failure, CartOperationResult>> removeFromCart(
+    String productItemId,
+  );
   Future<Either<Failure, CartOperationResult>> updateCartItem(
-    String productId,
+    String productItemId,
     int quantity,
   );
   Future<Either<Failure, List<CartItem>>> getCartItems();
