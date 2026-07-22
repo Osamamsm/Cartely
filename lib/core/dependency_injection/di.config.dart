@@ -81,6 +81,8 @@ import 'package:e_commerce/features/cart/domain/use_cases/remove_from_cart.dart'
     as _i612;
 import 'package:e_commerce/features/cart/domain/use_cases/update_cart_item.dart'
     as _i618;
+import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubit.dart'
+    as _i325;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart'
     as _i555;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart'
@@ -282,6 +284,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i618.UpdateCartItemUseCase>(
       () => _i618.UpdateCartItemUseCase(gh<_i571.CartRepo>()),
+    );
+    gh.factory<_i325.CartCubit>(
+      () => _i325.CartCubit(
+        gh<_i163.GetCartItemsUseCase>(),
+        gh<_i943.ClearCartUseCase>(),
+        gh<_i612.RemoveFromCartUseCase>(),
+        gh<_i618.UpdateCartItemUseCase>(),
+        gh<_i615.AddToCartUseCase>(),
+      ),
     );
     gh.factory<_i330.ResetPasswordCubit>(
       () => _i330.ResetPasswordCubit(gh<_i817.ResetPasswordUseCase>()),

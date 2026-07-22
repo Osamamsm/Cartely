@@ -24,4 +24,30 @@ class CartItem {
     required this.stock,
     required this.variations,
   });
+
+  CartItem copyWith({
+    String? cartItemId,
+    String? productItemId,
+    String? productId,
+    String? productEnName,
+    String? productArName,
+    String? productThumbnail,
+    double? price,
+    int? quantity,
+    int? stock,
+    List<CartItemVariation>? variations,
+  }) {
+    return CartItem(
+      cartItemId: cartItemId ?? this.cartItemId,
+      productItemId: productItemId ?? this.productItemId,
+      productId: productId ?? this.productId,
+      productEnName: productEnName ?? this.productEnName,
+      productArName: productArName ?? this.productArName,
+      productThumbnail: productThumbnail ?? this.productThumbnail,
+      price: price ?? this.price,
+      quantity: quantity ?? this.quantity,
+      stock: stock ?? this.stock,
+      variations: variations ?? this.variations,
+    );
+  }
 }
