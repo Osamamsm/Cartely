@@ -1,10 +1,10 @@
 import 'package:e_commerce/core/supabase/supabase_service.dart';
-import 'package:e_commerce/features/cart/data/models/cart_item_model.dart';
+import 'package:e_commerce/features/cart/data/models/cart_model.dart';
 import 'package:e_commerce/features/cart/data/models/cart_operation_result_model.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class CartRemoteDataSource {
-  Future<List<CartItemModel>> getCartItems();
+  Future<CartModel> getCart();
   Future<CartOperationResultModel> addToCart(
     String productItemId,
     int quantity,
@@ -57,7 +57,7 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   }
 
   @override
-  Future<List<CartItemModel>> getCartItems() async {
+  Future<CartModel> getCart() async {
     final user = _supabaseService.currentUser;
     if (user == null) {
       throw Exception('User not found');
@@ -66,9 +66,7 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       function: 'get_cart_items',
       params: {'p_user_id': user.id},
     );
-    return (response as List)
-        .map((e) => CartItemModel.fromJson(e as Map<String, dynamic>))
-        .toList();
+    return CartModel.fromJson(response);
   }
 
   @override

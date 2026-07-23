@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:e_commerce/core/error/exception_mapper.dart';
 import 'package:e_commerce/core/error/failure.dart';
 import 'package:e_commerce/features/cart/data/data_source/cart_remote_data_source/cart_remote_data_source.dart';
-import 'package:e_commerce/features/cart/domain/entities/cart_item.dart';
+import 'package:e_commerce/features/cart/domain/entities/cart.dart';
 import 'package:e_commerce/features/cart/domain/entities/cart_operation_result.dart';
 import 'package:e_commerce/features/cart/domain/repo/cart_repo.dart';
 import 'package:injectable/injectable.dart';
@@ -39,10 +39,10 @@ class CartRepoImpl implements CartRepo {
   }
 
   @override
-  Future<Either<Failure, List<CartItem>>> getCartItems() async {
+  Future<Either<Failure, Cart>> getCart() async {
     try {
-      final result = await _cartRemoteDataSource.getCartItems();
-      return Right(result.map((e) => e.toEntity()).toList());
+      final result = await _cartRemoteDataSource.getCart();
+      return Right(result.toEntity());
     } catch (e) {
       return Left(ExceptionMapper.mapExceptionToFailure(e));
     }

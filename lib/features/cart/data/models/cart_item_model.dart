@@ -11,6 +11,7 @@ class CartItemModel {
   final double price;
   final int quantity;
   final int stock;
+  final double lineSubtotal;
   final List<CartItemVariationModel> variations;
 
   const CartItemModel({
@@ -23,6 +24,7 @@ class CartItemModel {
     required this.price,
     required this.quantity,
     required this.stock,
+    required this.lineSubtotal,
     required this.variations,
   });
 
@@ -37,6 +39,7 @@ class CartItemModel {
       price: (json['price'] as num).toDouble(),
       quantity: (json['quantity'] as num).toInt(),
       stock: (json['stock'] as num).toInt(),
+      lineSubtotal: (json['line_subtotal'] as num).toDouble(),
       variations: (json['variations'] as List)
           .map(
             (e) => CartItemVariationModel.fromJson(e as Map<String, dynamic>),
@@ -56,6 +59,7 @@ class CartItemModel {
       price: price,
       quantity: quantity,
       stock: stock,
+      lineSubtotal: lineSubtotal,
       variations: variations.map((e) => e.toEntity()).toList(),
     );
   }

@@ -1,31 +1,33 @@
+import 'package:e_commerce/features/cart/domain/entities/cart.dart';
+import 'package:equatable/equatable.dart';
 import 'package:e_commerce/features/cart/domain/entities/cart_item.dart';
 
-class CartState {
-  final List<CartItem> items;
-  final CartStatus
-  status; // initial, loading, loaded, operationSuccess, operationFailure, error
+enum CartStatus { initial, loading, loaded, operationSuccess, operationFailure, error }
+
+class CartState extends Equatable {
+  final Cart cart;
+  final CartStatus status;
   final String? message;
 
-  CartState({required this.items, required this.status, this.message});
+  const CartState({required this.cart, required this.status, this.message});
+
+  factory CartState.initial() =>
+      CartState(cart: Cart.empty(), status: CartStatus.initial);
+
+  List<CartItem> get items => cart.items;
 
   CartState copyWith({
-    List<CartItem>? items,
+    Cart? cart,
     CartStatus? status,
     String? message,
   }) {
     return CartState(
-      items: items ?? this.items,
+      cart: cart ?? this.cart,
       status: status ?? this.status,
       message: message,
     );
   }
-}
 
-enum CartStatus {
-  initial,
-  loading,
-  loaded,
-  operationSuccess,
-  operationFailure,
-  error,
+  @override
+  List<Object?> get props => [cart, status, message];
 }

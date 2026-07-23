@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:e_commerce/features/cart/domain/entities/cart_item.dart';
 import 'package:e_commerce/features/cart/domain/use_cases/add_to_cart.dart';
 import 'package:e_commerce/features/cart/domain/use_cases/clear_cart.dart';
 import 'package:e_commerce/features/cart/domain/use_cases/get_cart_items.dart';
@@ -26,78 +25,115 @@ class CartCubit extends Cubit<CartState> {
     this._removeFromCartUseCase,
     this._updateCartItemUseCase,
     this._addToCartUseCase,
-  ) : super(CartState(items: [], status: CartStatus.initial));
+  ) : super(CartState.initial());
 
-  Future<void> getCartItems() async {
+  Future<void> getCart() async {
     emit(state.copyWith(status: CartStatus.loading));
     final result = await _getCartItemsUseCase.call();
     result.fold(
       (failure) => emit(
         state.copyWith(status: CartStatus.error, message: failure.message),
       ),
-      (cartItems) =>
-          emit(state.copyWith(items: cartItems, status: CartStatus.loaded)),
+      (cart) => emit(state.copyWith(cart: cart, status: CartStatus.loaded)),
     );
   }
 
   Future<void> clearCart() async {
-    final previousItems = state.items;
-    emit(state.copyWith(items: [], status: CartStatus.loaded));
-    final result = await _clearCartUseCase.call();
-    result.fold(
-      (failure) => emit(
-        state.copyWith(
-          items: previousItems,
-          status: CartStatus.error,
-          message: failure.message,
-        ),
+    final previousSummary = state.cart;
+
+    emit(state.copyWith(
+      cart: previousSummary.copyWith(
+        items: [],
+        subtotal: 0.0,
+        total: 0.0,
       ),
-      (cartOperationResult) {
+      status: CartStatus.loaded,
+    ));
+
+    final result = await _clearCartUseCase();
+    result.fold(
+      (failure) => emit(state.copyWith(cart: previousSummary, status: CartStatus.error, message: failure.message)),
+      (opResult) {
         emit(state.copyWith(
-          status: cartOperationResult.success ? CartStatus.operationSuccess : CartStatus.operationFailure,
-          message: cartOperationResult.message,
-          items: cartOperationResult.success ? <CartItem>[] : previousItems,
+          status: opResult.success ? CartStatus.operationSuccess : CartStatus.operationFailure,
+          message: opResult.message,
+          cart: opResult.success ? state.cart : previousSummary,
         ));
       },
     );
   }
 
   Future<void> removeFromCart(String productItemId) async {
-    final previousItems = state.items;
-    final updatedItems = previousItems
+    final previousSummary = state.cart;
+
+    final updatedItems = previousSummary.items
         .where((item) => item.productItemId != productItemId)
         .toList();
-    emit(state.copyWith(items: updatedItems, status: CartStatus.loaded));
-    final result = await _removeFromCartUseCase.call(productItemId);
-    result.fold(
-      (failure) => emit(
-        state.copyWith(
-          items: previousItems,
-          status: CartStatus.error,
-          message: failure.message,
+    final newSubtotal = updatedItems.fold(
+      0.0,
+      (sum, i) => sum + i.lineSubtotal,
+    );
+
+    // Optimistic removal
+    emit(
+      state.copyWith(
+        cart: previousSummary.copyWith(
+          items: updatedItems,
+          subtotal: newSubtotal,
+          total: newSubtotal + previousSummary.shippingCost,
         ),
+        status: CartStatus.loaded,
       ),
-      (cartOperationResult) {
+    );
+
+    final result = await _removeFromCartUseCase(productItemId);
+    result.fold(
+      (failure) {
+        // Roll back entirely — request itself failed
         emit(
           state.copyWith(
-            status: cartOperationResult.success
+            cart: previousSummary,
+            status: CartStatus.error,
+            message: failure.message,
+          ),
+        );
+      },
+      (opResult) {
+        emit(
+          state.copyWith(
+            status: opResult.success
                 ? CartStatus.operationSuccess
                 : CartStatus.operationFailure,
-            message: cartOperationResult.message,
-            items: cartOperationResult.success ? updatedItems : previousItems,
+            message: opResult.message,
+            cart: opResult.success ? state.cart : previousSummary,
           ),
         );
       },
     );
   }
 
-  Future<void> updateCartItem(String productItemId, int newQuantity) async {
+  void updateCartItemQuantity(String productItemId, int newQuantity) {
     final updatedItems = state.items.map((item) {
       return item.productItemId == productItemId
-          ? item.copyWith(quantity: newQuantity)
+          ? item.copyWith(
+              quantity: newQuantity,
+              lineSubtotal: item.price * newQuantity,
+            )
           : item;
     }).toList();
-    emit(state.copyWith(items: updatedItems, status: CartStatus.loaded));
+
+    final newSubtotal = updatedItems.fold(
+      0.0,
+      (sum, i) => sum + i.lineSubtotal,
+    );
+    final updatedCart = state.cart.copyWith(
+      items: updatedItems,
+      subtotal: newSubtotal,
+      total: newSubtotal + state.cart.shippingCost,
+    );
+
+    emit(state.copyWith(cart: updatedCart, status: CartStatus.loaded));
+
     _debounceTimers[productItemId]?.cancel();
     _debounceTimers[productItemId] = Timer(_debounceDuration, () {
       _commitQuantityUpdate(productItemId, newQuantity);
@@ -105,25 +141,25 @@ class CartCubit extends Cubit<CartState> {
   }
 
   Future<void> _commitQuantityUpdate(String productItemId, int quantity) async {
-    final result = await _updateCartItemUseCase.call(productItemId, quantity);
+    final result = await _updateCartItemUseCase(productItemId, quantity);
     result.fold(
       (failure) {
         emit(
           state.copyWith(status: CartStatus.error, message: failure.message),
         );
-        getCartItems();
+        getCart(); // resync — optimistic value may now be wrong
       },
-      (cartOperationResult) {
+      (opResult) {
         emit(
           state.copyWith(
-            status: cartOperationResult.success
+            status: opResult.success
                 ? CartStatus.operationSuccess
                 : CartStatus.operationFailure,
-            message: cartOperationResult.message,
+            message: opResult.message,
           ),
         );
-        if (!cartOperationResult.success) {
-          getCartItems();
+        if (!opResult.success) {
+          getCart(); // rejected op (e.g. stock) — resync
         }
       },
     );
@@ -145,7 +181,7 @@ class CartCubit extends Cubit<CartState> {
             message: cartOperationResult.message,
           ),
         );
-        getCartItems();
+        getCart();
       },
     );
   }

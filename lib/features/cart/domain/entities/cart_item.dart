@@ -10,6 +10,7 @@ class CartItem {
   final double price;
   final int quantity;
   final int stock;
+  final double lineSubtotal;
   final List<CartItemVariation> variations;
 
   const CartItem({
@@ -22,6 +23,7 @@ class CartItem {
     required this.price,
     required this.quantity,
     required this.stock,
+    required this.lineSubtotal,
     required this.variations,
   });
 
@@ -35,6 +37,7 @@ class CartItem {
     double? price,
     int? quantity,
     int? stock,
+    double? lineSubtotal,
     List<CartItemVariation>? variations,
   }) {
     return CartItem(
@@ -47,6 +50,7 @@ class CartItem {
       price: price ?? this.price,
       quantity: quantity ?? this.quantity,
       stock: stock ?? this.stock,
+      lineSubtotal: lineSubtotal ?? this.lineSubtotal,
       variations: variations ?? this.variations,
     );
   }
