@@ -7,6 +7,7 @@ import 'package:e_commerce/core/theme/app_theme.dart';
 import 'package:e_commerce/features/auth/presentation/logic/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/logic/auth_cubit/auth_state.dart';
 import 'package:e_commerce/features/auth/presentation/logic/sign_out_cubit/sign_out_cubit.dart';
+import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce/features/profile/presentation/logic/cubit/profile_cubit.dart';
 import 'package:e_commerce/features/settings/presentation/logic/cubit/app_settings_cubit.dart';
 import 'package:e_commerce/features/settings/presentation/logic/cubit/app_settings_state.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<WishlistCubit>()..getWishListedIds(),
         ),
+        BlocProvider(create: (context) => getIt<CartCubit>()..getCart()),
       ],
       child: BlocListener<AuthCubit, AppAuthState>(
         listener: (context, state) {

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:e_commerce/features/cart/domain/use_cases/add_to_cart.dart';
 import 'package:e_commerce/features/cart/domain/use_cases/clear_cart.dart';
 import 'package:e_commerce/features/cart/domain/use_cases/get_cart_items.dart';
@@ -181,7 +180,7 @@ class CartCubit extends Cubit<CartState> {
             message: cartOperationResult.message,
           ),
         );
-        getCart();
+        //getCart();
       },
     );
   }
