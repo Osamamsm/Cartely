@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/product/data/models/product_details.dart';
 import 'package:e_commerce/features/product/domain/repos/product_repo.dart';
 import 'package:e_commerce/features/product/product_details/presentation/logic/product_details_cubit/product_details_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,8 +15,24 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     final details = await _productRepo.getProductDetails(productId);
     details.fold(
       (failure) => emit(ProductDetailsError(failure.message)),
-      (product) => emit(ProductDetailsLoaded(product: product)),
+      (product) => emit(
+        ProductDetailsLoaded(
+          product: product,
+          selectedOptions: _defaultSelectionFor(product),
+        ),
+      ),
     );
+  }
+
+  Map<String, String> _defaultSelectionFor(ProductDetails product) {
+    if (product.productItems.isEmpty) return {};
+
+    final defaultItem = product.productItems.firstWhere(
+      (item) => item.stock > 0,
+      orElse: () => product.productItems.first,
+    );
+
+    return {for (final v in defaultItem.variations) v.variationEn: v.optionEn};
   }
 
   void selectOption(String variationEn, String optionEn) {
