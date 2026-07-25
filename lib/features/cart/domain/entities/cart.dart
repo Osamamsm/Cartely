@@ -29,4 +29,14 @@ class Cart {
       total: total ?? this.total,
     );
   }
+
+  factory Cart.placeHolder() => Cart(
+        items: List.generate(
+          3,
+          (index) => CartItem.placeHolder(),
+        ),
+        subtotal: 0.0,
+        shippingCost: 0.0,
+        total: 0.0,
+      );
 }

@@ -54,4 +54,21 @@ class CartItem {
       variations: variations ?? this.variations,
     );
   }
+
+  factory CartItem.placeHolder() => CartItem(
+    cartItemId: '1',
+    productItemId: '11',
+    productId: '111',
+    productEnName: 'Product Name',
+    productArName: 'اسم المنتج',
+    productThumbnail: 'https://example.com/thumbnail.jpg',
+    price: 0.0,
+    quantity: 0,
+    stock: 0,
+    lineSubtotal: 0.0,
+    variations: [
+      CartItemVariation.placeHolder(),
+      CartItemVariation.placeHolder(),
+    ],
+  );
 }

@@ -12,4 +12,12 @@ class CartItemVariation {
     required this.arValue,
     this.hexCode,
   });
+
+  factory CartItemVariation.placeHolder() => const CartItemVariation(
+        enName: 'Size',
+        arName: 'الحجم',
+        enValue: 'Medium',
+        arValue: 'متوسط',
+        hexCode: '#FF0000',
+      );
 }
