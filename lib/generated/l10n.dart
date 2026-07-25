@@ -1301,6 +1301,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Your cart is empty`
+  String get emptyCart {
+    return Intl.message(
+      'Your cart is empty',
+      name: 'emptyCart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Looks like you haven't added anything yet. Start exploring and add your favorite products.`
+  String get emptyCartDescription {
+    return Intl.message(
+      'Looks like you haven\'t added anything yet. Start exploring and add your favorite products.',
+      name: 'emptyCartDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start Shopping`
+  String get startShopping {
+    return Intl.message(
+      'Start Shopping',
+      name: 'startShopping',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

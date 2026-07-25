@@ -116,6 +116,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_hint": MessageLookupByLibrary.simpleMessage("Enter your email"),
+    "emptyCart": MessageLookupByLibrary.simpleMessage("Your cart is empty"),
+    "emptyCartDescription": MessageLookupByLibrary.simpleMessage(
+      "Looks like you haven\'t added anything yet. Start exploring and add your favorite products.",
+    ),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enter_new_password": MessageLookupByLibrary.simpleMessage(
       "Enter New Password",
@@ -262,6 +266,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "If an account with this email exists, you will receive a verification email.",
     ),
     "size": MessageLookupByLibrary.simpleMessage("Size"),
+    "startShopping": MessageLookupByLibrary.simpleMessage("Start Shopping"),
     "street": MessageLookupByLibrary.simpleMessage("Street"),
     "street_address": MessageLookupByLibrary.simpleMessage("Street Address"),
     "submit_review": MessageLookupByLibrary.simpleMessage("Submit Review"),

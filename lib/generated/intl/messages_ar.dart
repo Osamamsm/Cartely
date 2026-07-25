@@ -97,6 +97,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "email_hint": MessageLookupByLibrary.simpleMessage(
       "أدخل البريد الالكتروني",
     ),
+    "emptyCart": MessageLookupByLibrary.simpleMessage("سلة التسوق فارغة"),
+    "emptyCartDescription": MessageLookupByLibrary.simpleMessage(
+      "يبدو أنك لم تضف أي منتجات بعد. ابدأ بالتسوق وأضف منتجاتك المفضلة.",
+    ),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "error_body_subtitle": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
@@ -219,6 +223,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل انت متاكد من تسجيل الخروج",
     ),
     "size": MessageLookupByLibrary.simpleMessage("الحجم"),
+    "startShopping": MessageLookupByLibrary.simpleMessage("ابدأ التسوق"),
     "street": MessageLookupByLibrary.simpleMessage("الشارع"),
     "street_address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "submit_review": MessageLookupByLibrary.simpleMessage("ارسال رأيك"),

@@ -145,5 +145,8 @@
   "additional_notes": "ملاحظات إضافية",
   "additional_notes_hint_text": "اكتب أي تفاصيل إضافية لمساعدة مندوب التوصيل في الوصول إلى العنوان بسهولة",
   "address_added_succesfully":"تم إضافة العنوان بنجاح",
-  "address_updated_successfully":"تم تحديث العنوان بنجاح"
+  "address_updated_successfully":"تم تحديث العنوان بنجاح",
+  "emptyCart": "سلة التسوق فارغة",
+  "emptyCartDescription": "يبدو أنك لم تضف أي منتجات بعد. ابدأ بالتسوق وأضف منتجاتك المفضلة.",
+  "startShopping": "ابدأ التسوق"
 }

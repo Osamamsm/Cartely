@@ -40,24 +40,32 @@ class CartCubit extends Cubit<CartState> {
   Future<void> clearCart() async {
     final previousSummary = state.cart;
 
-    emit(state.copyWith(
-      cart: previousSummary.copyWith(
-        items: [],
-        subtotal: 0.0,
-        total: 0.0,
+    emit(
+      state.copyWith(
+        cart: previousSummary.copyWith(items: [], subtotal: 0.0, total: 0.0),
+        status: CartStatus.loaded,
       ),
-      status: CartStatus.loaded,
-    ));
+    );
 
     final result = await _clearCartUseCase();
     result.fold(
-      (failure) => emit(state.copyWith(cart: previousSummary, status: CartStatus.error, message: failure.message)),
+      (failure) => emit(
+        state.copyWith(
+          cart: previousSummary,
+          status: CartStatus.error,
+          message: failure.message,
+        ),
+      ),
       (opResult) {
-        emit(state.copyWith(
-          status: opResult.success ? CartStatus.operationSuccess : CartStatus.operationFailure,
-          message: opResult.message,
-          cart: opResult.success ? state.cart : previousSummary,
-        ));
+        emit(
+          state.copyWith(
+            status: opResult.success
+                ? CartStatus.operationSuccess
+                : CartStatus.operationFailure,
+            message: opResult.message,
+            cart: opResult.success ? state.cart : previousSummary,
+          ),
+        );
       },
     );
   }
@@ -180,8 +188,16 @@ class CartCubit extends Cubit<CartState> {
             message: cartOperationResult.message,
           ),
         );
-        //getCart();
+        getCart();
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    for (final timer in _debounceTimers.values) {
+      timer.cancel();
+    }
+    return super.close();
   }
 }
