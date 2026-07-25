@@ -11,9 +11,9 @@ class UpdateCartItemUseCase {
   UpdateCartItemUseCase(this._cartRepo);
 
   Future<Either<Failure, CartOperationResult>> call(
-    String productItemId,
+    String cartItemId,
     int quantity,
   ) {
-    return _cartRepo.updateCartItem(productItemId, quantity);
+    return _cartRepo.updateCartItem(cartItemId, quantity);
   }
 }

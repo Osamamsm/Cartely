@@ -12,7 +12,7 @@ abstract class CartRepo {
     String cartItemId,
   );
   Future<Either<Failure, CartOperationResult>> updateCartItem(
-    String productItemId,
+    String cartItemId,
     int quantity,
   );
   Future<Either<Failure, Cart>> getCart();

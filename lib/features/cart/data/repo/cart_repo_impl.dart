@@ -62,12 +62,12 @@ class CartRepoImpl implements CartRepo {
 
   @override
   Future<Either<Failure, CartOperationResult>> updateCartItem(
-    String productItemId,
+    String cartItemId,
     int newQuantity,
   ) async {
     try {
       final result = await _cartRemoteDataSource.updateCartItem(
-        productItemId,
+        cartItemId,
         newQuantity,
       );
       return Right(result.toEntity());

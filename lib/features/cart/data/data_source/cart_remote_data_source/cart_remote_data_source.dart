@@ -10,7 +10,7 @@ abstract class CartRemoteDataSource {
     int quantity,
   );
   Future<CartOperationResultModel> updateCartItem(
-    String productItemId,
+    String cartItemId,
     int newQuantity,
   );
   Future<CartOperationResultModel> removeCartItem(String cartItemId);
@@ -84,7 +84,7 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
 
   @override
   Future<CartOperationResultModel> updateCartItem(
-    String productItemId,
+    String cartItemId,
     int newQuantity,
   ) async {
     final user = _supabaseService.currentUser;
@@ -95,7 +95,7 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       function: 'update_cart_item',
       params: {
         'p_user_id': user.id,
-        'p_product_item_id': productItemId,
+        'p_cart_item_id': cartItemId,
         'p_new_quantity': newQuantity,
       },
     );
