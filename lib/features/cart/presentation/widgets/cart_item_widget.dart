@@ -15,9 +15,9 @@ class CartItemWidget extends StatefulWidget {
 }
 
 class _CartItemWidgetState extends State<CartItemWidget> {
-  int quantity = 1;
   @override
   Widget build(BuildContext context) {
+    int quantity = widget.cartItem.quantity;
     return Container(
       padding: const .all(10),
       height: 150,
@@ -52,8 +52,20 @@ class _CartItemWidgetState extends State<CartItemWidget> {
               ),
               QuantityStepper(
                 value: widget.cartItem.quantity,
-                onIncrement: () => setState(() => quantity++),
-                onDecrement: () => setState(() => quantity--),
+                onIncrement: () {
+                  setState(() => quantity++);
+                  context.read<CartCubit>().updateCartItemQuantity(
+                    widget.cartItem.cartItemId,
+                    quantity,
+                  );
+                },
+                onDecrement: () {
+                  setState(() => quantity--);
+                  context.read<CartCubit>().updateCartItemQuantity(
+                    widget.cartItem.cartItemId,
+                    quantity,
+                  );
+                },
               ),
             ],
           ),
