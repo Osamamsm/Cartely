@@ -79,6 +79,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
+    "clear_cart_confirmation": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to clear all items from your cart?",
+    ),
     "color": MessageLookupByLibrary.simpleMessage("Color"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
@@ -168,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_cart": MessageLookupByLibrary.simpleMessage("My Cart"),
     "my_orders": MessageLookupByLibrary.simpleMessage("My Orders"),
     "new_password": MessageLookupByLibrary.simpleMessage("New Password"),
+    "no": MessageLookupByLibrary.simpleMessage("No"),
     "no_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account? ",
     ),
@@ -289,6 +293,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist"),
     "work": MessageLookupByLibrary.simpleMessage("Work"),
+    "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "your_payment_info_is_stored_securely":
         MessageLookupByLibrary.simpleMessage(
           "Your payment info is stored securely",

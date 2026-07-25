@@ -148,5 +148,8 @@
   "address_updated_successfully":"تم تحديث العنوان بنجاح",
   "emptyCart": "سلة التسوق فارغة",
   "emptyCartDescription": "يبدو أنك لم تضف أي منتجات بعد. ابدأ بالتسوق وأضف منتجاتك المفضلة.",
-  "startShopping": "ابدأ التسوق"
+  "startShopping": "ابدأ التسوق",
+  "clear_cart_confirmation": "هل أنت متأكد أنك تريد مسح جميع العناصر من سلة التسوق؟",
+  "yes": "نعم",
+  "no": "لا"
 }

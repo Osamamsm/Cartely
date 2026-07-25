@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/helpers/functions.dart';
 import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_state.dart';
 import 'package:e_commerce/features/product/data/models/product_details.dart';
@@ -20,8 +21,8 @@ class ProductDetailsViewBody extends StatelessWidget {
       listener: (context, state) {
         switch (state.status) {
           case CartStatus.operationSuccess:
-            _showCartSnackBar(
-              context,
+            showCartSnackBar(
+              context: context,
               message: state.message!,
               backgroundColor: Colors.green.shade600,
               icon: Icons.check_circle_outline,
@@ -29,8 +30,8 @@ class ProductDetailsViewBody extends StatelessWidget {
             break;
 
           case CartStatus.operationFailure:
-            _showCartSnackBar(
-              context,
+            showCartSnackBar(
+              context: context,
               message: state.message!,
               backgroundColor: Colors.red.shade600,
               icon: Icons.error_outline,
@@ -38,8 +39,8 @@ class ProductDetailsViewBody extends StatelessWidget {
             break;
 
           case CartStatus.error:
-            _showCartSnackBar(
-              context,
+            showCartSnackBar(
+              context:context,
               message: state.message!,
               backgroundColor: Colors.red.shade600,
               icon: Icons.wifi_off_rounded,
@@ -86,29 +87,4 @@ class ProductDetailsViewBody extends StatelessWidget {
   }
 }
 
-void _showCartSnackBar(
-  BuildContext context, {
-  required String message,
-  required Color backgroundColor,
-  required IconData icon,
-}) {
-  ScaffoldMessenger.of(context)
-    ..hideCurrentSnackBar()
-    ..showSnackBar(
-      SnackBar(
-        content: Row(
-          children: [
-            Icon(icon, color: Colors.white),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(message, style: const TextStyle(color: Colors.white)),
-            ),
-          ],
-        ),
-        backgroundColor: backgroundColor,
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(12),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      ),
-    );
-}
+

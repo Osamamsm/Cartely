@@ -160,6 +160,8 @@
     "address_updated_successfully":"Address updated successfully",
     "emptyCart": "Your cart is empty",
     "emptyCartDescription": "Looks like you haven't added anything yet. Start exploring and add your favorite products.",
-    "startShopping": "Start Shopping"
-
+    "startShopping": "Start Shopping",
+    "clear_cart_confirmation": "Are you sure you want to clear all items from your cart?",
+    "yes": "Yes",
+    "no": "No"
 }

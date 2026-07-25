@@ -56,12 +56,7 @@ String getFormattedAddress({required AddressEntity address}) {
       ? address.additionalNotes!.trim()
       : null;
 
-  final lines = [
-    ?line1,
-    ?line2,
-    ?line3,
-    ?line4,
-  ];
+  final lines = [?line1, ?line2, ?line3, ?line4];
 
   final formattedAddress = lines.join('\n');
 
@@ -85,4 +80,31 @@ String? _cleanLine(List<String?> parts, {required String separator}) {
   if (cleaned.isEmpty) return null;
 
   return cleaned.join(separator);
+}
+
+void showCartSnackBar({
+  required BuildContext context,
+  required String message,
+  required Color backgroundColor,
+  required IconData icon,
+}) {
+  ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            Icon(icon, color: Colors.white),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(message, style: const TextStyle(color: Colors.white)),
+            ),
+          ],
+        ),
+        backgroundColor: backgroundColor,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(12),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+    );
 }
