@@ -20,7 +20,7 @@ class CartModel {
           .map((item) => CartItemModel.fromJson(item))
           .toList(),
       subtotal: (json['subtotal'] as num).toDouble(),
-      shippingCost: (json['shippingCost'] as num).toDouble(),
+      shippingCost: (json['shipping_cost'] as num).toDouble(),
       total: (json['total'] as num).toDouble(),
     );
   }

@@ -63,7 +63,7 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       throw Exception('User not found');
     }
     final response = await _supabaseService.rpc(
-      function: 'get_cart_items',
+      function: 'get_cart',
       params: {'p_user_id': user.id},
     );
     return CartModel.fromJson(response);
