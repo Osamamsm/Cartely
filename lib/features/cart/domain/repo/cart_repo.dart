@@ -9,7 +9,7 @@ abstract class CartRepo {
     int quantity,
   );
   Future<Either<Failure, CartOperationResult>> removeFromCart(
-    String productItemId,
+    String cartItemId,
   );
   Future<Either<Failure, CartOperationResult>> updateCartItem(
     String productItemId,

@@ -50,10 +50,10 @@ class CartRepoImpl implements CartRepo {
 
   @override
   Future<Either<Failure, CartOperationResult>> removeFromCart(
-    String productItemId,
+    String cartItemId,
   ) async {
     try {
-      final result = await _cartRemoteDataSource.removeCartItem(productItemId);
+      final result = await _cartRemoteDataSource.removeCartItem(cartItemId);
       return Right(result.toEntity());
     } catch (e) {
       return Left(ExceptionMapper.mapExceptionToFailure(e));

@@ -13,7 +13,7 @@ abstract class CartRemoteDataSource {
     String productItemId,
     int newQuantity,
   );
-  Future<CartOperationResultModel> removeCartItem(String productItemId);
+  Future<CartOperationResultModel> removeCartItem(String cartItemId);
   Future<CartOperationResultModel> clearCart();
 }
 
@@ -70,14 +70,14 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   }
 
   @override
-  Future<CartOperationResultModel> removeCartItem(String productItemId) async {
+  Future<CartOperationResultModel> removeCartItem(String cartItemId) async {
     final user = _supabaseService.currentUser;
     if (user == null) {
       throw Exception('User not found');
     }
     final response = await _supabaseService.rpc(
       function: 'remove_cart_item',
-      params: {'p_user_id': user.id, 'p_product_item_id': productItemId},
+      params: {'p_user_id': user.id, 'p_cart_item_id': cartItemId},
     );
     return CartOperationResultModel.fromJson(response);
   }
