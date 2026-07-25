@@ -120,15 +120,18 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-  void updateCartItemQuantity(String productItemId, int newQuantity) {
-    final updatedItems = state.items.map((item) {
-      return item.productItemId == productItemId
-          ? item.copyWith(
-              quantity: newQuantity,
-              lineSubtotal: item.price * newQuantity,
-            )
-          : item;
-    }).toList();
+  void updateCartItemQuantity(String cartItemId, int newQuantity) {
+    emit(state.copyWith(status: CartStatus.loading));
+    final updatedItems = newQuantity == 0
+        ? state.items.where((item) => item.cartItemId != cartItemId).toList()
+        : state.items.map((item) {
+            return item.cartItemId == cartItemId
+                ? item.copyWith(
+                    quantity: newQuantity,
+                    lineSubtotal: item.price * newQuantity,
+                  )
+                : item;
+          }).toList();
 
     final newSubtotal = updatedItems.fold(
       0.0,
@@ -142,14 +145,14 @@ class CartCubit extends Cubit<CartState> {
 
     emit(state.copyWith(cart: updatedCart, status: CartStatus.loaded));
 
-    _debounceTimers[productItemId]?.cancel();
-    _debounceTimers[productItemId] = Timer(_debounceDuration, () {
-      _commitQuantityUpdate(productItemId, newQuantity);
+    _debounceTimers[cartItemId]?.cancel();
+    _debounceTimers[cartItemId] = Timer(_debounceDuration, () {
+      _commitQuantityUpdate(cartItemId, newQuantity);
     });
   }
 
-  Future<void> _commitQuantityUpdate(String productItemId, int quantity) async {
-    final result = await _updateCartItemUseCase(productItemId, quantity);
+  Future<void> _commitQuantityUpdate(String cartItemId, int quantity) async {
+    final result = await _updateCartItemUseCase(cartItemId, quantity);
     result.fold(
       (failure) {
         emit(
