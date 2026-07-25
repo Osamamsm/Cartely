@@ -2,8 +2,10 @@ import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/core/widgets/product_image.dart';
 import 'package:e_commerce/core/widgets/quantity_stepper.dart';
 import 'package:e_commerce/features/cart/domain/entities/cart_item.dart';
+import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce/features/cart/presentation/widgets/cart_item_details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartItemWidget extends StatefulWidget {
   const CartItemWidget({super.key, required this.cartItem});
@@ -40,7 +42,11 @@ class _CartItemWidgetState extends State<CartItemWidget> {
             crossAxisAlignment: .end,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.read<CartCubit>().removeFromCart(
+                    widget.cartItem.cartItemId,
+                  );
+                },
                 icon: const Icon(Icons.close),
                 color: Theme.of(context).colorScheme.onSecondary,
               ),

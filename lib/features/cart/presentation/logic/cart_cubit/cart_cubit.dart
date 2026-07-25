@@ -70,11 +70,12 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-  Future<void> removeFromCart(String productItemId) async {
+  Future<void> removeFromCart(String cartItemId) async {
+    emit(state.copyWith(status: CartStatus.loading));
     final previousSummary = state.cart;
 
     final updatedItems = previousSummary.items
-        .where((item) => item.productItemId != productItemId)
+        .where((item) => item.cartItemId != cartItemId)
         .toList();
     final newSubtotal = updatedItems.fold(
       0.0,
@@ -93,7 +94,7 @@ class CartCubit extends Cubit<CartState> {
       ),
     );
 
-    final result = await _removeFromCartUseCase(productItemId);
+    final result = await _removeFromCartUseCase(cartItemId);
     result.fold(
       (failure) {
         // Roll back entirely — request itself failed

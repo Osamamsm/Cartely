@@ -61,7 +61,7 @@ class CartItem {
     productId: '111',
     productEnName: 'Product Name',
     productArName: 'اسم المنتج',
-    productThumbnail: 'https://example.com/thumbnail.jpg',
+    productThumbnail: 'https://m.media-amazon.com/images/I/61QIwXhA0fL._AC_SY741_.jpg',
     price: 0.0,
     quantity: 0,
     stock: 0,
