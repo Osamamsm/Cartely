@@ -3,7 +3,7 @@ import 'package:e_commerce/core/widgets/product_image.dart';
 import 'package:e_commerce/features/home/presentation/widgets/fav_button.dart';
 import 'package:e_commerce/features/product/data/models/product.dart';
 import 'package:e_commerce/features/product/product_details/presentation/views/product_details_view.dart';
-import 'package:e_commerce/generated/l10n.dart';
+//import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -96,7 +96,7 @@ class ProductCard extends StatelessWidget {
                 ),
             ],
           ),
-          vGap(8),
+          /*vGap(8),
           SizedBox(
             width: double.infinity,
             height: 45,
@@ -104,7 +104,7 @@ class ProductCard extends StatelessWidget {
               onPressed: () {},
               child: Text(S.of(context).add_to_cart),
             ),
-          ),
+          ),*/
         ],
       ),
     );

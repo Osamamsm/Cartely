@@ -79,6 +79,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
+    "clear_cart_confirmation": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to clear all items from your cart?",
+    ),
     "color": MessageLookupByLibrary.simpleMessage("Color"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
@@ -116,6 +119,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_hint": MessageLookupByLibrary.simpleMessage("Enter your email"),
+    "emptyCart": MessageLookupByLibrary.simpleMessage("Your cart is empty"),
+    "emptyCartDescription": MessageLookupByLibrary.simpleMessage(
+      "Looks like you haven\'t added anything yet. Start exploring and add your favorite products.",
+    ),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enter_new_password": MessageLookupByLibrary.simpleMessage(
       "Enter New Password",
@@ -164,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_cart": MessageLookupByLibrary.simpleMessage("My Cart"),
     "my_orders": MessageLookupByLibrary.simpleMessage("My Orders"),
     "new_password": MessageLookupByLibrary.simpleMessage("New Password"),
+    "no": MessageLookupByLibrary.simpleMessage("No"),
     "no_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account? ",
     ),
@@ -262,6 +270,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "If an account with this email exists, you will receive a verification email.",
     ),
     "size": MessageLookupByLibrary.simpleMessage("Size"),
+    "startShopping": MessageLookupByLibrary.simpleMessage("Start Shopping"),
     "street": MessageLookupByLibrary.simpleMessage("Street"),
     "street_address": MessageLookupByLibrary.simpleMessage("Street Address"),
     "submit_review": MessageLookupByLibrary.simpleMessage("Submit Review"),
@@ -284,6 +293,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist"),
     "work": MessageLookupByLibrary.simpleMessage("Work"),
+    "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "your_payment_info_is_stored_securely":
         MessageLookupByLibrary.simpleMessage(
           "Your payment info is stored securely",

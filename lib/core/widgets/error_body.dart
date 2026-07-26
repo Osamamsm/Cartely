@@ -37,7 +37,7 @@ class ErrorBody extends StatelessWidget {
           Text(
             errMessage,
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: Theme.of(context).colorScheme.onSecondary,
             ),
             textAlign: TextAlign.center,
           ),
@@ -47,7 +47,7 @@ class ErrorBody extends StatelessWidget {
           Text(
             S.of(context).error_body_subtitle,
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: Theme.of(context).colorScheme.onSecondary,
             ),
             textAlign: TextAlign.center,
           ),
@@ -69,7 +69,7 @@ class ErrorBody extends StatelessWidget {
                   child: Text(
                     S.of(context).go_to_home,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimary,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                 )

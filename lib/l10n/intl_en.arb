@@ -157,6 +157,11 @@
     "additional_notes":"Additional Notes",
     "additional_notes_hint_text":"Write any additional details to help the delivery person easily reach the address.",
     "address_added_successfully":"Address Added Successfully",
-    "address_updated_successfully":"Address updated successfully"
-
+    "address_updated_successfully":"Address updated successfully",
+    "emptyCart": "Your cart is empty",
+    "emptyCartDescription": "Looks like you haven't added anything yet. Start exploring and add your favorite products.",
+    "startShopping": "Start Shopping",
+    "clear_cart_confirmation": "Are you sure you want to clear all items from your cart?",
+    "yes": "Yes",
+    "no": "No"
 }
