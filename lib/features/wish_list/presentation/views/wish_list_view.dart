@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/widgets/cart_button.dart';
 import 'package:e_commerce/core/widgets/custom_scaffold.dart';
 import 'package:e_commerce/features/wish_list/presentation/widgets/wish_list_view_body.dart';
 import 'package:e_commerce/generated/l10n.dart';
@@ -12,6 +13,7 @@ class WishListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: S.of(context).wishlist,
+      actionWidgets: [const CartButton()],
       child: const WishListViewBody(),
     );
   }
