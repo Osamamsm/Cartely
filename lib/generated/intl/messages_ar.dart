@@ -67,6 +67,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "checkout": MessageLookupByLibrary.simpleMessage("الدفع"),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
+    "clear_cart_confirmation": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد مسح جميع العناصر من سلة التسوق؟",
+    ),
     "color": MessageLookupByLibrary.simpleMessage("اللون"),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمه المرور",
@@ -96,6 +99,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
     "email_hint": MessageLookupByLibrary.simpleMessage(
       "أدخل البريد الالكتروني",
+    ),
+    "emptyCart": MessageLookupByLibrary.simpleMessage("سلة التسوق فارغة"),
+    "emptyCartDescription": MessageLookupByLibrary.simpleMessage(
+      "يبدو أنك لم تضف أي منتجات بعد. ابدأ بالتسوق وأضف منتجاتك المفضلة.",
     ),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "error_body_subtitle": MessageLookupByLibrary.simpleMessage(
@@ -139,6 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_addresses": MessageLookupByLibrary.simpleMessage("عناويني"),
     "my_cart": MessageLookupByLibrary.simpleMessage("عربتي"),
     "my_orders": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "no": MessageLookupByLibrary.simpleMessage("لا"),
     "no_account": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "no_addresses": MessageLookupByLibrary.simpleMessage("لا توجد عناوين"),
     "no_changes_done": MessageLookupByLibrary.simpleMessage("لا توجد تغييرات"),
@@ -219,6 +227,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل انت متاكد من تسجيل الخروج",
     ),
     "size": MessageLookupByLibrary.simpleMessage("الحجم"),
+    "startShopping": MessageLookupByLibrary.simpleMessage("ابدأ التسوق"),
     "street": MessageLookupByLibrary.simpleMessage("الشارع"),
     "street_address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "submit_review": MessageLookupByLibrary.simpleMessage("ارسال رأيك"),
@@ -239,6 +248,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "wishlist": MessageLookupByLibrary.simpleMessage("المفضلة"),
     "work": MessageLookupByLibrary.simpleMessage("العمل"),
+    "yes": MessageLookupByLibrary.simpleMessage("نعم"),
     "your_payment_info_is_stored_securely":
         MessageLookupByLibrary.simpleMessage(
           "معلومات الدفع الخاصة بك محفوظة بأمان",

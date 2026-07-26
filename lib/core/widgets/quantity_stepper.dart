@@ -8,7 +8,7 @@ class QuantityStepper extends StatelessWidget {
     required this.value,
     required this.onIncrement,
     required this.onDecrement,
-    this.min = 1,
+    this.min = 0,
     this.max,
   });
 
@@ -40,9 +40,9 @@ class QuantityStepper extends StatelessWidget {
             icon: Icons.remove,
             enabled: _canDecrement,
           ),
-          hGap(8),
+          hGap(5),
           Text(value.toString(), style: Theme.of(context).textTheme.bodyMedium),
-          hGap(8),
+          hGap(5),
           StepButton(
             onTap: onIncrement,
             icon: Icons.add,

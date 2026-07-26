@@ -66,6 +66,23 @@ import 'package:e_commerce/features/auth/presentation/logic/sign_out_cubit/sign_
     as _i167;
 import 'package:e_commerce/features/auth/presentation/logic/sign_up_cubit/sign_up_cubit.dart'
     as _i927;
+import 'package:e_commerce/features/cart/data/data_source/cart_remote_data_source/cart_remote_data_source.dart'
+    as _i676;
+import 'package:e_commerce/features/cart/data/repo/cart_repo_impl.dart'
+    as _i197;
+import 'package:e_commerce/features/cart/domain/repo/cart_repo.dart' as _i571;
+import 'package:e_commerce/features/cart/domain/use_cases/add_to_cart.dart'
+    as _i615;
+import 'package:e_commerce/features/cart/domain/use_cases/clear_cart.dart'
+    as _i943;
+import 'package:e_commerce/features/cart/domain/use_cases/get_cart_items.dart'
+    as _i163;
+import 'package:e_commerce/features/cart/domain/use_cases/remove_from_cart.dart'
+    as _i612;
+import 'package:e_commerce/features/cart/domain/use_cases/update_cart_item.dart'
+    as _i618;
+import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubit.dart'
+    as _i325;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart'
     as _i555;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart'
@@ -149,6 +166,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i1063.ProfileRemoteDataSource>(
       () => _i1063.ProfileRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
     );
+    gh.lazySingleton<_i676.CartRemoteDataSource>(
+      () => _i676.CartRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
+    );
     gh.lazySingleton<_i164.PushNotificationsService>(
       () => _i164.PushNotificationsService(gh<_i78.UserPreferencesHelper>()),
     );
@@ -189,6 +209,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i699.GetWishListCubit>(
       () => _i699.GetWishListCubit(gh<_i733.WishListRepo>()),
+    );
+    gh.lazySingleton<_i571.CartRepo>(
+      () => _i197.CartRepoImpl(gh<_i676.CartRemoteDataSource>()),
     );
     gh.lazySingleton<_i756.AuthCubit>(
       () => _i756.AuthCubit(gh<_i74.SupabaseService>()),
@@ -246,6 +269,30 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i691.SignUpUseCase>(
       () => _i691.SignUpUseCase(gh<_i380.AuthRepo>()),
+    );
+    gh.factory<_i615.AddToCartUseCase>(
+      () => _i615.AddToCartUseCase(gh<_i571.CartRepo>()),
+    );
+    gh.factory<_i943.ClearCartUseCase>(
+      () => _i943.ClearCartUseCase(gh<_i571.CartRepo>()),
+    );
+    gh.factory<_i163.GetCartItemsUseCase>(
+      () => _i163.GetCartItemsUseCase(gh<_i571.CartRepo>()),
+    );
+    gh.factory<_i612.RemoveFromCartUseCase>(
+      () => _i612.RemoveFromCartUseCase(gh<_i571.CartRepo>()),
+    );
+    gh.factory<_i618.UpdateCartItemUseCase>(
+      () => _i618.UpdateCartItemUseCase(gh<_i571.CartRepo>()),
+    );
+    gh.factory<_i325.CartCubit>(
+      () => _i325.CartCubit(
+        gh<_i163.GetCartItemsUseCase>(),
+        gh<_i943.ClearCartUseCase>(),
+        gh<_i612.RemoveFromCartUseCase>(),
+        gh<_i618.UpdateCartItemUseCase>(),
+        gh<_i615.AddToCartUseCase>(),
+      ),
     );
     gh.factory<_i330.ResetPasswordCubit>(
       () => _i330.ResetPasswordCubit(gh<_i817.ResetPasswordUseCase>()),

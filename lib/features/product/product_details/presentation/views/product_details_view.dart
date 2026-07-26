@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/widgets/cart_button.dart';
 import 'package:e_commerce/core/widgets/custom_scaffold.dart';
 import 'package:e_commerce/features/product/product_details/presentation/widgets/product_details_view_body.dart';
 import 'package:e_commerce/features/product/product_details/presentation/widgets/product_purchase_bar.dart';
@@ -28,6 +29,7 @@ class ProductDetailsView extends StatelessWidget {
             );
           },
         ),
+        const CartButton(),
       ],
       customBottomNavigationBar: ProductPurchaseBar(),
       child: ProductDetailsViewBody(productId: productId),

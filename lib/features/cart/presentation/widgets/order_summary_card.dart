@@ -8,7 +8,19 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class OrderSummaryCard extends StatelessWidget {
-  const OrderSummaryCard({super.key});
+  const OrderSummaryCard({
+    super.key,
+    required this.subtotal,
+    required this.shipping,
+    this.tax,
+    this.discount, required this.total,
+  });
+
+  final double subtotal;
+  final double shipping;
+  final double? tax;
+  final double? discount;
+  final double total;
 
   @override
   Widget build(BuildContext context) {
@@ -26,20 +38,24 @@ class OrderSummaryCard extends StatelessWidget {
 
           child: Column(
             children: [
-              SummaryRow(label: s.subtotal, value: 1000),
+              SummaryRow(label: s.subtotal, value: subtotal),
               vGap(8),
-              SummaryRow(label: s.shipping, value: 1000),
+              SummaryRow(label: s.shipping, value: shipping),
               vGap(8),
-              SummaryRow(label: s.tax, value: 1000),
+              tax != null
+                  ? SummaryRow(label: s.tax, value: tax!)
+                  : const SizedBox.shrink(),
               vGap(8),
-              SummaryRow(label: s.discount, value: 1000),
+              discount != null
+                  ? SummaryRow(label: s.discount, value: discount!)
+                  : const SizedBox.shrink(),
               vGap(8),
               Divider(
                 color: Theme.of(
                   context,
                 ).colorScheme.onSurface.withValues(alpha: .1),
               ),
-              SummaryRow(label: s.total, value: 1000, isTotal: true),
+              SummaryRow(label: s.total, value: total, isTotal: true),
               vGap(8),
               GradientElevatedButton(
                 onPressed: () {
