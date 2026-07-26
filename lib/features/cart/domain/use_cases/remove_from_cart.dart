@@ -10,7 +10,9 @@ class RemoveFromCartUseCase {
   final CartRepo _cartRepo;
   RemoveFromCartUseCase(this._cartRepo);
 
-  Future<Either<Failure, CartOperationResult>> call(String cartItemId) {
+  Future<Either<Failure, CartOperationResult>> call({
+    required String cartItemId,
+  }) {
     return _cartRepo.removeFromCart(cartItemId);
   }
 }

@@ -47,7 +47,7 @@ class CartCubit extends Cubit<CartState> {
       ),
     );
 
-    final result = await _clearCartUseCase();
+    final result = await _clearCartUseCase.call();
     result.fold(
       (failure) => emit(
         state.copyWith(
@@ -72,9 +72,9 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> removeFromCart(String cartItemId) async {
     emit(state.copyWith(status: CartStatus.loading));
-    final previousSummary = state.cart;
+    final previousCart = state.cart;
 
-    final updatedItems = previousSummary.items
+    final updatedItems = previousCart.items
         .where((item) => item.cartItemId != cartItemId)
         .toList();
     final newSubtotal = updatedItems.fold(
@@ -85,22 +85,22 @@ class CartCubit extends Cubit<CartState> {
     // Optimistic removal
     emit(
       state.copyWith(
-        cart: previousSummary.copyWith(
+        cart: previousCart.copyWith(
           items: updatedItems,
           subtotal: newSubtotal,
-          total: newSubtotal + previousSummary.shippingCost,
+          total: newSubtotal + previousCart.shippingCost,
         ),
         status: CartStatus.loaded,
       ),
     );
 
-    final result = await _removeFromCartUseCase(cartItemId);
+    final result = await _removeFromCartUseCase.call(cartItemId: cartItemId);
     result.fold(
       (failure) {
         // Roll back entirely — request itself failed
         emit(
           state.copyWith(
-            cart: previousSummary,
+            cart: previousCart,
             status: CartStatus.error,
             message: failure.message,
           ),
@@ -113,7 +113,7 @@ class CartCubit extends Cubit<CartState> {
                 ? CartStatus.operationSuccess
                 : CartStatus.operationFailure,
             message: opResult.message,
-            cart: opResult.success ? state.cart : previousSummary,
+            cart: opResult.success ? state.cart : previousCart,
           ),
         );
       },
@@ -152,7 +152,10 @@ class CartCubit extends Cubit<CartState> {
   }
 
   Future<void> _commitQuantityUpdate(String cartItemId, int quantity) async {
-    final result = await _updateCartItemUseCase(cartItemId, quantity);
+    final result = await _updateCartItemUseCase.call(
+      cartItemId: cartItemId,
+      quantity: quantity,
+    );
     result.fold(
       (failure) {
         emit(
@@ -178,7 +181,10 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> addToCart(String productItemId, int quantity) async {
     emit(state.copyWith(status: CartStatus.loading));
-    final result = await _addToCartUseCase.call(productItemId, quantity);
+    final result = await _addToCartUseCase.call(
+      productItemId: productItemId,
+      quantity: quantity,
+    );
     result.fold(
       (failure) => emit(
         state.copyWith(status: CartStatus.error, message: failure.message),

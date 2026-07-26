@@ -10,10 +10,10 @@ class UpdateCartItemUseCase {
   final CartRepo _cartRepo;
   UpdateCartItemUseCase(this._cartRepo);
 
-  Future<Either<Failure, CartOperationResult>> call(
-    String cartItemId,
-    int quantity,
-  ) {
+  Future<Either<Failure, CartOperationResult>> call({
+    required String cartItemId,
+    required int quantity,
+  }) {
     return _cartRepo.updateCartItem(cartItemId, quantity);
   }
 }
