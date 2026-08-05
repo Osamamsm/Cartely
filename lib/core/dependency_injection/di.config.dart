@@ -83,6 +83,14 @@ import 'package:e_commerce/features/cart/domain/use_cases/update_cart_item.dart'
     as _i618;
 import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubit.dart'
     as _i325;
+import 'package:e_commerce/features/checkout/data/data_source/checkout_remote_data_source.dart'
+    as _i209;
+import 'package:e_commerce/features/checkout/data/repo/checkout_repo_impl.dart'
+    as _i254;
+import 'package:e_commerce/features/checkout/domain/repo/checkout_repo.dart'
+    as _i128;
+import 'package:e_commerce/features/checkout/domain/use_cases/place_order_cash_on_delivery_use_case.dart'
+    as _i719;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart'
     as _i555;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart'
@@ -184,6 +192,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i56.AddressRepo>(
       () => _i920.AddressRepoImpl(gh<_i295.AddressRemoteDataSource>()),
     );
+    gh.lazySingleton<_i209.CheckoutRemoteDataSource>(
+      () => _i209.CheckoutRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
+    );
+    gh.lazySingleton<_i128.CheckoutRepo>(
+      () => _i254.CheckoutRepoImpl(gh<_i209.CheckoutRemoteDataSource>()),
+    );
     gh.lazySingleton<_i651.ProductRemoteDataSource>(
       () => _i651.ProductSupabaseDataSourceImpl(gh<_i74.SupabaseService>()),
     );
@@ -200,6 +214,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i380.AuthRepo>(
       () => _i562.AuthRepoImpl(gh<_i254.AuthRemoteDataSource>()),
+    );
+    gh.factory<_i719.PlaceOrderCashOnDeliveryUseCase>(
+      () => _i719.PlaceOrderCashOnDeliveryUseCase(gh<_i128.CheckoutRepo>()),
     );
     gh.factory<_i756.WishlistCubit>(
       () => _i756.WishlistCubit(gh<_i733.WishListRepo>()),
