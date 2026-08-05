@@ -1,26 +1,65 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
-import 'package:e_commerce/core/helpers/testing_lists.dart';
+import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
+import 'package:e_commerce/features/addresses/presentation/logic/addresses_cubit/addresses_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/add_new_address_button.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/address_details_section.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/continue_button.dart';
+import 'package:e_commerce/features/addresses/presentation/widgets/empty_addresses_body.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/selectable_card_widget.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddressStep extends StatefulWidget {
-  final List<Address> addresses;
-
-  const AddressStep({super.key, required this.addresses});
+class AddressStep extends StatelessWidget {
+  const AddressStep({super.key});
 
   @override
-  State<AddressStep> createState() => _AddressStepState();
+  Widget build(BuildContext context) {
+    return BlocBuilder<AddressesCubit, AddressesState>(
+      builder: (context, state) {
+        if (state.status == AddressesStatus.failure) {
+          return Center(
+            child: Text(
+              "error",
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          );
+        } else if (state.status == AddressesStatus.success) {
+          if (state.addresses.isEmpty) {
+            return const EmptyAddressesBody();
+          } else {
+            final addresses = state.addresses;
+            return _AddressesSelectorList(addresses: addresses);
+          }
+        }
+        return const Center(child: CircularProgressIndicator.adaptive());
+      },
+    );
+  }
 }
 
-class _AddressStepState extends State<AddressStep> {
-  String selectedAddressId = '1';
+class _AddressesSelectorList extends StatefulWidget {
+  const _AddressesSelectorList({required this.addresses});
+
+  final List<AddressEntity> addresses;
+
+  @override
+  State<_AddressesSelectorList> createState() => _AddressesSelectorListState();
+}
+
+class _AddressesSelectorListState extends State<_AddressesSelectorList> {
+  late String selectedAddressId;
+
+  @override
+  initState() {
+    super.initState();
+    selectedAddressId = widget.addresses
+        .where((address) => address.isDefault)
+        .first
+        .id!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +77,9 @@ class _AddressStepState extends State<AddressStep> {
                       Text(
                         S.of(context).shipping_to,
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withValues(alpha: 0.5),
                           letterSpacing: 1.2,
                         ),
                       ),
@@ -57,9 +98,9 @@ class _AddressStepState extends State<AddressStep> {
                       address: address,
                       isSelected: address.id == selectedAddressId,
                       onTap: () {
-                        context.read<CheckoutCubit>().setAddressId(address.id);
+                        context.read<CheckoutCubit>().setAddressId(address.id!);
                         setState(() {
-                          selectedAddressId = address.id;
+                          selectedAddressId = address.id!;
                         });
                       },
                     );
@@ -86,7 +127,7 @@ class _AddressStepState extends State<AddressStep> {
 }
 
 class _AddressSelectableCard extends StatelessWidget {
-  final Address address;
+  final AddressEntity address;
   final bool isSelected;
   final VoidCallback onTap;
 
@@ -101,7 +142,7 @@ class _AddressSelectableCard extends StatelessWidget {
     return SelectableCardWidget(
       isSelected: isSelected,
       onTap: onTap,
-      icon: address.type == 'home' ? Icons.home : Icons.business,
+      icon: address.label == 'home' ? Icons.home : Icons.business,
       child: AddressDetailsSection(address: address),
     );
   }

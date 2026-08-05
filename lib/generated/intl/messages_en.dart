@@ -31,6 +31,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Account Information",
     ),
     "account_status": MessageLookupByLibrary.simpleMessage("Account Status"),
+    "add_address_to_continue_checkout": MessageLookupByLibrary.simpleMessage(
+      "Add a shipping address to continue with your order.",
+    ),
     "add_new_address": MessageLookupByLibrary.simpleMessage("Add New Address"),
     "add_payment_method": MessageLookupByLibrary.simpleMessage(
       "Add Payment Method",
@@ -176,6 +179,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Don\'t have an account? ",
     ),
     "no_addresses": MessageLookupByLibrary.simpleMessage("No addresses"),
+    "no_addresses_found": MessageLookupByLibrary.simpleMessage(
+      "No addresses yet",
+    ),
     "no_changes_done": MessageLookupByLibrary.simpleMessage("No changes done"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "offers_promotions": MessageLookupByLibrary.simpleMessage(

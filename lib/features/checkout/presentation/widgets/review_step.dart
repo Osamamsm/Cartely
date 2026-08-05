@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/core/helpers/testing_lists.dart';
 import 'package:e_commerce/core/widgets/summary_row.dart';
+import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/address_details_section.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/payment_method_details_section.dart';
@@ -9,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ReviewStep extends StatelessWidget {
-  final Address selectedAddress;
+  final AddressEntity selectedAddress;
   final PaymentMethod selectedPayment;
   final List<OrderItem> orderItems;
 
@@ -113,7 +114,7 @@ class ReviewStep extends StatelessWidget {
 }
 
 class _AddressSummary extends StatelessWidget {
-  final Address address;
+  final AddressEntity address;
 
   const _AddressSummary({required this.address});
 
@@ -135,7 +136,7 @@ class _AddressSummary extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(
-              address.type == 'Home' ? Icons.home : Icons.business,
+              address.label == 'Home' ? Icons.home : Icons.business,
               color: Theme.of(context).colorScheme.primary,
               size: 18,
             ),

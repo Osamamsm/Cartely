@@ -151,5 +151,7 @@
   "startShopping": "ابدأ التسوق",
   "clear_cart_confirmation": "هل أنت متأكد أنك تريد مسح جميع العناصر من سلة التسوق؟",
   "yes": "نعم",
-  "no": "لا"
+  "no": "لا",
+  "no_addresses_found": "لا توجد عناوين بعد",
+  "add_address_to_continue_checkout": "أضف عنوان شحن للمتابعة في طلبك."
 }

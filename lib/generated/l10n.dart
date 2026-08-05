@@ -1351,6 +1351,26 @@ class S {
   String get no {
     return Intl.message('No', name: 'no', desc: '', args: []);
   }
+
+  /// `No addresses yet`
+  String get no_addresses_found {
+    return Intl.message(
+      'No addresses yet',
+      name: 'no_addresses_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a shipping address to continue with your order.`
+  String get add_address_to_continue_checkout {
+    return Intl.message(
+      'Add a shipping address to continue with your order.',
+      name: 'add_address_to_continue_checkout',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

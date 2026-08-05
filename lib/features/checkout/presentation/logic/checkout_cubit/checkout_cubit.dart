@@ -15,13 +15,11 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       );
 
   void initDefaults({
-    required List<Address> addresses,
     required List<PaymentMethod> paymentMethods,
     required List<OrderItem> orderItems,
   }) {
     emit(
       state.copyWith(
-        selectedAddressId: addresses.first.id,
         selectedPaymentMethodId: paymentMethods.first.id,
         orderItems: orderItems,
       ),

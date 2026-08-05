@@ -1,4 +1,7 @@
+import 'package:e_commerce/core/dependency_injection/di.dart';
 import 'package:e_commerce/core/helpers/testing_lists.dart';
+import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
+import 'package:e_commerce/features/addresses/presentation/logic/addresses_cubit/addresses_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/address_step.dart';
@@ -33,13 +36,25 @@ class CheckoutViewBody extends StatelessWidget {
               child: IndexedStack(
                 index: step,
                 children: [
-                  AddressStep(addresses: TestingLists.addresses),
+                  BlocProvider(
+                    create: (context) =>
+                        getIt<AddressesCubit>()..getAddresses(),
+                    child: AddressStep(),
+                  ),
                   PaymentStep(paymentMethods: TestingLists.paymentMethods),
                   ReviewStep(
-                    selectedAddress: TestingLists.addresses.firstWhere(
-                      (a) =>
-                          a.id ==
-                          context.read<CheckoutCubit>().state.selectedAddressId,
+                    selectedAddress: AddressEntity(
+                      id: context.read<CheckoutCubit>().state.selectedAddressId,
+                      label: '',
+                      street: '',
+                      city: '',
+                      governorate: '',
+                      district: '',
+                      building: '',
+                      floor: 5,
+                      apartmentNumber: 5,
+                      additionalNotes: '',
+                      isDefault: false,
                     ),
                     selectedPayment: TestingLists.paymentMethods.firstWhere(
                       (p) =>

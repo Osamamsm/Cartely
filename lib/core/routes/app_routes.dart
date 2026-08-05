@@ -234,7 +234,6 @@ GoRouter createRouter(AuthCubit authCubit) {
             BlocProvider(
               create: (context) => getIt<CheckoutCubit>()
                 ..initDefaults(
-                  addresses: TestingLists.addresses,
                   paymentMethods: TestingLists.paymentMethods,
                   orderItems: TestingLists.orderItems,
                 ),
