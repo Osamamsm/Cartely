@@ -154,7 +154,6 @@ extension GetItInjectableX on _i174.GetIt {
     final preferencesModule = _$PreferencesModule();
     final supabaseClientProvider = _$SupabaseClientProvider();
     gh.factory<_i594.ImagePickerCubit>(() => _i594.ImagePickerCubit());
-    gh.factory<_i555.CheckoutCubit>(() => _i555.CheckoutCubit());
     gh.factory<_i517.CheckoutFlowCubit>(() => _i517.CheckoutFlowCubit());
     gh.lazySingleton<_i457.DeepLinkCubit>(() => _i457.DeepLinkCubit());
     await gh.lazySingletonAsync<_i460.SharedPreferences>(
@@ -274,6 +273,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i817.ResetPasswordUseCase>(
       () => _i817.ResetPasswordUseCase(gh<_i380.AuthRepo>()),
+    );
+    gh.factory<_i555.CheckoutCubit>(
+      () => _i555.CheckoutCubit(gh<_i719.PlaceOrderCashOnDeliveryUseCase>()),
     );
     gh.factory<_i841.ForgotPasswordUseCase>(
       () => _i841.ForgotPasswordUseCase(gh<_i380.AuthRepo>()),
