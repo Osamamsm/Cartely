@@ -1,6 +1,7 @@
 //TODO:will be deleted after integrating the supabase database
-class TestingLists {
+import 'package:e_commerce/core/models/payment_method.dart';
 
+class TestingLists {
   static List<PaymentCardModel> paymentCardModels = [
     PaymentCardModel(
       id: '1',
@@ -59,25 +60,6 @@ class TestingLists {
       isDefault: false,
     ),
   ];
-
-  static List<OrderItem> orderItems = [
-  OrderItem(
-    id: '1',
-    name: 'Sony WH-1000XM5',
-    color: 'Black 2023',
-    price: 348.00,
-    imageUrl: 'https://via.placeholder.com/80',
-  ),
-  OrderItem(
-    id: '2',
-    name: 'Apple Watch Series 9',
-    color: 'Midnight 45mm',
-    price: 399.00,
-    imageUrl: 'https://via.placeholder.com/80',
-  ),
-];
-
-
 }
 
 class PaymentCardModel {
@@ -95,40 +77,5 @@ class PaymentCardModel {
     required this.expiryDate,
     required this.cardHolderName,
     required this.isDefault,
-  });
-}
-
-class PaymentMethod {
-  final String id;
-  final PaymentType type;
-  final String label;
-  final String description;
-  final bool isDefault;
-
-  PaymentMethod({
-    required this.id,
-    required this.type,
-    required this.label,
-    required this.description,
-    required this.isDefault,
-  });
-}
-
-enum PaymentType { card, digitalWallet, cashOnDelivery }
-
-
-class OrderItem {
-  final String id;
-  final String name;
-  final String color;
-  final double price;
-  final String imageUrl;
-
-  OrderItem({
-    required this.id,
-    required this.name,
-    required this.color,
-    required this.price,
-    required this.imageUrl,
   });
 }

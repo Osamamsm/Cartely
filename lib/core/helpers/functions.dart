@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
+import 'package:e_commerce/features/cart/domain/entities/cart_item.dart';
 import 'package:flutter/material.dart';
 
 ImageProvider resolveUserAvatarImage({File? pickedImage, String? avatarUrl}) {
@@ -13,6 +14,14 @@ ImageProvider resolveUserAvatarImage({File? pickedImage, String? avatarUrl}) {
       'https://cdn-icons-png.flaticon.com/512/149/149071.png',
     );
   }
+}
+
+String getVariationsText(BuildContext context, CartItem cartItem) {
+  final isArabic = Localizations.localeOf(context).languageCode == 'ar';
+
+  return cartItem.variations
+      .map((variation) => isArabic ? variation.arValue : variation.enValue)
+      .join(' , ');
 }
 
 bool _containsArabic(String text) {

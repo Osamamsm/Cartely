@@ -41,30 +41,38 @@ class CheckoutViewBody extends StatelessWidget {
                         getIt<AddressesCubit>()..getAddresses(),
                     child: AddressStep(),
                   ),
-                  PaymentStep(paymentMethods: TestingLists.paymentMethods),
+                  PaymentStep(
+                    paymentMethods: TestingLists.paymentMethods,
+                    selectedPaymentType: context
+                        .read<CheckoutCubit>()
+                        .state
+                        .selectedPaymentType!,
+                  ),
                   ReviewStep(
-                    selectedAddress: AddressEntity(
-                      id: context.read<CheckoutCubit>().state.selectedAddressId,
-                      label: '',
-                      street: '',
-                      city: '',
-                      governorate: '',
-                      district: '',
-                      building: '',
-                      floor: 5,
-                      apartmentNumber: 5,
-                      additionalNotes: '',
-                      isDefault: false,
-                    ),
+                    selectedAddress:
+                        context.read<CheckoutCubit>().state.selectedAddress ??
+                        AddressEntity(
+                          additionalNotes: '',
+                          governorate: '',
+                          city: '',
+                          district: '',
+                          street: '',
+                          building: '',
+                          floor: 5,
+                          apartmentNumber: 5,
+                          label: '',
+                          isDefault: false,
+                        ),
                     selectedPayment: TestingLists.paymentMethods.firstWhere(
                       (p) =>
-                          p.id ==
+                          p.type ==
                           context
                               .read<CheckoutCubit>()
                               .state
-                              .selectedPaymentMethodId,
+                              .selectedPaymentType,
                     ),
-                    orderItems: context.read<CheckoutCubit>().state.orderItems!,
+                    cart:
+                        context.read<CheckoutCubit>().state.cart!
                   ),
                 ],
               ),

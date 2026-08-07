@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
-import 'package:e_commerce/core/helpers/testing_lists.dart';
+import 'package:e_commerce/core/models/payment_method.dart';
 import 'package:flutter/material.dart';
 
 class PaymentMethodDetailsSection extends StatelessWidget {

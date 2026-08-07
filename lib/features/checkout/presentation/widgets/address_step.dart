@@ -50,19 +50,21 @@ class _AddressesSelectorList extends StatefulWidget {
 }
 
 class _AddressesSelectorListState extends State<_AddressesSelectorList> {
-  late String selectedAddressId;
+  late AddressEntity selectedAddress;
 
   @override
   initState() {
     super.initState();
-    selectedAddressId = widget.addresses
+    selectedAddress = widget.addresses
         .where((address) => address.isDefault)
-        .first
-        .id!;
+        .first;
   }
 
   @override
   Widget build(BuildContext context) {
+    context.read<CheckoutCubit>().setAddress(
+          widget.addresses.firstWhere((address) => address.id == selectedAddress.id),
+        );
     return Column(
       children: [
         Expanded(
@@ -96,11 +98,11 @@ class _AddressesSelectorListState extends State<_AddressesSelectorList> {
                     final address = widget.addresses[index];
                     return _AddressSelectableCard(
                       address: address,
-                      isSelected: address.id == selectedAddressId,
+                      isSelected: address.id == selectedAddress.id,
                       onTap: () {
-                        context.read<CheckoutCubit>().setAddressId(address.id!);
+                        context.read<CheckoutCubit>().setAddress(address);
                         setState(() {
-                          selectedAddressId = address.id!;
+                          selectedAddress = address;
                         });
                       },
                     );

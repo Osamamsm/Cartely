@@ -1,26 +1,23 @@
-import 'package:e_commerce/core/helpers/testing_lists.dart';
+import 'package:e_commerce/core/models/payment_method.dart';
+import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
+import 'package:e_commerce/features/cart/domain/entities/cart.dart';
 
 class CheckoutState {
-  final String? selectedAddressId;
-  final String? selectedPaymentMethodId;
-  final List<OrderItem>? orderItems;
+  final AddressEntity? selectedAddress;
+  final PaymentType? selectedPaymentType;
+  final Cart? cart;
 
-  CheckoutState({
-    this.selectedAddressId,
-    this.selectedPaymentMethodId,
-    this.orderItems,
-  });
+  CheckoutState({this.selectedAddress, this.selectedPaymentType, this.cart});
 
   CheckoutState copyWith({
-    String? selectedAddressId,
-    String? selectedPaymentMethodId,
-    List<OrderItem>? orderItems,
+    AddressEntity? selectedAddress,
+    PaymentType? selectedPaymentType,
+    Cart? cart,
   }) {
     return CheckoutState(
-      selectedAddressId: selectedAddressId ?? this.selectedAddressId,
-      selectedPaymentMethodId: selectedPaymentMethodId ?? this.selectedPaymentMethodId,
-      orderItems: orderItems ?? this.orderItems,
+      selectedAddress: selectedAddress ?? this.selectedAddress,
+      selectedPaymentType: selectedPaymentType ?? this.selectedPaymentType,
+      cart: cart ?? this.cart,
     );
   }
 }
-

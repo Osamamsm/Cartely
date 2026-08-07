@@ -26,9 +26,14 @@ class ContinueButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(label, style: Theme.of(context).textTheme.bodyLarge),
+            Text(
+              label,
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
             hGap(8),
-            const Icon(Icons.arrow_forward, size: 20),
+            Icon(Icons.arrow_forward, size: 20),
           ],
         ),
       ),

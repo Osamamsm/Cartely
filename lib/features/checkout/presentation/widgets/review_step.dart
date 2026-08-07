@@ -1,7 +1,11 @@
+import 'package:e_commerce/core/helpers/functions.dart';
 import 'package:e_commerce/core/helpers/spacing.dart';
-import 'package:e_commerce/core/helpers/testing_lists.dart';
+import 'package:e_commerce/core/models/payment_method.dart';
+import 'package:e_commerce/core/widgets/product_image.dart';
 import 'package:e_commerce/core/widgets/summary_row.dart';
 import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
+import 'package:e_commerce/features/cart/domain/entities/cart.dart';
+import 'package:e_commerce/features/cart/domain/entities/cart_item.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/address_details_section.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/payment_method_details_section.dart';
@@ -12,19 +16,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ReviewStep extends StatelessWidget {
   final AddressEntity selectedAddress;
   final PaymentMethod selectedPayment;
-  final List<OrderItem> orderItems;
+  final Cart cart;
 
   const ReviewStep({
     super.key,
     required this.selectedAddress,
     required this.selectedPayment,
-    required this.orderItems,
+    required this.cart,
   });
-
-  double get subtotal => orderItems.fold(0, (sum, item) => sum + item.price);
-  double get shipping => 15.00;
-  double get tax => subtotal * 0.1; // 10% tax
-  double get total => subtotal + shipping + tax;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,9 @@ class ReviewStep extends StatelessWidget {
                 Text(
                   S.of(context).delivery_address,
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.5),
                     letterSpacing: 1.2,
                   ),
                 ),
@@ -49,7 +50,9 @@ class ReviewStep extends StatelessWidget {
                 Text(
                   S.of(context).payment_method,
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.5),
                     letterSpacing: 1.2,
                   ),
                 ),
@@ -59,12 +62,14 @@ class ReviewStep extends StatelessWidget {
                 Text(
                   S.of(context).order_summary,
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.5),
                     letterSpacing: 1.2,
                   ),
                 ),
                 vGap(16),
-                ...orderItems.map(
+                ...cart.items.map(
                   (item) => Padding(
                     padding: const EdgeInsets.only(bottom: 16),
                     child: _OrderItemCard(item: item),
@@ -72,10 +77,10 @@ class ReviewStep extends StatelessWidget {
                 ),
                 vGap(8),
                 _PriceSummary(
-                  subtotal: subtotal,
-                  shipping: shipping,
-                  tax: tax,
-                  total: total,
+                  subtotal: cart.subtotal,
+                  shipping: cart.shippingCost,
+                  tax: 0.00,
+                  total: cart.total,
                 ),
               ],
             ),
@@ -95,16 +100,21 @@ class ReviewStep extends StatelessWidget {
                 ),
                 child: Text(S.of(context).place_order),
               ),
+              vGap(8),
               TextButton(
                 onPressed: () {
                   context.read<CheckoutFlowCubit>().goToPreviousStep();
                 },
                 child: Text(
                   S.of(context).back_to_payment,
-                  style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5), fontSize: 14),
+                  style: TextStyle(
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.5),
+                    fontSize: 14,
+                  ),
                 ),
               ),
-              vGap(8),
             ],
           ),
         ),
@@ -123,7 +133,7 @@ class _AddressSummary extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -159,7 +169,7 @@ class _PaymentSummary extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -170,7 +180,10 @@ class _PaymentSummary extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
               gradient: LinearGradient(
-                colors: [Theme.of(context).colorScheme.error, Theme.of(context).colorScheme.secondary],
+                colors: [
+                  Theme.of(context).colorScheme.error,
+                  Theme.of(context).colorScheme.secondary,
+                ],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),
@@ -185,7 +198,7 @@ class _PaymentSummary extends StatelessWidget {
 }
 
 class _OrderItemCard extends StatelessWidget {
-  final OrderItem item;
+  final CartItem item;
 
   const _OrderItemCard({required this.item});
 
@@ -194,54 +207,57 @@ class _OrderItemCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         children: [
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(
-              Icons.shopping_bag,
-              color: Theme.of(context).colorScheme.primary,
-              size: 24,
-            ),
-          ),
+          ProductImage(imageUrl: item.productThumbnail, width: 60, height: 60),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: .center,
+              crossAxisAlignment: .start,
               children: [
                 Text(
-                  item.name,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  Localizations.localeOf(context).languageCode == 'ar'
+                      ? item.productArName
+                      : item.productEnName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleSmall!.copyWith(height: 1.3),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  item.color,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
-                    fontSize: 12,
+
+                if (getVariationsText(context, item).isNotEmpty)
+                  Text(
+                    getVariationsText(context, item),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
+
+                const SizedBox(height: 4),
+
+                Row(
+                  children: [
+                    Text(
+                      '${item.price.toStringAsFixed(2)} EGP',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    Text(
+                      ' x ${item.quantity}',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
+
+                Text(
+                  '${S.of(context).total}: ${item.lineSubtotal.toStringAsFixed(2)} EGP',
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
               ],
-            ),
-          ),
-          Text(
-            '\$${item.price.toStringAsFixed(2)}',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
             ),
           ),
         ],
@@ -269,7 +285,7 @@ class _PriceSummary extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(

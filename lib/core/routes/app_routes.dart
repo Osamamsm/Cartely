@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:e_commerce/core/dependency_injection/di.dart';
-import 'package:e_commerce/core/helpers/testing_lists.dart';
 import 'package:e_commerce/core/logic/image_picker_cubit/image_picker_cubit.dart';
 import 'package:e_commerce/features/addresses/presentation/logic/addresses_cubit/addresses_cubit.dart';
 import 'package:e_commerce/features/addresses/presentation/views/add_address_view.dart';
@@ -16,6 +15,7 @@ import 'package:e_commerce/features/auth/presentation/views/forgot_password_view
 import 'package:e_commerce/features/auth/presentation/views/login_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/register_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/reset_password_view.dart';
+import 'package:e_commerce/features/cart/domain/entities/cart.dart';
 import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce/features/cart/presentation/views/cart_view.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart';
@@ -229,19 +229,19 @@ GoRouter createRouter(AuthCubit authCubit) {
       ),
       GoRoute(
         path: CheckoutView.routeName,
-        builder: (context, state) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => getIt<CheckoutCubit>()
-                ..initDefaults(
-                  paymentMethods: TestingLists.paymentMethods,
-                  orderItems: TestingLists.orderItems,
-                ),
-            ),
-            BlocProvider(create: (context) => getIt<CheckoutFlowCubit>()),
-          ],
-          child: const CheckoutView(),
-        ),
+        builder: (context, state) {
+          final cart = state.extra as Cart;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    getIt<CheckoutCubit>()..initDefaults(cart: cart),
+              ),
+              BlocProvider(create: (context) => getIt<CheckoutFlowCubit>()),
+            ],
+            child: const CheckoutView(),
+          );
+        },
       ),
       GoRoute(
         path: SearchResultsView.routeName,
