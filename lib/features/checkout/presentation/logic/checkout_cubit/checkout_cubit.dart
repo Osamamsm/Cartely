@@ -30,7 +30,10 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     emit(state.copyWith(selectedPaymentType: paymentType));
   }
 
-  Future<void> placeOrder(String addressId, PaymentType paymentType) async {
+  Future<void> placeOrder({
+    required String addressId,
+    required PaymentType paymentType,
+  }) async {
     emit(state.copyWith(orderStatus: OrderStatus.loading));
     switch (paymentType) {
       case PaymentType.cashOnDelivery:
