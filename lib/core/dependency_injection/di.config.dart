@@ -117,6 +117,8 @@ import 'package:e_commerce/features/orders/domain/use_cases/get_order_details_us
     as _i279;
 import 'package:e_commerce/features/orders/domain/use_cases/get_orders_use_case.dart'
     as _i594;
+import 'package:e_commerce/features/orders/presentation/logic/get_order_details_cubit/get_order_details_cubit.dart'
+    as _i165;
 import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_cubit.dart'
     as _i93;
 import 'package:e_commerce/features/product/data/data_source/remote_data_source/products_remote_data_source.dart'
@@ -249,6 +251,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i699.GetWishListCubit>(
       () => _i699.GetWishListCubit(gh<_i733.WishListRepo>()),
+    );
+    gh.factory<_i165.GetOrderDetailsCubit>(
+      () => _i165.GetOrderDetailsCubit(gh<_i279.GetOrderDetailsUseCase>()),
     );
     gh.lazySingleton<_i571.CartRepo>(
       () => _i197.CartRepoImpl(gh<_i676.CartRemoteDataSource>()),
