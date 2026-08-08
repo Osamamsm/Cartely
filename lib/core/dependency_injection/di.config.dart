@@ -107,6 +107,12 @@ import 'package:e_commerce/features/home/presentation/logic/product_search_cubit
     as _i831;
 import 'package:e_commerce/features/notifications/logic/cubit/notifications_settings_cubit.dart'
     as _i382;
+import 'package:e_commerce/features/orders/data/data_source/orders_remote_data_source.dart'
+    as _i800;
+import 'package:e_commerce/features/orders/data/repo/orders_repo_impl.dart'
+    as _i139;
+import 'package:e_commerce/features/orders/domain/repo/orders_repo.dart'
+    as _i144;
 import 'package:e_commerce/features/product/data/data_source/remote_data_source/products_remote_data_source.dart'
     as _i651;
 import 'package:e_commerce/features/product/data/repos/product_repo_impl.dart'
@@ -164,6 +170,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i78.UserPreferencesHelper>(
       () => _i78.UserPreferencesHelper(gh<_i460.SharedPreferences>()),
     );
+    gh.lazySingleton<_i144.OrdersRepo>(() => _i139.OrderRepoImpl());
     gh.lazySingleton<_i74.SupabaseService>(
       () => _i74.SupabaseService(gh<_i454.SupabaseClient>()),
     );
@@ -172,6 +179,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i1063.ProfileRemoteDataSource>(
       () => _i1063.ProfileRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
+    );
+    gh.lazySingleton<_i800.OrdersRemoteDataSource>(
+      () => _i800.OrdersRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
     );
     gh.lazySingleton<_i676.CartRemoteDataSource>(
       () => _i676.CartRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
