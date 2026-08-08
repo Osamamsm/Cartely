@@ -153,5 +153,15 @@
   "yes": "نعم",
   "no": "لا",
   "no_addresses_found": "لا توجد عناوين بعد",
-  "add_address_to_continue_checkout": "أضف عنوان شحن للمتابعة في طلبك."
+  "add_address_to_continue_checkout": "أضف عنوان شحن للمتابعة في طلبك.",
+  "something_went_wrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "order_number": "رقم الطلب",
+  "order_placed_message": "تم تقديم طلبك بنجاح!",
+  "placing_order": "جارٍ تقديم طلبك...",
+  "please_wait_while_we_process_your_order": "يرجى الانتظار أثناء تأكيد طلبك. لن يستغرق ذلك سوى لحظة.",
+  "order_rejected_message": "للأسف، تم رفض طلبك. يرجى المحاولة مرة أخرى أو الاتصال بالدعم للحصول على المساعدة.",
+  "order_rejected_title": "تم رفض الطلب",
+  "back_to_cart": "العودة إلى سلة التسوق",
+  "continue_shopping": "متابعة التسوق",
+  "view_orders": "عرض الطلبات"
 }

@@ -1371,6 +1371,101 @@ class S {
       args: [],
     );
   }
+
+  /// `Something went wrong. Please try again.`
+  String get something_went_wrong {
+    return Intl.message(
+      'Something went wrong. Please try again.',
+      name: 'something_went_wrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Number`
+  String get order_number {
+    return Intl.message(
+      'Order Number',
+      name: 'order_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your order has been placed successfully!`
+  String get order_placed_message {
+    return Intl.message(
+      'Your order has been placed successfully!',
+      name: 'order_placed_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Placing Your Order...`
+  String get placing_order {
+    return Intl.message(
+      'Placing Your Order...',
+      name: 'placing_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please wait while we confirm your order. This will only take a moment.`
+  String get please_wait_while_we_process_your_order {
+    return Intl.message(
+      'Please wait while we confirm your order. This will only take a moment.',
+      name: 'please_wait_while_we_process_your_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unfortunately, your order was rejected. Please try again or contact support for assistance.`
+  String get order_rejected_message {
+    return Intl.message(
+      'Unfortunately, your order was rejected. Please try again or contact support for assistance.',
+      name: 'order_rejected_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Rejected`
+  String get order_rejected_title {
+    return Intl.message(
+      'Order Rejected',
+      name: 'order_rejected_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to Cart`
+  String get back_to_cart {
+    return Intl.message(
+      'Back to Cart',
+      name: 'back_to_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue Shopping`
+  String get continue_shopping {
+    return Intl.message(
+      'Continue Shopping',
+      name: 'continue_shopping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Orders`
+  String get view_orders {
+    return Intl.message('View Orders', name: 'view_orders', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

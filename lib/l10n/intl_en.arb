@@ -165,5 +165,15 @@
     "yes": "Yes",
     "no": "No",
     "no_addresses_found": "No addresses yet",
-    "add_address_to_continue_checkout": "Add a shipping address to continue with your order."
+    "add_address_to_continue_checkout": "Add a shipping address to continue with your order.",
+    "something_went_wrong": "Something went wrong. Please try again.",
+    "order_number": "Order Number",
+    "order_placed_message": "Your order has been placed successfully!",
+    "placing_order": "Placing Your Order...",
+    "please_wait_while_we_process_your_order": "Please wait while we confirm your order. This will only take a moment.",
+    "order_rejected_message": "Unfortunately, your order was rejected. Please try again or contact support for assistance.",
+    "order_rejected_title": "Order Rejected",
+    "back_to_cart": "Back to Cart",
+    "continue_shopping": "Continue Shopping",
+    "view_orders": "View Orders"
 }

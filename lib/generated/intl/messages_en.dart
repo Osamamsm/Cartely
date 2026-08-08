@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "back_to_address": MessageLookupByLibrary.simpleMessage("Back to Address"),
+    "back_to_cart": MessageLookupByLibrary.simpleMessage("Back to Cart"),
     "back_to_payment": MessageLookupByLibrary.simpleMessage("Back to Payment"),
     "building": MessageLookupByLibrary.simpleMessage("Building"),
     "building_details": MessageLookupByLibrary.simpleMessage(
@@ -101,6 +102,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "contact_info": MessageLookupByLibrary.simpleMessage("Contact Info"),
     "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
+    "continue_shopping": MessageLookupByLibrary.simpleMessage(
+      "Continue Shopping",
+    ),
     "continue_to_payment": MessageLookupByLibrary.simpleMessage(
       "Continue to Payment",
     ),
@@ -192,6 +196,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "ok": MessageLookupByLibrary.simpleMessage("Ok"),
     "order_history": MessageLookupByLibrary.simpleMessage("Order History"),
+    "order_number": MessageLookupByLibrary.simpleMessage("Order Number"),
+    "order_placed_message": MessageLookupByLibrary.simpleMessage(
+      "Your order has been placed successfully!",
+    ),
+    "order_rejected_message": MessageLookupByLibrary.simpleMessage(
+      "Unfortunately, your order was rejected. Please try again or contact support for assistance.",
+    ),
+    "order_rejected_title": MessageLookupByLibrary.simpleMessage(
+      "Order Rejected",
+    ),
     "order_summary": MessageLookupByLibrary.simpleMessage("ORDER SUMMARY"),
     "order_updates": MessageLookupByLibrary.simpleMessage("Order Updates"),
     "order_updates_subtitle": MessageLookupByLibrary.simpleMessage(
@@ -213,6 +227,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "place_order": MessageLookupByLibrary.simpleMessage("Place Order"),
+    "placing_order": MessageLookupByLibrary.simpleMessage(
+      "Placing Your Order...",
+    ),
+    "please_wait_while_we_process_your_order":
+        MessageLookupByLibrary.simpleMessage(
+          "Please wait while we confirm your order. This will only take a moment.",
+        ),
     "privacy_policy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "proceed_to_checkout": MessageLookupByLibrary.simpleMessage(
       "Proceed To Checkout",
@@ -276,6 +297,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "If an account with this email exists, you will receive a verification email.",
     ),
     "size": MessageLookupByLibrary.simpleMessage("Size"),
+    "something_went_wrong": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong. Please try again.",
+    ),
     "startShopping": MessageLookupByLibrary.simpleMessage("Start Shopping"),
     "street": MessageLookupByLibrary.simpleMessage("Street"),
     "street_address": MessageLookupByLibrary.simpleMessage("Street Address"),
@@ -297,6 +321,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Use this payment method for checkout",
         ),
+    "view_orders": MessageLookupByLibrary.simpleMessage("View Orders"),
     "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist"),
     "work": MessageLookupByLibrary.simpleMessage("Work"),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),

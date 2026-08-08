@@ -52,6 +52,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "apt_suite_etc": MessageLookupByLibrary.simpleMessage("المنزل/الشقة/الخ"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "back_to_address": MessageLookupByLibrary.simpleMessage("العودة للعناوين"),
+    "back_to_cart": MessageLookupByLibrary.simpleMessage(
+      "العودة إلى سلة التسوق",
+    ),
     "back_to_payment": MessageLookupByLibrary.simpleMessage("العودة للدفع"),
     "building": MessageLookupByLibrary.simpleMessage("المبنى"),
     "building_details": MessageLookupByLibrary.simpleMessage("تفاصيل المبنى"),
@@ -82,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "contact_info": MessageLookupByLibrary.simpleMessage("معلومات الاتصال"),
     "contact_us": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
+    "continue_shopping": MessageLookupByLibrary.simpleMessage("متابعة التسوق"),
     "continue_to_payment": MessageLookupByLibrary.simpleMessage(
       "الانتقال للدفع",
     ),
@@ -164,6 +168,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "ابق على اطلاع بأحدث العروض والخصومات",
     ),
     "order_history": MessageLookupByLibrary.simpleMessage("تاريخ الطلبات"),
+    "order_number": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
+    "order_placed_message": MessageLookupByLibrary.simpleMessage(
+      "تم تقديم طلبك بنجاح!",
+    ),
+    "order_rejected_message": MessageLookupByLibrary.simpleMessage(
+      "للأسف، تم رفض طلبك. يرجى المحاولة مرة أخرى أو الاتصال بالدعم للحصول على المساعدة.",
+    ),
+    "order_rejected_title": MessageLookupByLibrary.simpleMessage(
+      "تم رفض الطلب",
+    ),
     "order_summary": MessageLookupByLibrary.simpleMessage("ملخص الطلب"),
     "order_updates": MessageLookupByLibrary.simpleMessage("تحديثات الطلب"),
     "order_updates_subtitle": MessageLookupByLibrary.simpleMessage(
@@ -180,6 +194,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "place_order": MessageLookupByLibrary.simpleMessage("تأكيد الطلب"),
+    "placing_order": MessageLookupByLibrary.simpleMessage("جارٍ تقديم طلبك..."),
+    "please_wait_while_we_process_your_order":
+        MessageLookupByLibrary.simpleMessage(
+          "يرجى الانتظار أثناء تأكيد طلبك. لن يستغرق ذلك سوى لحظة.",
+        ),
     "privacy_policy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
     "proceed_to_checkout": MessageLookupByLibrary.simpleMessage(
       "الانتقال للدفع",
@@ -233,6 +252,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل انت متاكد من تسجيل الخروج",
     ),
     "size": MessageLookupByLibrary.simpleMessage("الحجم"),
+    "something_went_wrong": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    ),
     "startShopping": MessageLookupByLibrary.simpleMessage("ابدأ التسوق"),
     "street": MessageLookupByLibrary.simpleMessage("الشارع"),
     "street_address": MessageLookupByLibrary.simpleMessage("العنوان"),
@@ -252,6 +274,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "استخدم طريقة الدفع هذه لإتمام عملية الشراء",
         ),
+    "view_orders": MessageLookupByLibrary.simpleMessage("عرض الطلبات"),
     "wishlist": MessageLookupByLibrary.simpleMessage("المفضلة"),
     "work": MessageLookupByLibrary.simpleMessage("العمل"),
     "yes": MessageLookupByLibrary.simpleMessage("نعم"),
