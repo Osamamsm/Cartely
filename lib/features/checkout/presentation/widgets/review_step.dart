@@ -6,6 +6,7 @@ import 'package:e_commerce/core/widgets/summary_row.dart';
 import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
 import 'package:e_commerce/features/cart/domain/entities/cart.dart';
 import 'package:e_commerce/features/cart/domain/entities/cart_item.dart';
+import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/address_details_section.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/payment_method_details_section.dart';
@@ -91,7 +92,12 @@ class ReviewStep extends StatelessWidget {
           child: Column(
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.read<CheckoutCubit>().placeOrder(
+                    addressId: selectedAddress.id!,
+                    paymentType: selectedPayment.type,
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
