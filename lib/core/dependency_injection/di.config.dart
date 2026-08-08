@@ -170,7 +170,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i78.UserPreferencesHelper>(
       () => _i78.UserPreferencesHelper(gh<_i460.SharedPreferences>()),
     );
-    gh.lazySingleton<_i144.OrdersRepo>(() => _i139.OrderRepoImpl());
     gh.lazySingleton<_i74.SupabaseService>(
       () => _i74.SupabaseService(gh<_i454.SupabaseClient>()),
     );
@@ -215,6 +214,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i1005.ProductRepo>(
       () => _i977.ProductRepoImpl(gh<_i651.ProductRemoteDataSource>()),
+    );
+    gh.lazySingleton<_i144.OrdersRepo>(
+      () => _i139.OrderRepoImpl(gh<_i800.OrdersRemoteDataSource>()),
     );
     gh.factory<_i382.NotificationsSettingsCubit>(
       () => _i382.NotificationsSettingsCubit(
