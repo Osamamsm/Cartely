@@ -12,10 +12,10 @@ class OrderRepoImpl implements OrdersRepo {
   final OrdersRemoteDataSource _remoteDataSource;
   OrderRepoImpl(this._remoteDataSource);
   @override
-  Future<Either<Failure, OrderDetails>> getOrderDetailsById(String id) async {
+  Future<Either<Failure, OrderDetails>> getOrderDetailsById({required String orderId}) async {
     try {
       final orderDetails = await _remoteDataSource.getOrderDetailsById(
-        orderId: id,
+        orderId: orderId,
       );
       return Right(orderDetails.toEntity());
     } catch (e) {

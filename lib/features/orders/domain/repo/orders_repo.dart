@@ -5,5 +5,7 @@ import 'package:e_commerce/features/orders/domain/entity/order_details.dart';
 
 abstract class OrdersRepo {
   Future<Either<Failure, List<Order>>> getOrders();
-  Future<Either<Failure, OrderDetails>> getOrderDetailsById(String id);
+  Future<Either<Failure, OrderDetails>> getOrderDetailsById({
+    required String orderId,
+  });
 }
