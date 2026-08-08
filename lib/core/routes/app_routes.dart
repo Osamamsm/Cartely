@@ -30,6 +30,8 @@ import 'package:e_commerce/features/home/presentation/views/category_products_vi
 import 'package:e_commerce/features/home/presentation/views/home_view.dart';
 import 'package:e_commerce/features/home/presentation/views/search_results_view.dart';
 import 'package:e_commerce/features/notifications/logic/cubit/notifications_settings_cubit.dart';
+import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_cubit.dart';
+import 'package:e_commerce/features/orders/presentation/views/orders_view.dart';
 import 'package:e_commerce/features/payment/presentation/views/add_payment_method_view.dart';
 import 'package:e_commerce/features/payment/presentation/views/payment_methods_view.dart';
 import 'package:e_commerce/features/product/data/models/category.dart';
@@ -265,6 +267,13 @@ GoRouter createRouter(AuthCubit authCubit) {
             child: const CategoryProductsView(),
           );
         },
+      ),
+      GoRoute(
+        path: OrdersView.routeName,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<GetOrdersCubit>()..getOrders(),
+          child: const OrdersView(),
+        ),
       ),
     ],
   );

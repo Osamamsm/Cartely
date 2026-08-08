@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/models/menu_item.dart';
 import 'package:e_commerce/features/addresses/presentation/views/saved_addresses_view.dart';
 import 'package:e_commerce/features/auth/presentation/logic/sign_out_cubit/sign_out_cubit.dart';
+import 'package:e_commerce/features/orders/presentation/views/orders_view.dart';
 import 'package:e_commerce/features/payment/presentation/views/payment_methods_view.dart';
 import 'package:e_commerce/features/profile/domain/entities/user_profile_entity.dart';
 import 'package:e_commerce/features/profile/presentation/views/personal_details_view.dart';
@@ -39,7 +40,13 @@ class Constants {
           GoRouter.of(context).push(PaymentMethodsView.routeName);
         },
       ),
-      MenuItem(icon: Icons.receipt_long, label: s.order_history, onTap: () {}),
+      MenuItem(
+        icon: Icons.receipt_long,
+        label: s.my_orders,
+        onTap: () {
+          context.push(OrdersView.routeName);
+        },
+      ),
       MenuItem(
         icon: Icons.logout,
         label: s.sign_out,
@@ -164,7 +171,6 @@ class Constants {
       },
     ];
   }
-
 
   static List<Map<String, dynamic>> getLanguageOptions(BuildContext context) {
     return [
