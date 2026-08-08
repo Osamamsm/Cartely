@@ -1,5 +1,6 @@
 import 'package:e_commerce/features/addresses/data/models/address_model.dart';
 import 'package:e_commerce/features/orders/data/model/order_line_model.dart';
+import 'package:e_commerce/features/orders/domain/entity/order_details.dart';
 
 class OrderDetailsModel {
   final String orderId;
@@ -13,7 +14,6 @@ class OrderDetailsModel {
   final String paymentStatus;
   final AddressModel address;
   final List<OrderLineModel> items;
-
 
   const OrderDetailsModel({
     required this.orderId,
@@ -44,6 +44,22 @@ class OrderDetailsModel {
       items: (json['items'] as List<dynamic>)
           .map((item) => OrderLineModel.fromJson(item as Map<String, dynamic>))
           .toList(),
+    );
+  }
+
+  OrderDetails toEntity() {
+    return OrderDetails(
+      orderId: orderId,
+      orderNumber: orderNumber,
+      createdAt: createdAt,
+      subtotal: subtotal,
+      shipping: shipping,
+      total: total,
+      discountAmount: discountAmount,
+      orderStatus: orderStatus,
+      paymentStatus: paymentStatus,
+      address: address.toEntity(),
+      items: items.map((item) => item.toEntity()).toList(),
     );
   }
 }
