@@ -113,6 +113,10 @@ import 'package:e_commerce/features/orders/data/repo/orders_repo_impl.dart'
     as _i139;
 import 'package:e_commerce/features/orders/domain/repo/orders_repo.dart'
     as _i144;
+import 'package:e_commerce/features/orders/domain/use_cases/get_order_details_use_case.dart'
+    as _i279;
+import 'package:e_commerce/features/orders/domain/use_cases/get_orders_use_case.dart'
+    as _i594;
 import 'package:e_commerce/features/product/data/data_source/remote_data_source/products_remote_data_source.dart'
     as _i651;
 import 'package:e_commerce/features/product/data/repos/product_repo_impl.dart'
@@ -217,6 +221,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i144.OrdersRepo>(
       () => _i139.OrderRepoImpl(gh<_i800.OrdersRemoteDataSource>()),
+    );
+    gh.factory<_i279.GetOrderDetailsUseCase>(
+      () => _i279.GetOrderDetailsUseCase(gh<_i144.OrdersRepo>()),
+    );
+    gh.factory<_i594.GetOrdersUseCase>(
+      () => _i594.GetOrdersUseCase(gh<_i144.OrdersRepo>()),
     );
     gh.factory<_i382.NotificationsSettingsCubit>(
       () => _i382.NotificationsSettingsCubit(
