@@ -30,7 +30,9 @@ import 'package:e_commerce/features/home/presentation/views/category_products_vi
 import 'package:e_commerce/features/home/presentation/views/home_view.dart';
 import 'package:e_commerce/features/home/presentation/views/search_results_view.dart';
 import 'package:e_commerce/features/notifications/logic/cubit/notifications_settings_cubit.dart';
+import 'package:e_commerce/features/orders/presentation/logic/get_order_details_cubit/get_order_details_cubit.dart';
 import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_cubit.dart';
+import 'package:e_commerce/features/orders/presentation/views/order_details_view.dart';
 import 'package:e_commerce/features/orders/presentation/views/orders_view.dart';
 import 'package:e_commerce/features/payment/presentation/views/add_payment_method_view.dart';
 import 'package:e_commerce/features/payment/presentation/views/payment_methods_view.dart';
@@ -274,6 +276,18 @@ GoRouter createRouter(AuthCubit authCubit) {
           create: (context) => getIt<GetOrdersCubit>()..getOrders(),
           child: const OrdersView(),
         ),
+      ),
+      GoRoute(
+        path: OrderDetailsView.routeName,
+        builder: (context, state) {
+          final orderId = state.extra as String;
+          return BlocProvider(
+            create: (context) =>
+                getIt<GetOrderDetailsCubit>()
+                  ..getOrderDetails(orderId: orderId),
+            child: OrderDetailsView(),
+          );
+        },
       ),
     ],
   );

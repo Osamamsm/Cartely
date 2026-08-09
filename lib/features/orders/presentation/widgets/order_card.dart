@@ -1,7 +1,9 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/features/orders/domain/entity/order.dart';
+import 'package:e_commerce/features/orders/presentation/views/order_details_view.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 class OrderCard extends StatelessWidget {
@@ -21,10 +23,10 @@ class OrderCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        // context.push(
-        //   OrderDetailsScreen.routeName,
-        //   extra: order,
-        // );
+        context.push(
+          OrderDetailsView.routeName,
+          extra: order.orderId,
+        );
       },
       child: Container(
         padding: const EdgeInsets.all(16),
