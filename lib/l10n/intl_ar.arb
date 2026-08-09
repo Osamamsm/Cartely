@@ -200,6 +200,6 @@
   "orderStatusCancelled": "ملغي",
   "cancelOrder": "إلغاء الطلب",
   "trackOrder": "تتبع الطلب",
-  "viewReceipt": "عرض الفاتورة",
+  "showDetails": "عرض التفاصيل",
   "reorder": "إعادة الطلب"
 }

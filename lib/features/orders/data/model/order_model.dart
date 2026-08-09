@@ -10,7 +10,7 @@ class OrderModel {
   final String orderStatus;
   final String paymentStatus;
   final int itemCount;
-  final String? thumbnailUrl;
+  final String thumbnailUrl;
 
   const OrderModel({
     required this.orderId,
@@ -22,7 +22,7 @@ class OrderModel {
     required this.orderStatus,
     required this.paymentStatus,
     required this.itemCount,
-    this.thumbnailUrl,
+    required this.thumbnailUrl,
   });
 
   factory OrderModel.fromJson(Map<String, dynamic> json) {
@@ -36,7 +36,7 @@ class OrderModel {
       orderStatus: json['order_status'] as String,
       paymentStatus: json['payment_status'] as String,
       itemCount: (json['item_count'] as num).toInt(),
-      thumbnailUrl: json['thumbnail_url'] as String?,
+      thumbnailUrl: json['thumbnail_url'] as String,
     );
   }
 

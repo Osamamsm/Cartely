@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/glow_icon.dart';
 import 'package:e_commerce/features/home/presentation/views/home_view.dart';
+import 'package:e_commerce/features/orders/presentation/views/orders_view.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -84,7 +85,7 @@ class OrderPlacedBody extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    //TODO: Navigate to orders page
+                    context.push(OrdersView.routeName);
                   },
                   child: Text(S.of(context).view_orders),
                 ),

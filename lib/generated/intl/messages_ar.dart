@@ -272,6 +272,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shipping": MessageLookupByLibrary.simpleMessage("الشحن"),
     "shipping_to": MessageLookupByLibrary.simpleMessage("الشحن الى"),
     "shop_by_category": MessageLookupByLibrary.simpleMessage("تسوق حسب الفئة"),
+    "showDetails": MessageLookupByLibrary.simpleMessage("عرض التفاصيل"),
     "sign_out": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "sign_out_message": MessageLookupByLibrary.simpleMessage(
       "هل انت متاكد من تسجيل الخروج",
@@ -300,7 +301,6 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "استخدم طريقة الدفع هذه لإتمام عملية الشراء",
         ),
-    "viewReceipt": MessageLookupByLibrary.simpleMessage("عرض الفاتورة"),
     "view_orders": MessageLookupByLibrary.simpleMessage("عرض الطلبات"),
     "wishlist": MessageLookupByLibrary.simpleMessage("المفضلة"),
     "work": MessageLookupByLibrary.simpleMessage("العمل"),

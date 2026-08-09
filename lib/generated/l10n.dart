@@ -1612,11 +1612,11 @@ class S {
     return Intl.message('Track Order', name: 'trackOrder', desc: '', args: []);
   }
 
-  /// `View Receipt`
-  String get viewReceipt {
+  /// `Show Details`
+  String get showDetails {
     return Intl.message(
-      'View Receipt',
-      name: 'viewReceipt',
+      'Show Details',
+      name: 'showDetails',
       desc: '',
       args: [],
     );

@@ -212,6 +212,6 @@
   "orderStatusCancelled": "Cancelled",
   "cancelOrder": "Cancel Order",
   "trackOrder": "Track Order",
-  "viewReceipt": "View Receipt",
+  "showDetails": "Show Details",
   "reorder": "Reorder"
 }

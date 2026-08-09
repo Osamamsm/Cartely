@@ -312,6 +312,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shop_by_category": MessageLookupByLibrary.simpleMessage(
       "Shop By Category",
     ),
+    "showDetails": MessageLookupByLibrary.simpleMessage("Show Details"),
     "sign_out": MessageLookupByLibrary.simpleMessage("Sign Out"),
     "sign_out_message": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to sign out?",
@@ -345,7 +346,6 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Use this payment method for checkout",
         ),
-    "viewReceipt": MessageLookupByLibrary.simpleMessage("View Receipt"),
     "view_orders": MessageLookupByLibrary.simpleMessage("View Orders"),
     "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist"),
     "work": MessageLookupByLibrary.simpleMessage("Work"),

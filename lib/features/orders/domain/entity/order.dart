@@ -8,7 +8,7 @@ class Order {
   final OrderStatus orderStatus;
   final String paymentStatus;
   final int itemCount;
-  final String? thumbnailUrl;
+  final String thumbnailUrl;
 
   const Order({
     required this.orderId,
@@ -20,8 +20,22 @@ class Order {
     required this.orderStatus,
     required this.paymentStatus,
     required this.itemCount,
-    this.thumbnailUrl,
+    required this.thumbnailUrl,
   });
+
+  factory Order.placeHolder() => Order(
+    orderId: '',
+    orderNumber: '',
+    createdAt: DateTime.now(),
+    subtotal: 0,
+    shipping: 0,
+    total: 0,
+    orderStatus: OrderStatus.pending,
+    paymentStatus: '',
+    itemCount: 5,
+    thumbnailUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRza7C1P_ul5iWEoIeREXOqDdKeqcM3YkBRuQJCZx2wIQ&s=10',
+  );
 }
 
 enum OrderStatus {
