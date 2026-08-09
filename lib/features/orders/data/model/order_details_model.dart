@@ -1,5 +1,6 @@
 import 'package:e_commerce/features/addresses/data/models/address_model.dart';
 import 'package:e_commerce/features/orders/data/model/order_line_model.dart';
+import 'package:e_commerce/features/orders/domain/entity/order.dart';
 import 'package:e_commerce/features/orders/domain/entity/order_details.dart';
 
 class OrderDetailsModel {
@@ -56,7 +57,7 @@ class OrderDetailsModel {
       shipping: shipping,
       total: total,
       discountAmount: discountAmount,
-      orderStatus: orderStatus,
+      orderStatus: OrderStatus.values.firstWhere((v) => v.name == orderStatus),
       paymentStatus: paymentStatus,
       address: address.toEntity(),
       items: items.map((item) => item.toEntity()).toList(),

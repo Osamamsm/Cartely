@@ -1,4 +1,5 @@
 import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
+import 'package:e_commerce/features/orders/domain/entity/order.dart';
 import 'package:e_commerce/features/orders/domain/entity/order_line.dart';
 
 class OrderDetails {
@@ -9,7 +10,7 @@ class OrderDetails {
   final double shipping;
   final double total;
   final double discountAmount;
-  final String orderStatus;
+  final OrderStatus orderStatus;
   final String paymentStatus;
   final AddressEntity address;
   final List<OrderLine> items;
