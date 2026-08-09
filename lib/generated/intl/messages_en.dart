@@ -26,7 +26,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(date) => "Placed on ${date}";
 
-  static String m3(count) =>
+  static String m3(quantity) => "Qty: ${quantity}";
+
+  static String m4(count) =>
       "${Intl.plural(count, zero: 'No reviews', one: '${count} review', other: '${count} reviews')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -123,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "default_": MessageLookupByLibrary.simpleMessage("Default"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "deliveryStatus": MessageLookupByLibrary.simpleMessage("Delivery Status"),
     "delivery_address": MessageLookupByLibrary.simpleMessage(
       "DELIVERY ADDRESS",
     ),
@@ -203,6 +206,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Stay updated with the latest offers and discounts",
     ),
     "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+    "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
+    "orderDetailsError": MessageLookupByLibrary.simpleMessage(
+      "Unable to load order details",
+    ),
+    "orderItems": MessageLookupByLibrary.simpleMessage("Items"),
     "orderNumber": m0,
     "orderOnItsWay": MessageLookupByLibrary.simpleMessage("On its way"),
     "orderStatusCancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
@@ -240,6 +248,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "password_reset_success": MessageLookupByLibrary.simpleMessage(
       "Password reset successfully.",
     ),
+    "paymentStatus": MessageLookupByLibrary.simpleMessage("Payment Status"),
     "payment_method": MessageLookupByLibrary.simpleMessage("PAYMENT METHOD"),
     "payment_methods": MessageLookupByLibrary.simpleMessage("Payment Methods"),
     "payment_step": MessageLookupByLibrary.simpleMessage("Payment"),
@@ -274,6 +283,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "push_notifications_subtitle": MessageLookupByLibrary.simpleMessage(
       "Receive updates about your orders and exclusive offers",
     ),
+    "quantity": m3,
     "quick_access": MessageLookupByLibrary.simpleMessage("Quick Access"),
     "region": MessageLookupByLibrary.simpleMessage("Region"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
@@ -283,7 +293,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password reset successfully.",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-    "review": m3,
+    "review": m4,
     "review_hint_text": MessageLookupByLibrary.simpleMessage(
       "Share your thoughts about this product...",
     ),

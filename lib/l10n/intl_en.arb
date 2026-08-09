@@ -185,6 +185,23 @@
       }
     }
   },
+  "orderOnItsWay": "On its way",
+  "cancelOrder": "Cancel Order",
+  "trackOrder": "Track Order",
+  "showDetails": "Show Details",
+  "reorder": "Reorder",
+  "deliveryStatus": "Delivery Status",
+  "orderItems": "Items",
+  "quantity": "Qty: {quantity}",
+  "@quantity": {
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentStatus": "Payment Status",
+  "orderDetailsError": "Unable to load order details",
   "orderNumber": "Order #{orderNumber}",
   "@orderNumber": {
     "placeholders": {
@@ -195,13 +212,13 @@
   },
   "placedOn": "Placed on {date}",
   "@placedOn": {
+    "description": "Displays the order creation date",
     "placeholders": {
       "date": {
         "type": "String"
       }
     }
   },
-  "orderOnItsWay": "On its way",
   "orderStatusPending": "Pending",
   "orderStatusConfirmed": "Confirmed",
   "orderStatusProcessing": "Processing",
@@ -210,8 +227,5 @@
   "orderStatusDelivered": "Delivered",
   "orderStatusReturned": "Returned",
   "orderStatusCancelled": "Cancelled",
-  "cancelOrder": "Cancel Order",
-  "trackOrder": "Track Order",
-  "showDetails": "Show Details",
-  "reorder": "Reorder"
+  "orderDetails" : "Order Details"
 }

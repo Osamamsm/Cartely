@@ -1487,6 +1487,91 @@ class S {
     );
   }
 
+  /// `On its way`
+  String get orderOnItsWay {
+    return Intl.message(
+      'On its way',
+      name: 'orderOnItsWay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Order`
+  String get cancelOrder {
+    return Intl.message(
+      'Cancel Order',
+      name: 'cancelOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track Order`
+  String get trackOrder {
+    return Intl.message('Track Order', name: 'trackOrder', desc: '', args: []);
+  }
+
+  /// `Show Details`
+  String get showDetails {
+    return Intl.message(
+      'Show Details',
+      name: 'showDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reorder`
+  String get reorder {
+    return Intl.message('Reorder', name: 'reorder', desc: '', args: []);
+  }
+
+  /// `Delivery Status`
+  String get deliveryStatus {
+    return Intl.message(
+      'Delivery Status',
+      name: 'deliveryStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Items`
+  String get orderItems {
+    return Intl.message('Items', name: 'orderItems', desc: '', args: []);
+  }
+
+  /// `Qty: {quantity}`
+  String quantity(int quantity) {
+    return Intl.message(
+      'Qty: $quantity',
+      name: 'quantity',
+      desc: '',
+      args: [quantity],
+    );
+  }
+
+  /// `Payment Status`
+  String get paymentStatus {
+    return Intl.message(
+      'Payment Status',
+      name: 'paymentStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to load order details`
+  String get orderDetailsError {
+    return Intl.message(
+      'Unable to load order details',
+      name: 'orderDetailsError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Order #{orderNumber}`
   String orderNumber(String orderNumber) {
     return Intl.message(
@@ -1502,18 +1587,8 @@ class S {
     return Intl.message(
       'Placed on $date',
       name: 'placedOn',
-      desc: '',
+      desc: 'Displays the order creation date',
       args: [date],
-    );
-  }
-
-  /// `On its way`
-  String get orderOnItsWay {
-    return Intl.message(
-      'On its way',
-      name: 'orderOnItsWay',
-      desc: '',
-      args: [],
     );
   }
 
@@ -1597,34 +1672,14 @@ class S {
     );
   }
 
-  /// `Cancel Order`
-  String get cancelOrder {
+  /// `Order Details`
+  String get orderDetails {
     return Intl.message(
-      'Cancel Order',
-      name: 'cancelOrder',
+      'Order Details',
+      name: 'orderDetails',
       desc: '',
       args: [],
     );
-  }
-
-  /// `Track Order`
-  String get trackOrder {
-    return Intl.message('Track Order', name: 'trackOrder', desc: '', args: []);
-  }
-
-  /// `Show Details`
-  String get showDetails {
-    return Intl.message(
-      'Show Details',
-      name: 'showDetails',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Reorder`
-  String get reorder {
-    return Intl.message('Reorder', name: 'reorder', desc: '', args: []);
   }
 }
 

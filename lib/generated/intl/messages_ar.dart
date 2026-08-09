@@ -26,7 +26,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(date) => "تم الطلب في ${date}";
 
-  static String m3(count) =>
+  static String m3(quantity) => "الكمية: ${quantity}";
+
+  static String m4(count) =>
       "${Intl.plural(count, zero: 'لا مراجعات', one: '${count} مراجعة', two: '${count} مراجعتان', few: '${count} مراجعات', many: '${count} مراجعة', other: '${count} مراجعة')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -104,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dark": MessageLookupByLibrary.simpleMessage("داكن"),
     "default_": MessageLookupByLibrary.simpleMessage("الافتراضي"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "deliveryStatus": MessageLookupByLibrary.simpleMessage("حالة التوصيل"),
     "delivery_address": MessageLookupByLibrary.simpleMessage("عنوان التوصيل"),
     "discount": MessageLookupByLibrary.simpleMessage("الخصم"),
     "district": MessageLookupByLibrary.simpleMessage("الحي"),
@@ -175,6 +178,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "offers_promotions_subtitle": MessageLookupByLibrary.simpleMessage(
       "ابق على اطلاع بأحدث العروض والخصومات",
     ),
+    "orderDetailsError": MessageLookupByLibrary.simpleMessage(
+      "تعذر تحميل تفاصيل الطلب",
+    ),
+    "orderItems": MessageLookupByLibrary.simpleMessage("المنتجات"),
     "orderNumber": m0,
     "orderOnItsWay": MessageLookupByLibrary.simpleMessage("الطلب في الطريق"),
     "orderStatusCancelled": MessageLookupByLibrary.simpleMessage("ملغي"),
@@ -209,6 +216,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "other": MessageLookupByLibrary.simpleMessage("اخرى"),
     "password": MessageLookupByLibrary.simpleMessage("كلمه المرور"),
     "password_hint": MessageLookupByLibrary.simpleMessage("أدخل كلمه المرور"),
+    "paymentStatus": MessageLookupByLibrary.simpleMessage("حالة الدفع"),
     "payment_method": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "payment_methods": MessageLookupByLibrary.simpleMessage("طرق الدفع"),
     "payment_step": MessageLookupByLibrary.simpleMessage("الدفع"),
@@ -237,6 +245,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "push_notifications_subtitle": MessageLookupByLibrary.simpleMessage(
       "تلقي تحديثات حول طلباتك وعروضنا الحصرية",
     ),
+    "quantity": m3,
     "quick_access": MessageLookupByLibrary.simpleMessage("الوصول السريع"),
     "region": MessageLookupByLibrary.simpleMessage("المنطقة"),
     "register": MessageLookupByLibrary.simpleMessage("سجل الآن"),
@@ -245,7 +254,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "إعادة تعيين كلمه المرور",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
-    "review": m3,
+    "review": m4,
     "review_hint_text": MessageLookupByLibrary.simpleMessage(
       "شارك ارائك حول هذا المنتج",
     ),

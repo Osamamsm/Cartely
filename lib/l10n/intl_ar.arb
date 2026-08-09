@@ -190,6 +190,23 @@
     }
   },
   "orderOnItsWay": "الطلب في الطريق",
+  "cancelOrder": "إلغاء الطلب",
+  "trackOrder": "تتبع الطلب",
+  "showDetails": "عرض التفاصيل",
+  "reorder": "إعادة الطلب",
+  "deliveryStatus": "حالة التوصيل",
+  "orderItems": "المنتجات",
+  "quantity": "الكمية: {quantity}",
+  "@quantity": {
+    "description": "كمية المنتج في الطلب",
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentStatus": "حالة الدفع",
+  "orderDetailsError": "تعذر تحميل تفاصيل الطلب",
   "orderStatusPending": "قيد الانتظار",
   "orderStatusConfirmed": "تم التأكيد",
   "orderStatusProcessing": "جاري التجهيز",
@@ -198,8 +215,5 @@
   "orderStatusDelivered": "تم التوصيل",
   "orderStatusReturned": "تم الإرجاع",
   "orderStatusCancelled": "ملغي",
-  "cancelOrder": "إلغاء الطلب",
-  "trackOrder": "تتبع الطلب",
-  "showDetails": "عرض التفاصيل",
-  "reorder": "إعادة الطلب"
+  "orderDeails":"تفاصيل الطلب"
 }
