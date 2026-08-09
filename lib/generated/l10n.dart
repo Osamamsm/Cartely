@@ -1466,6 +1466,166 @@ class S {
   String get view_orders {
     return Intl.message('View Orders', name: 'view_orders', desc: '', args: []);
   }
+
+  /// `No orders found`
+  String get noOrdersFound {
+    return Intl.message(
+      'No orders found',
+      name: 'noOrdersFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error: {message}`
+  String ordersError(String message) {
+    return Intl.message(
+      'Error: $message',
+      name: 'ordersError',
+      desc: '',
+      args: [message],
+    );
+  }
+
+  /// `Order #{orderNumber}`
+  String orderNumber(String orderNumber) {
+    return Intl.message(
+      'Order #$orderNumber',
+      name: 'orderNumber',
+      desc: '',
+      args: [orderNumber],
+    );
+  }
+
+  /// `Placed on {date}`
+  String placedOn(String date) {
+    return Intl.message(
+      'Placed on $date',
+      name: 'placedOn',
+      desc: '',
+      args: [date],
+    );
+  }
+
+  /// `On its way`
+  String get orderOnItsWay {
+    return Intl.message(
+      'On its way',
+      name: 'orderOnItsWay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get orderStatusPending {
+    return Intl.message(
+      'Pending',
+      name: 'orderStatusPending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirmed`
+  String get orderStatusConfirmed {
+    return Intl.message(
+      'Confirmed',
+      name: 'orderStatusConfirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Processing`
+  String get orderStatusProcessing {
+    return Intl.message(
+      'Processing',
+      name: 'orderStatusProcessing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipped`
+  String get orderStatusShipped {
+    return Intl.message(
+      'Shipped',
+      name: 'orderStatusShipped',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Out for Delivery`
+  String get orderStatusOutForDelivery {
+    return Intl.message(
+      'Out for Delivery',
+      name: 'orderStatusOutForDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivered`
+  String get orderStatusDelivered {
+    return Intl.message(
+      'Delivered',
+      name: 'orderStatusDelivered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Returned`
+  String get orderStatusReturned {
+    return Intl.message(
+      'Returned',
+      name: 'orderStatusReturned',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancelled`
+  String get orderStatusCancelled {
+    return Intl.message(
+      'Cancelled',
+      name: 'orderStatusCancelled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Order`
+  String get cancelOrder {
+    return Intl.message(
+      'Cancel Order',
+      name: 'cancelOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track Order`
+  String get trackOrder {
+    return Intl.message('Track Order', name: 'trackOrder', desc: '', args: []);
+  }
+
+  /// `View Receipt`
+  String get viewReceipt {
+    return Intl.message(
+      'View Receipt',
+      name: 'viewReceipt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reorder`
+  String get reorder {
+    return Intl.message('Reorder', name: 'reorder', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

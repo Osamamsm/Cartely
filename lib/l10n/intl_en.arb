@@ -175,5 +175,43 @@
     "order_rejected_title": "Order Rejected",
     "back_to_cart": "Back to Cart",
     "continue_shopping": "Continue Shopping",
-    "view_orders": "View Orders"
+    "view_orders": "View Orders",
+    "noOrdersFound": "No orders found",
+    "ordersError": "Error: {message}",
+    "@ordersError": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "orderNumber": "Order #{orderNumber}",
+  "@orderNumber": {
+    "placeholders": {
+      "orderNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "placedOn": "Placed on {date}",
+  "@placedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "orderOnItsWay": "On its way",
+  "orderStatusPending": "Pending",
+  "orderStatusConfirmed": "Confirmed",
+  "orderStatusProcessing": "Processing",
+  "orderStatusShipped": "Shipped",
+  "orderStatusOutForDelivery": "Out for Delivery",
+  "orderStatusDelivered": "Delivered",
+  "orderStatusReturned": "Returned",
+  "orderStatusCancelled": "Cancelled",
+  "cancelOrder": "Cancel Order",
+  "trackOrder": "Track Order",
+  "viewReceipt": "View Receipt",
+  "reorder": "Reorder"
 }

@@ -20,7 +20,13 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
-  static String m0(count) =>
+  static String m0(orderNumber) => "الطلب رقم ${orderNumber}";
+
+  static String m1(message) => "حدث خطأ: ${message}";
+
+  static String m2(date) => "تم الطلب في ${date}";
+
+  static String m3(count) =>
       "${Intl.plural(count, zero: 'لا مراجعات', one: '${count} مراجعة', two: '${count} مراجعتان', few: '${count} مراجعات', many: '${count} مراجعة', other: '${count} مراجعة')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -59,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "building": MessageLookupByLibrary.simpleMessage("المبنى"),
     "building_details": MessageLookupByLibrary.simpleMessage("تفاصيل المبنى"),
     "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
+    "cancelOrder": MessageLookupByLibrary.simpleMessage("إلغاء الطلب"),
     "card_holder": MessageLookupByLibrary.simpleMessage("حامل البطاقة"),
     "card_holder_name": MessageLookupByLibrary.simpleMessage(
       "اسم حامل البطاقة",
@@ -154,6 +161,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_cart": MessageLookupByLibrary.simpleMessage("عربتي"),
     "my_orders": MessageLookupByLibrary.simpleMessage("طلباتي"),
     "no": MessageLookupByLibrary.simpleMessage("لا"),
+    "noOrdersFound": MessageLookupByLibrary.simpleMessage("لا توجد طلبات"),
     "no_account": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "no_addresses": MessageLookupByLibrary.simpleMessage("لا توجد عناوين"),
     "no_addresses_found": MessageLookupByLibrary.simpleMessage(
@@ -167,6 +175,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "offers_promotions_subtitle": MessageLookupByLibrary.simpleMessage(
       "ابق على اطلاع بأحدث العروض والخصومات",
     ),
+    "orderNumber": m0,
+    "orderOnItsWay": MessageLookupByLibrary.simpleMessage("الطلب في الطريق"),
+    "orderStatusCancelled": MessageLookupByLibrary.simpleMessage("ملغي"),
+    "orderStatusConfirmed": MessageLookupByLibrary.simpleMessage("تم التأكيد"),
+    "orderStatusDelivered": MessageLookupByLibrary.simpleMessage("تم التوصيل"),
+    "orderStatusOutForDelivery": MessageLookupByLibrary.simpleMessage(
+      "خرج للتوصيل",
+    ),
+    "orderStatusPending": MessageLookupByLibrary.simpleMessage("قيد الانتظار"),
+    "orderStatusProcessing": MessageLookupByLibrary.simpleMessage(
+      "جاري التجهيز",
+    ),
+    "orderStatusReturned": MessageLookupByLibrary.simpleMessage("تم الإرجاع"),
+    "orderStatusShipped": MessageLookupByLibrary.simpleMessage("تم الشحن"),
     "order_history": MessageLookupByLibrary.simpleMessage("تاريخ الطلبات"),
     "order_number": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
     "order_placed_message": MessageLookupByLibrary.simpleMessage(
@@ -183,6 +205,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "order_updates_subtitle": MessageLookupByLibrary.simpleMessage(
       "احصل على إشعارات حول حالة طلبك",
     ),
+    "ordersError": m1,
     "other": MessageLookupByLibrary.simpleMessage("اخرى"),
     "password": MessageLookupByLibrary.simpleMessage("كلمه المرور"),
     "password_hint": MessageLookupByLibrary.simpleMessage("أدخل كلمه المرور"),
@@ -194,6 +217,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "place_order": MessageLookupByLibrary.simpleMessage("تأكيد الطلب"),
+    "placedOn": m2,
     "placing_order": MessageLookupByLibrary.simpleMessage("جارٍ تقديم طلبك..."),
     "please_wait_while_we_process_your_order":
         MessageLookupByLibrary.simpleMessage(
@@ -216,11 +240,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "quick_access": MessageLookupByLibrary.simpleMessage("الوصول السريع"),
     "region": MessageLookupByLibrary.simpleMessage("المنطقة"),
     "register": MessageLookupByLibrary.simpleMessage("سجل الآن"),
+    "reorder": MessageLookupByLibrary.simpleMessage("إعادة الطلب"),
     "reset_password": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمه المرور",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
-    "review": m0,
+    "review": m3,
     "review_hint_text": MessageLookupByLibrary.simpleMessage(
       "شارك ارائك حول هذا المنتج",
     ),
@@ -266,6 +291,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "terms_of_service": MessageLookupByLibrary.simpleMessage("شروط الخدمة"),
     "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
+    "trackOrder": MessageLookupByLibrary.simpleMessage("تتبع الطلب"),
     "try_again": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "use_this_address_for_checkout": MessageLookupByLibrary.simpleMessage(
       "استخدم هذا العنوان لإتمام عملية الشراء",
@@ -274,6 +300,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "استخدم طريقة الدفع هذه لإتمام عملية الشراء",
         ),
+    "viewReceipt": MessageLookupByLibrary.simpleMessage("عرض الفاتورة"),
     "view_orders": MessageLookupByLibrary.simpleMessage("عرض الطلبات"),
     "wishlist": MessageLookupByLibrary.simpleMessage("المفضلة"),
     "work": MessageLookupByLibrary.simpleMessage("العمل"),

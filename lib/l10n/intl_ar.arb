@@ -163,5 +163,43 @@
   "order_rejected_title": "تم رفض الطلب",
   "back_to_cart": "العودة إلى سلة التسوق",
   "continue_shopping": "متابعة التسوق",
-  "view_orders": "عرض الطلبات"
+  "view_orders": "عرض الطلبات",
+  "noOrdersFound": "لا توجد طلبات",
+  "ordersError": "حدث خطأ: {message}",
+  "@ordersError": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "orderNumber": "الطلب رقم {orderNumber}",
+  "@orderNumber": {
+    "placeholders": {
+      "orderNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "placedOn": "تم الطلب في {date}",
+  "@placedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "orderOnItsWay": "الطلب في الطريق",
+  "orderStatusPending": "قيد الانتظار",
+  "orderStatusConfirmed": "تم التأكيد",
+  "orderStatusProcessing": "جاري التجهيز",
+  "orderStatusShipped": "تم الشحن",
+  "orderStatusOutForDelivery": "خرج للتوصيل",
+  "orderStatusDelivered": "تم التوصيل",
+  "orderStatusReturned": "تم الإرجاع",
+  "orderStatusCancelled": "ملغي",
+  "cancelOrder": "إلغاء الطلب",
+  "trackOrder": "تتبع الطلب",
+  "viewReceipt": "عرض الفاتورة",
+  "reorder": "إعادة الطلب"
 }
