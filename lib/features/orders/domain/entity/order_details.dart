@@ -28,4 +28,18 @@ class OrderDetails {
     required this.address,
     required this.items,
   });
+
+  factory OrderDetails.placeHolder() => OrderDetails(
+    orderId: '',
+    orderNumber: '',
+    createdAt: DateTime.now(),
+    subtotal: 2,
+    shipping: 2,
+    total: 2,
+    discountAmount: 2,
+    orderStatus: OrderStatus.pending,
+    paymentStatus: '',
+    address: AddressEntity.placeHolder(),
+    items: [OrderLine.placeHolder()],
+  );
 }

@@ -1,4 +1,4 @@
-class OrderLine{
+class OrderLine {
   final String orderLineId;
   final String productItemId;
   final String productName;
@@ -16,4 +16,12 @@ class OrderLine{
     this.imageUrl,
     this.variation,
   });
+
+  factory OrderLine.placeHolder() => OrderLine(
+    orderLineId: '',
+    productItemId: '',
+    productName: '',
+    quantity: 2,
+    price: 2,
+  );
 }

@@ -24,6 +24,19 @@ class AddressEntity {
     required this.additionalNotes,
     required this.isDefault,
   });
+
+  factory AddressEntity.placeHolder() => AddressEntity(
+    governorate: '',
+    city: '',
+    district: '',
+    street: '',
+    building: '',
+    floor: 1,
+    apartmentNumber: 1,
+    label: '',
+    additionalNotes: '',
+    isDefault: false,
+  );
 }
 
 extension AddressCopy on AddressEntity {
