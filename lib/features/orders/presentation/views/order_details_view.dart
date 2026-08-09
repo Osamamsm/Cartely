@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/widgets/custom_scaffold.dart';
 import 'package:e_commerce/features/orders/presentation/widgets/order_details_view_body.dart';
+import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 class OrderDetailsView extends StatelessWidget {
 
@@ -10,6 +11,7 @@ class OrderDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      title: S.of(context).orderDetails,
       child:OrderDetailsViewBody(),
     );
   }

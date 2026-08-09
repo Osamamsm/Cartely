@@ -8,7 +8,7 @@ import 'package:e_commerce/features/cart/domain/entities/cart.dart';
 import 'package:e_commerce/features/cart/domain/entities/cart_item.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart';
-import 'package:e_commerce/features/checkout/presentation/widgets/address_details_section.dart';
+import 'package:e_commerce/features/checkout/presentation/widgets/address_summary.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/payment_method_details_section.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +46,7 @@ class ReviewStep extends StatelessWidget {
                   ),
                 ),
                 vGap(12),
-                _AddressSummary(address: selectedAddress),
+                AddressSummary(address: selectedAddress),
                 vGap(24),
                 Text(
                   S.of(context).payment_method,
@@ -125,42 +125,6 @@ class ReviewStep extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _AddressSummary extends StatelessWidget {
-  final AddressEntity address;
-
-  const _AddressSummary({required this.address});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(
-              address.label == 'Home' ? Icons.home : Icons.business,
-              color: Theme.of(context).colorScheme.primary,
-              size: 18,
-            ),
-          ),
-          hGap(12),
-          AddressDetailsSection(address: address),
-        ],
-      ),
     );
   }
 }
