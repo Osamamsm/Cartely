@@ -5,7 +5,7 @@ class Order {
   final double subtotal;
   final double shipping;
   final double total;
-  final String orderStatus;
+  final OrderStatus orderStatus;
   final String paymentStatus;
   final int itemCount;
   final String? thumbnailUrl;
@@ -22,4 +22,15 @@ class Order {
     required this.itemCount,
     this.thumbnailUrl,
   });
+}
+
+enum OrderStatus {
+  pending,
+  confirmed,
+  processing,
+  shipped,
+  delivered,
+  outForDelivery,
+  cancelled,
+  returned,
 }

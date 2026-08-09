@@ -48,7 +48,7 @@ class OrderModel {
       subtotal: subtotal,
       shipping: shipping,
       total: total,
-      orderStatus: orderStatus,
+      orderStatus: OrderStatus.values.firstWhere((v) => v.name == orderStatus),
       paymentStatus: paymentStatus,
       itemCount: itemCount,
       thumbnailUrl: thumbnailUrl,
