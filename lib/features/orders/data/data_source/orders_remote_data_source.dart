@@ -4,7 +4,7 @@ import 'package:e_commerce/features/orders/data/model/order_model.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class OrdersRemoteDataSource {
-  Future<List<OrderModel>> getOrders();
+  Future<List<OrderModel>> getOrders({String? orderStatusFilter});
   Future<OrderDetailsModel> getOrderDetailsById({required String orderId});
 }
 
@@ -15,7 +15,9 @@ class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
   OrdersRemoteDataSourceImpl(this._supabaseService);
 
   @override
-  Future<OrderDetailsModel> getOrderDetailsById({required String orderId}) async {
+  Future<OrderDetailsModel> getOrderDetailsById({
+    required String orderId,
+  }) async {
     final response = await _supabaseService.rpc(
       function: 'get_order_by_id',
       params: {'p_order_id': orderId},
@@ -27,8 +29,11 @@ class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
   }
 
   @override
-  Future<List<OrderModel>> getOrders() async {
-    final response = await _supabaseService.rpc(function: 'get_user_orders');
+  Future<List<OrderModel>> getOrders({String? orderStatusFilter}) async {
+    final response = await _supabaseService.rpc(
+      function: 'get_user_orders',
+      params: {"p_status_filter": orderStatusFilter},
+    );
     final List<OrderModel> orders = (response as List<dynamic>)
         .map((order) => OrderModel.fromJson(order as Map<String, dynamic>))
         .toList();

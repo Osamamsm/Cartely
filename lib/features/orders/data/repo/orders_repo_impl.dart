@@ -12,7 +12,9 @@ class OrderRepoImpl implements OrdersRepo {
   final OrdersRemoteDataSource _remoteDataSource;
   OrderRepoImpl(this._remoteDataSource);
   @override
-  Future<Either<Failure, OrderDetails>> getOrderDetailsById({required String orderId}) async {
+  Future<Either<Failure, OrderDetails>> getOrderDetailsById({
+    required String orderId,
+  }) async {
     try {
       final orderDetails = await _remoteDataSource.getOrderDetailsById(
         orderId: orderId,
@@ -24,9 +26,13 @@ class OrderRepoImpl implements OrdersRepo {
   }
 
   @override
-  Future<Either<Failure, List<Order>>> getOrders() async {
+  Future<Either<Failure, List<Order>>> getOrders({
+    String? orderStatusFilter,
+  }) async {
     try {
-      final orders = await _remoteDataSource.getOrders();
+      final orders = await _remoteDataSource.getOrders(
+        orderStatusFilter: orderStatusFilter,
+      );
       return Right(orders.map((order) => order.toEntity()).toList());
     } catch (e) {
       return Left(ExceptionMapper.mapExceptionToFailure(e));

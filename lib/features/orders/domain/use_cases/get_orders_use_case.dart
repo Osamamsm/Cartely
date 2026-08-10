@@ -10,7 +10,7 @@ class GetOrdersUseCase {
 
   GetOrdersUseCase(this._ordersRepo);
 
-  Future<Either<Failure, List<Order>>> call() async {
-    return await _ordersRepo.getOrders();
+  Future<Either<Failure, List<Order>>> call({String? orderStatusFilter}) async {
+    return await _ordersRepo.getOrders(orderStatusFilter: orderStatusFilter);
   }
 }

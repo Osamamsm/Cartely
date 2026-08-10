@@ -8,9 +8,11 @@ class GetOrdersCubit extends Cubit<GetOrdersState> {
   final GetOrdersUseCase _getOrdersUseCase;
   GetOrdersCubit(this._getOrdersUseCase) : super(GetOrdersInitial());
 
-  Future<void> getOrders() async {
+  Future<void> getOrders({String? orderStatusFilter}) async {
     emit(GetOrdersLoading());
-    final result = await _getOrdersUseCase.call();
+    final result = await _getOrdersUseCase.call(
+      orderStatusFilter: orderStatusFilter,
+    );
     result.fold(
       (failure) => emit(GetOrdersFailure(message: failure.message)),
       (orders) => emit(GetOrdersSuccess(orders: orders)),
