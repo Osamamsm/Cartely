@@ -48,3 +48,7 @@ enum OrderStatus {
   cancelled,
   returned,
 }
+
+extension OrderStatusX on OrderStatus {
+  String get value => name;
+}

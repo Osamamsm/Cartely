@@ -2,6 +2,7 @@ import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/features/orders/domain/entity/order.dart';
 import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_cubit.dart';
 import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_state.dart';
+import 'package:e_commerce/features/orders/presentation/widgets/filter_chips_row.dart';
 import 'package:e_commerce/features/orders/presentation/widgets/order_card.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class OrdersViewBody extends StatelessWidget {
     return Column(
       children: [
         // TODO: Add search bar.
-        // TODO: Add filter chips.
+        FilterChipsRow(),
         vGap(12),
         Expanded(
           child: BlocBuilder<GetOrdersCubit, GetOrdersState>(
@@ -70,7 +71,7 @@ class OrdersViewBody extends StatelessWidget {
                       child: OrderCard(order: Order.placeHolder()),
                     );
                   },
-                )
+                ),
               );
             },
           ),
