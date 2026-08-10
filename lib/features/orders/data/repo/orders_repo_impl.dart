@@ -28,10 +28,12 @@ class OrderRepoImpl implements OrdersRepo {
   @override
   Future<Either<Failure, List<Order>>> getOrders({
     String? orderStatusFilter,
+    String? searchQuery,
   }) async {
     try {
       final orders = await _remoteDataSource.getOrders(
         orderStatusFilter: orderStatusFilter,
+        searchQuery: searchQuery,
       );
       return Right(orders.map((order) => order.toEntity()).toList());
     } catch (e) {

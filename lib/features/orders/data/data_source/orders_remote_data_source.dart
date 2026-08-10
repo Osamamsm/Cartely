@@ -4,7 +4,10 @@ import 'package:e_commerce/features/orders/data/model/order_model.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class OrdersRemoteDataSource {
-  Future<List<OrderModel>> getOrders({String? orderStatusFilter});
+  Future<List<OrderModel>> getOrders({
+    String? orderStatusFilter,
+    String? searchQuery,
+  });
   Future<OrderDetailsModel> getOrderDetailsById({required String orderId});
 }
 
@@ -29,7 +32,10 @@ class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
   }
 
   @override
-  Future<List<OrderModel>> getOrders({String? orderStatusFilter}) async {
+  Future<List<OrderModel>> getOrders({
+    String? orderStatusFilter,
+    String? searchQuery,
+  }) async {
     final response = await _supabaseService.rpc(
       function: 'get_user_orders',
       params: {"p_status_filter": orderStatusFilter},
