@@ -21,7 +21,8 @@ class OrdersViewBody extends StatelessWidget {
 
     return Column(
       children: [
-        // TODO: Add search bar.
+        _SearchField(),
+        vGap(12),
         FilterChipsRow(),
         vGap(12),
         Expanded(
@@ -77,6 +78,29 @@ class OrdersViewBody extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _SearchField extends StatelessWidget {
+  const _SearchField();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: SizedBox(
+        height: 50,
+        child: TextField(
+          onChanged: (query) => context.read<GetOrdersCubit>().onSearchChanged(
+            searchQuery: query,
+          ),
+          decoration: InputDecoration(
+            hintText: S.of(context).search_order_by_number,
+            prefixIcon: Icon(Icons.search_sharp),
+          ),
+        ),
+      ),
     );
   }
 }

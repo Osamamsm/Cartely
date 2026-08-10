@@ -305,6 +305,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "search_hint": MessageLookupByLibrary.simpleMessage(
       "Search for products...",
     ),
+    "search_order_by_number": MessageLookupByLibrary.simpleMessage(
+      "ابحث برقم الطلب",
+    ),
     "security": MessageLookupByLibrary.simpleMessage("Security"),
     "see_all_reviews": MessageLookupByLibrary.simpleMessage("See All Reviews"),
     "select_language": MessageLookupByLibrary.simpleMessage("Select Language"),

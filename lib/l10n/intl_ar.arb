@@ -215,5 +215,6 @@
   "orderStatusDelivered": "تم التوصيل",
   "orderStatusReturned": "تم الإرجاع",
   "orderStatusCancelled": "ملغي",
-  "orderDeails":"تفاصيل الطلب"
+  "orderDeails":"تفاصيل الطلب",
+  "search_order_by_number":"Search by order number"
 }

@@ -1681,6 +1681,16 @@ class S {
       args: [],
     );
   }
+
+  /// `ابحث برقم الطلب`
+  String get search_order_by_number {
+    return Intl.message(
+      'ابحث برقم الطلب',
+      name: 'search_order_by_number',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

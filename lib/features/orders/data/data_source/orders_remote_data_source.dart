@@ -38,7 +38,7 @@ class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
   }) async {
     final response = await _supabaseService.rpc(
       function: 'get_user_orders',
-      params: {"p_status_filter": orderStatusFilter},
+      params: {"p_status_filter": orderStatusFilter, "p_search": searchQuery},
     );
     final List<OrderModel> orders = (response as List<dynamic>)
         .map((order) => OrderModel.fromJson(order as Map<String, dynamic>))

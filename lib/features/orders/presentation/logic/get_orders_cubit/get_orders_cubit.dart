@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:e_commerce/features/orders/domain/use_cases/get_orders_use_case.dart';
 import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,4 +24,17 @@ class GetOrdersCubit extends Cubit<GetOrdersState> {
       (orders) => emit(GetOrdersSuccess(orders: orders)),
     );
   }
+
+  Timer? _searchDebounce;
+
+void onSearchChanged({required String searchQuery}) {
+  _searchDebounce?.cancel();
+
+  _searchDebounce = Timer(
+    const Duration(milliseconds: 400),
+    () => getOrders(
+      searchQuery: searchQuery,
+    ),
+  );
+}
 }

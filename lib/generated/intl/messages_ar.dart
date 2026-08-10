@@ -266,6 +266,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "العناوين المحفوظة",
     ),
     "search_hint": MessageLookupByLibrary.simpleMessage("بحث عن المنتجات..."),
+    "search_order_by_number": MessageLookupByLibrary.simpleMessage(
+      "Search by order number",
+    ),
     "security": MessageLookupByLibrary.simpleMessage("الامان"),
     "see_all_reviews": MessageLookupByLibrary.simpleMessage("شاهد جميع الاراء"),
     "select_language": MessageLookupByLibrary.simpleMessage("اختر اللغة"),

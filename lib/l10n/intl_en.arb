@@ -227,5 +227,6 @@
   "orderStatusDelivered": "Delivered",
   "orderStatusReturned": "Returned",
   "orderStatusCancelled": "Cancelled",
-  "orderDetails" : "Order Details"
+  "orderDetails" : "Order Details",
+  "search_order_by_number":"ابحث برقم الطلب"
 }
