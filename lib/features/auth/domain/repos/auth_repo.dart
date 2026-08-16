@@ -10,6 +10,7 @@ abstract class AuthRepo {
     String email,
     String password,
     String fullName,
+    String phoneNumber
   );
 
   Future<Either<Failure, void>> requestPasswordReset(String email);
