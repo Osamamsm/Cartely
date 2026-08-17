@@ -91,6 +91,8 @@ import 'package:e_commerce/features/checkout/domain/repo/checkout_repo.dart'
     as _i128;
 import 'package:e_commerce/features/checkout/domain/use_cases/place_order_cash_on_delivery_use_case.dart'
     as _i719;
+import 'package:e_commerce/features/checkout/domain/use_cases/place_order_with_online_payment_use_case.dart'
+    as _i16;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart'
     as _i555;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart'
@@ -242,6 +244,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i719.PlaceOrderCashOnDeliveryUseCase>(
       () => _i719.PlaceOrderCashOnDeliveryUseCase(gh<_i128.CheckoutRepo>()),
+    );
+    gh.factory<_i16.PlaceOrderWithOnlinePaymentUseCase>(
+      () => _i16.PlaceOrderWithOnlinePaymentUseCase(gh<_i128.CheckoutRepo>()),
     );
     gh.factory<_i756.WishlistCubit>(
       () => _i756.WishlistCubit(gh<_i733.WishListRepo>()),
