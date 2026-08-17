@@ -7,20 +7,18 @@ sealed class PlaceOrderResult extends Equatable {
 class PlacedOrder extends PlaceOrderResult {
   final String orderId;
   final String orderNumber;
-  final double subtotal;
-  final double shipping;
   final double total;
+  final String? checkoutUrl;
 
   const PlacedOrder({
     required this.orderId,
     required this.orderNumber,
-    required this.subtotal,
-    required this.shipping,
     required this.total,
+    this.checkoutUrl
   });
 
   @override
-  List<Object?> get props => [orderId, orderNumber, subtotal, shipping, total];
+  List<Object?> get props => [orderId, orderNumber, total];
 }
 
 class PlaceOrderRejected extends PlaceOrderResult {

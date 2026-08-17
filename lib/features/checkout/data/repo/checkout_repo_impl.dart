@@ -24,4 +24,20 @@ class CheckoutRepoImpl implements CheckoutRepo {
       return Left(ExceptionMapper.mapExceptionToFailure(e));
     }
   }
+
+  @override
+  Future<Either<Failure, PlaceOrderResult>> placeOrderWithOnlinePayment({
+    required String addressId,
+    required String paymentMethod,
+  }) async {
+    try {
+      final result = await _remoteDataSource.placeOrderWithOnlinePayment(
+        addressId: addressId,
+        paymentMethod: paymentMethod,
+      );
+      return Right(result.toEntity());
+    } catch (e) {
+      return Left(ExceptionMapper.mapExceptionToFailure(e));
+    }
+  }
 }

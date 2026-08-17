@@ -14,15 +14,11 @@ sealed class PlaceOrderResultModel {
 class PlacedOrderModel implements PlaceOrderResultModel {
   final String orderId;
   final String orderNumber;
-  final double subtotal;
-  final double shipping;
   final double total;
 
   PlacedOrderModel({
     required this.orderId,
     required this.orderNumber,
-    required this.subtotal,
-    required this.shipping,
     required this.total,
   });
 
@@ -30,8 +26,6 @@ class PlacedOrderModel implements PlaceOrderResultModel {
       PlacedOrderModel(
         orderId: json['order_id'] as String,
         orderNumber: json['order_number'] as String,
-        subtotal: (json['subtotal'] as num).toDouble(),
-        shipping: (json['shipping'] as num).toDouble(),
         total: (json['total'] as num).toDouble(),
       );
 
@@ -39,8 +33,6 @@ class PlacedOrderModel implements PlaceOrderResultModel {
   PlacedOrder toEntity() => PlacedOrder(
     orderId: orderId,
     orderNumber: orderNumber,
-    subtotal: subtotal,
-    shipping: shipping,
     total: total,
   );
 }
