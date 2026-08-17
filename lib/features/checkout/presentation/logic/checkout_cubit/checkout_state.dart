@@ -11,7 +11,6 @@ class CheckoutState {
   final PlacedOrder? placedOrder;
   final String? message;
 
-
   CheckoutState({
     this.selectedAddress,
     this.selectedPaymentType,
@@ -43,9 +42,16 @@ class CheckoutState {
       cart: cart ?? this.cart,
       orderStatus: orderStatus ?? this.orderStatus,
       placedOrder: placedOrder ?? this.placedOrder,
-      message: message ?? this.message
+      message: message ?? this.message,
     );
   }
 }
 
-enum OrderStatus { initial, loading, orderPlaced, orderRejected, failure }
+enum OrderStatus {
+  initial,
+  loading,
+  awaitingPayment,
+  orderPlaced,
+  orderRejected,
+  failure,
+}
