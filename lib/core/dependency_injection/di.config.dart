@@ -260,6 +260,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i165.GetOrderDetailsCubit>(
       () => _i165.GetOrderDetailsCubit(gh<_i279.GetOrderDetailsUseCase>()),
     );
+    gh.factory<_i555.CheckoutCubit>(
+      () => _i555.CheckoutCubit(
+        gh<_i719.PlaceOrderCashOnDeliveryUseCase>(),
+        gh<_i16.PlaceOrderWithOnlinePaymentUseCase>(),
+      ),
+    );
     gh.lazySingleton<_i571.CartRepo>(
       () => _i197.CartRepoImpl(gh<_i676.CartRemoteDataSource>()),
     );
@@ -310,9 +316,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i817.ResetPasswordUseCase>(
       () => _i817.ResetPasswordUseCase(gh<_i380.AuthRepo>()),
-    );
-    gh.factory<_i555.CheckoutCubit>(
-      () => _i555.CheckoutCubit(gh<_i719.PlaceOrderCashOnDeliveryUseCase>()),
     );
     gh.factory<_i841.ForgotPasswordUseCase>(
       () => _i841.ForgotPasswordUseCase(gh<_i380.AuthRepo>()),
