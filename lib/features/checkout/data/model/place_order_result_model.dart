@@ -15,11 +15,13 @@ class PlacedOrderModel implements PlaceOrderResultModel {
   final String orderId;
   final String orderNumber;
   final double total;
+  final String? checkoutUrl;
 
   PlacedOrderModel({
     required this.orderId,
     required this.orderNumber,
     required this.total,
+    this.checkoutUrl,
   });
 
   factory PlacedOrderModel.fromJson(Map<String, dynamic> json) =>
@@ -27,6 +29,7 @@ class PlacedOrderModel implements PlaceOrderResultModel {
         orderId: json['order_id'] as String,
         orderNumber: json['order_number'] as String,
         total: (json['total'] as num).toDouble(),
+        checkoutUrl: json['checkout_url'] as String,
       );
 
   @override
@@ -34,6 +37,7 @@ class PlacedOrderModel implements PlaceOrderResultModel {
     orderId: orderId,
     orderNumber: orderNumber,
     total: total,
+    checkoutUrl: checkoutUrl,
   );
 }
 

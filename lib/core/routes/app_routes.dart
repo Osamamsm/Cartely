@@ -20,7 +20,9 @@ import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubi
 import 'package:e_commerce/features/cart/presentation/views/cart_view.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart';
+import 'package:e_commerce/features/checkout/presentation/logic/payment_confirmation_cubit/payment_confirmation_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/views/checkout_view.dart';
+import 'package:e_commerce/features/checkout/presentation/views/payment_confirmation_view.dart';
 import 'package:e_commerce/features/home/presentation/logic/categories_cubit/categories_cubit.dart';
 import 'package:e_commerce/features/home/presentation/logic/get_products_by_category_cubit/get_products_by_category_cubit.dart';
 import 'package:e_commerce/features/home/presentation/logic/get_promotions_cubit/get_promotions_cubit.dart';
@@ -288,6 +290,18 @@ GoRouter createRouter(AuthCubit authCubit) {
             child: OrderDetailsView(),
           );
         },
+      ),
+      GoRoute(
+        path: PaymentConfirmationView.routeName,
+        builder: ((context, state) {
+          final String orderId =
+              state.uri.queryParameters['merchant_order_id']!;
+          return BlocProvider(
+            create: (context) =>
+                getIt<PaymentConfirmationCubit>(param1: orderId),
+            child: PaymentConfirmationView(),
+          );
+        }),
       ),
     ],
   );
