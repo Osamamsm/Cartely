@@ -228,5 +228,19 @@
   "orderStatusReturned": "Returned",
   "orderStatusCancelled": "Cancelled",
   "orderDetails" : "Order Details",
-  "search_order_by_number":"ابحث برقم الطلب"
+  "search_order_by_number":"Search by order number",
+  "paymentConfirmingTitle": "Confirming your payment...",
+  "paymentConfirmingMessage": "This usually takes just a few seconds. Please don’t close this screen.",
+  "paymentConfirmedTitle": "Payment Confirmed!",
+  "paymentConfirmedMessage": "Your order has been placed successfully.",
+  "paymentFailedTitle": "Payment Failed",
+  "paymentFailedMessage": "We couldn’t confirm your payment. Please try again, or use a different payment method.",
+  "paymentConfirmationDelayedTitle": "Confirmation Delayed",
+  "paymentConfirmationDelayedMessage": "We haven’t received confirmation of your payment yet. Don’t worry — check your orders in a moment, it may still go through.",
+  "viewOrderDetails": "View Order Details",
+  "continueShopping": "Continue Shopping",
+  "tryAgain": "Try Again",
+  "backToHome": "Back to Home",
+  "goToOrders": "Go to Orders"
 }
+

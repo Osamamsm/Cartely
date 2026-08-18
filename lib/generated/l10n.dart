@@ -1682,14 +1682,129 @@ class S {
     );
   }
 
-  /// `ابحث برقم الطلب`
+  /// `Search by order number`
   String get search_order_by_number {
     return Intl.message(
-      'ابحث برقم الطلب',
+      'Search by order number',
       name: 'search_order_by_number',
       desc: '',
       args: [],
     );
+  }
+
+  /// `Confirming your payment...`
+  String get paymentConfirmingTitle {
+    return Intl.message(
+      'Confirming your payment...',
+      name: 'paymentConfirmingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This usually takes just a few seconds. Please don’t close this screen.`
+  String get paymentConfirmingMessage {
+    return Intl.message(
+      'This usually takes just a few seconds. Please don’t close this screen.',
+      name: 'paymentConfirmingMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Confirmed!`
+  String get paymentConfirmedTitle {
+    return Intl.message(
+      'Payment Confirmed!',
+      name: 'paymentConfirmedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your order has been placed successfully.`
+  String get paymentConfirmedMessage {
+    return Intl.message(
+      'Your order has been placed successfully.',
+      name: 'paymentConfirmedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Failed`
+  String get paymentFailedTitle {
+    return Intl.message(
+      'Payment Failed',
+      name: 'paymentFailedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We couldn’t confirm your payment. Please try again, or use a different payment method.`
+  String get paymentFailedMessage {
+    return Intl.message(
+      'We couldn’t confirm your payment. Please try again, or use a different payment method.',
+      name: 'paymentFailedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirmation Delayed`
+  String get paymentConfirmationDelayedTitle {
+    return Intl.message(
+      'Confirmation Delayed',
+      name: 'paymentConfirmationDelayedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We haven’t received confirmation of your payment yet. Don’t worry — check your orders in a moment, it may still go through.`
+  String get paymentConfirmationDelayedMessage {
+    return Intl.message(
+      'We haven’t received confirmation of your payment yet. Don’t worry — check your orders in a moment, it may still go through.',
+      name: 'paymentConfirmationDelayedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Order Details`
+  String get viewOrderDetails {
+    return Intl.message(
+      'View Order Details',
+      name: 'viewOrderDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue Shopping`
+  String get continueShopping {
+    return Intl.message(
+      'Continue Shopping',
+      name: 'continueShopping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try Again`
+  String get tryAgain {
+    return Intl.message('Try Again', name: 'tryAgain', desc: '', args: []);
+  }
+
+  /// `Back to Home`
+  String get backToHome {
+    return Intl.message('Back to Home', name: 'backToHome', desc: '', args: []);
+  }
+
+  /// `Go to Orders`
+  String get goToOrders {
+    return Intl.message('Go to Orders', name: 'goToOrders', desc: '', args: []);
   }
 }
 

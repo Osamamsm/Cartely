@@ -70,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Apt. Suite, etc. (Optional)",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "backToHome": MessageLookupByLibrary.simpleMessage("Back to Home"),
     "back_to_address": MessageLookupByLibrary.simpleMessage("Back to Address"),
     "back_to_cart": MessageLookupByLibrary.simpleMessage("Back to Cart"),
     "back_to_payment": MessageLookupByLibrary.simpleMessage("Back to Payment"),
@@ -111,6 +112,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "contact_info": MessageLookupByLibrary.simpleMessage("Contact Info"),
     "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
+    "continueShopping": MessageLookupByLibrary.simpleMessage(
+      "Continue Shopping",
+    ),
     "continue_shopping": MessageLookupByLibrary.simpleMessage(
       "Continue Shopping",
     ),
@@ -169,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Enter your full name",
     ),
     "general": MessageLookupByLibrary.simpleMessage("General"),
+    "goToOrders": MessageLookupByLibrary.simpleMessage("Go to Orders"),
     "go_to_home": MessageLookupByLibrary.simpleMessage("Go to Home"),
     "governorate": MessageLookupByLibrary.simpleMessage("Governorate"),
     "help_center": MessageLookupByLibrary.simpleMessage("Help Center"),
@@ -248,6 +253,30 @@ class MessageLookup extends MessageLookupByLibrary {
     "password_reset_success": MessageLookupByLibrary.simpleMessage(
       "Password reset successfully.",
     ),
+    "paymentConfirmationDelayedMessage": MessageLookupByLibrary.simpleMessage(
+      "We haven’t received confirmation of your payment yet. Don’t worry — check your orders in a moment, it may still go through.",
+    ),
+    "paymentConfirmationDelayedTitle": MessageLookupByLibrary.simpleMessage(
+      "Confirmation Delayed",
+    ),
+    "paymentConfirmedMessage": MessageLookupByLibrary.simpleMessage(
+      "Your order has been placed successfully.",
+    ),
+    "paymentConfirmedTitle": MessageLookupByLibrary.simpleMessage(
+      "Payment Confirmed!",
+    ),
+    "paymentConfirmingMessage": MessageLookupByLibrary.simpleMessage(
+      "This usually takes just a few seconds. Please don’t close this screen.",
+    ),
+    "paymentConfirmingTitle": MessageLookupByLibrary.simpleMessage(
+      "Confirming your payment...",
+    ),
+    "paymentFailedMessage": MessageLookupByLibrary.simpleMessage(
+      "We couldn’t confirm your payment. Please try again, or use a different payment method.",
+    ),
+    "paymentFailedTitle": MessageLookupByLibrary.simpleMessage(
+      "Payment Failed",
+    ),
     "paymentStatus": MessageLookupByLibrary.simpleMessage("Payment Status"),
     "payment_method": MessageLookupByLibrary.simpleMessage("PAYMENT METHOD"),
     "payment_methods": MessageLookupByLibrary.simpleMessage("Payment Methods"),
@@ -306,7 +335,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Search for products...",
     ),
     "search_order_by_number": MessageLookupByLibrary.simpleMessage(
-      "ابحث برقم الطلب",
+      "Search by order number",
     ),
     "security": MessageLookupByLibrary.simpleMessage("Security"),
     "see_all_reviews": MessageLookupByLibrary.simpleMessage("See All Reviews"),
@@ -351,6 +380,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "theme": MessageLookupByLibrary.simpleMessage("Theme"),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
     "trackOrder": MessageLookupByLibrary.simpleMessage("Track Order"),
+    "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
     "try_again": MessageLookupByLibrary.simpleMessage("Try Again"),
     "use_this_address_for_checkout": MessageLookupByLibrary.simpleMessage(
       "Use this address for checkout",
@@ -359,6 +389,9 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Use this payment method for checkout",
         ),
+    "viewOrderDetails": MessageLookupByLibrary.simpleMessage(
+      "View Order Details",
+    ),
     "view_orders": MessageLookupByLibrary.simpleMessage("View Orders"),
     "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist"),
     "work": MessageLookupByLibrary.simpleMessage("Work"),

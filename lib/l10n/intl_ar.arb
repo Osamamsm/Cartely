@@ -216,5 +216,19 @@
   "orderStatusReturned": "تم الإرجاع",
   "orderStatusCancelled": "ملغي",
   "orderDeails":"تفاصيل الطلب",
-  "search_order_by_number":"Search by order number"
+  "search_order_by_number":"ابحث برقم الطلب",
+  "paymentConfirmingTitle": "جارٍ تأكيد الدفع...",
+  "paymentConfirmingMessage": "عادةً ما يستغرق هذا بضع ثوانٍ فقط. يُرجى عدم إغلاق هذه الصفحة.",
+  "paymentConfirmedTitle": "تم تأكيد الدفع!",
+  "paymentConfirmedMessage": "تم إنشاء طلبك بنجاح.",
+  "paymentFailedTitle": "فشل الدفع",
+  "paymentFailedMessage": "تعذر علينا تأكيد عملية الدفع. يُرجى المحاولة مرة أخرى أو استخدام طريقة دفع مختلفة.",
+  "paymentConfirmationDelayedTitle": "تأخر تأكيد الدفع",
+  "paymentConfirmationDelayedMessage": "لم نتلقَّ تأكيدًا لعملية الدفع حتى الآن. لا تقلق — تحقق من طلباتك بعد قليل، فقد تكتمل العملية بنجاح.",
+  "viewOrderDetails": "عرض تفاصيل الطلب",
+  "continueShopping": "متابعة التسوق",
+  "tryAgain": "حاول مرة أخرى",
+  "backToHome": "العودة للرئيسية",
+  "goToOrders": "الذهاب إلى الطلبات"
 }
+
