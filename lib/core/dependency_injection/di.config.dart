@@ -97,6 +97,8 @@ import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/c
     as _i555;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart'
     as _i517;
+import 'package:e_commerce/features/checkout/presentation/logic/payment_confirmation_cubit/payment_confirmation_cubit.dart'
+    as _i553;
 import 'package:e_commerce/features/home/presentation/logic/categories_cubit/categories_cubit.dart'
     as _i531;
 import 'package:e_commerce/features/home/presentation/logic/get_products_by_category_cubit/get_products_by_category_cubit.dart'
@@ -227,6 +229,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i144.OrdersRepo>(
       () => _i139.OrderRepoImpl(gh<_i800.OrdersRemoteDataSource>()),
+    );
+    gh.factoryParam<_i553.PaymentConfirmationCubit, String, dynamic>(
+      (orderId, _) => _i553.PaymentConfirmationCubit(
+        gh<_i144.OrdersRepo>(),
+        gh<_i454.SupabaseClient>(),
+        orderId,
+      ),
     );
     gh.factory<_i279.GetOrderDetailsUseCase>(
       () => _i279.GetOrderDetailsUseCase(gh<_i144.OrdersRepo>()),
