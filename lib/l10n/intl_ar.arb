@@ -229,6 +229,24 @@
   "continueShopping": "متابعة التسوق",
   "tryAgain": "حاول مرة أخرى",
   "backToHome": "العودة للرئيسية",
-  "goToOrders": "الذهاب إلى الطلبات"
+  "goToOrders": "الذهاب إلى الطلبات",
+  "sortNewest": "الأحدث",
+  "sortPriceLowHigh": "السعر: من الأقل إلى الأعلى",
+  "sortPriceHighLow": "السعر: من الأعلى إلى الأقل",
+  "sortTopRated": "الأعلى تقييمًا",
+  "sortMostPopular": "الأكثر شيوعًا",
+  "onSale": "عليه خصم",
+  "rating": "التقييم",
+  "price": "السعر",
+  "clear": "مسح",
+  "sortBy": "ترتيب حسب",
+  "minimumRating": "الحد الأدنى للتقييم",
+  "showProductsRatedAtLeast": "عرض المنتجات التي تقييمها على الأقل…",
+  "ratingAndUp": "{rating}★ فأعلى",
+  "priceRange": "نطاق السعر",
+  "min": "الحد الأدنى",
+  "max": "الحد الأقصى",
+  "apply": "تطبيق",
+  "inStock": "متوفر في المخزون"
 }
 

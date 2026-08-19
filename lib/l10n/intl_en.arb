@@ -241,6 +241,24 @@
   "continueShopping": "Continue Shopping",
   "tryAgain": "Try Again",
   "backToHome": "Back to Home",
-  "goToOrders": "Go to Orders"
+  "goToOrders": "Go to Orders",
+  "sortNewest": "Newest",
+  "sortPriceLowHigh": "Price: Low–High",
+  "sortPriceHighLow": "Price: High–Low",
+  "sortTopRated": "Top Rated",
+  "sortMostPopular": "Most Popular",
+  "onSale": "On Sale",
+  "rating": "Rating",
+  "price": "Price",
+  "clear": "Clear",
+  "sortBy": "Sort By",
+  "minimumRating": "Minimum Rating",
+  "showProductsRatedAtLeast": "Show products rated at least…",
+  "ratingAndUp": "{rating}★ & up",
+  "priceRange": "Price Range",
+  "min": "Min",
+  "max": "Max",
+  "apply": "Apply",
+  "inStock": "In Stock"
 }
 

@@ -1806,6 +1806,126 @@ class S {
   String get goToOrders {
     return Intl.message('Go to Orders', name: 'goToOrders', desc: '', args: []);
   }
+
+  /// `Newest`
+  String get sortNewest {
+    return Intl.message('Newest', name: 'sortNewest', desc: '', args: []);
+  }
+
+  /// `Price: Low–High`
+  String get sortPriceLowHigh {
+    return Intl.message(
+      'Price: Low–High',
+      name: 'sortPriceLowHigh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price: High–Low`
+  String get sortPriceHighLow {
+    return Intl.message(
+      'Price: High–Low',
+      name: 'sortPriceHighLow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top Rated`
+  String get sortTopRated {
+    return Intl.message('Top Rated', name: 'sortTopRated', desc: '', args: []);
+  }
+
+  /// `Most Popular`
+  String get sortMostPopular {
+    return Intl.message(
+      'Most Popular',
+      name: 'sortMostPopular',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `On Sale`
+  String get onSale {
+    return Intl.message('On Sale', name: 'onSale', desc: '', args: []);
+  }
+
+  /// `Rating`
+  String get rating {
+    return Intl.message('Rating', name: 'rating', desc: '', args: []);
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message('Price', name: 'price', desc: '', args: []);
+  }
+
+  /// `Clear`
+  String get clear {
+    return Intl.message('Clear', name: 'clear', desc: '', args: []);
+  }
+
+  /// `Sort By`
+  String get sortBy {
+    return Intl.message('Sort By', name: 'sortBy', desc: '', args: []);
+  }
+
+  /// `Minimum Rating`
+  String get minimumRating {
+    return Intl.message(
+      'Minimum Rating',
+      name: 'minimumRating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show products rated at least…`
+  String get showProductsRatedAtLeast {
+    return Intl.message(
+      'Show products rated at least…',
+      name: 'showProductsRatedAtLeast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{rating}★ & up`
+  String ratingAndUp(Object rating) {
+    return Intl.message(
+      '$rating★ & up',
+      name: 'ratingAndUp',
+      desc: '',
+      args: [rating],
+    );
+  }
+
+  /// `Price Range`
+  String get priceRange {
+    return Intl.message('Price Range', name: 'priceRange', desc: '', args: []);
+  }
+
+  /// `Min`
+  String get min {
+    return Intl.message('Min', name: 'min', desc: '', args: []);
+  }
+
+  /// `Max`
+  String get max {
+    return Intl.message('Max', name: 'max', desc: '', args: []);
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message('Apply', name: 'apply', desc: '', args: []);
+  }
+
+  /// `In Stock`
+  String get inStock {
+    return Intl.message('In Stock', name: 'inStock', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

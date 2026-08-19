@@ -28,7 +28,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m3(quantity) => "الكمية: ${quantity}";
 
-  static String m4(count) =>
+  static String m4(rating) => "${rating}★ فأعلى";
+
+  static String m5(count) =>
       "${Intl.plural(count, zero: 'لا مراجعات', one: '${count} مراجعة', two: '${count} مراجعتان', few: '${count} مراجعات', many: '${count} مراجعة', other: '${count} مراجعة')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -57,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "apartment_number": MessageLookupByLibrary.simpleMessage("رقم الشقة"),
     "app_name": MessageLookupByLibrary.simpleMessage("E-Commerce App"),
+    "apply": MessageLookupByLibrary.simpleMessage("تطبيق"),
     "apt_suite_etc": MessageLookupByLibrary.simpleMessage("المنزل/الشقة/الخ"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "backToHome": MessageLookupByLibrary.simpleMessage("العودة للرئيسية"),
@@ -83,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "checkout": MessageLookupByLibrary.simpleMessage("الدفع"),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
+    "clear": MessageLookupByLibrary.simpleMessage("مسح"),
     "clear_cart_confirmation": MessageLookupByLibrary.simpleMessage(
       "هل أنت متأكد أنك تريد مسح جميع العناصر من سلة التسوق؟",
     ),
@@ -152,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "governorate": MessageLookupByLibrary.simpleMessage("المحافظة"),
     "help_center": MessageLookupByLibrary.simpleMessage("مركز المساعدة"),
     "home": MessageLookupByLibrary.simpleMessage("المنزل"),
+    "inStock": MessageLookupByLibrary.simpleMessage("متوفر في المخزون"),
     "label_as": MessageLookupByLibrary.simpleMessage("التصنيف كـ"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "light": MessageLookupByLibrary.simpleMessage("فاتح"),
@@ -162,7 +167,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "login_welcome_subtitle": MessageLookupByLibrary.simpleMessage(
       "سجّل الدخول لمتابعة رحلتك",
     ),
+    "max": MessageLookupByLibrary.simpleMessage("الحد الأقصى"),
     "member_since": MessageLookupByLibrary.simpleMessage("عضو منذ"),
+    "min": MessageLookupByLibrary.simpleMessage("الحد الأدنى"),
+    "minimumRating": MessageLookupByLibrary.simpleMessage(
+      "الحد الأدنى للتقييم",
+    ),
     "my_addresses": MessageLookupByLibrary.simpleMessage("عناويني"),
     "my_cart": MessageLookupByLibrary.simpleMessage("عربتي"),
     "my_orders": MessageLookupByLibrary.simpleMessage("طلباتي"),
@@ -181,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "offers_promotions_subtitle": MessageLookupByLibrary.simpleMessage(
       "ابق على اطلاع بأحدث العروض والخصومات",
     ),
+    "onSale": MessageLookupByLibrary.simpleMessage("عليه خصم"),
     "orderDetailsError": MessageLookupByLibrary.simpleMessage(
       "تعذر تحميل تفاصيل الطلب",
     ),
@@ -256,6 +267,8 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "يرجى الانتظار أثناء تأكيد طلبك. لن يستغرق ذلك سوى لحظة.",
         ),
+    "price": MessageLookupByLibrary.simpleMessage("السعر"),
+    "priceRange": MessageLookupByLibrary.simpleMessage("نطاق السعر"),
     "privacy_policy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
     "proceed_to_checkout": MessageLookupByLibrary.simpleMessage(
       "الانتقال للدفع",
@@ -272,6 +285,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "quantity": m3,
     "quick_access": MessageLookupByLibrary.simpleMessage("الوصول السريع"),
+    "rating": MessageLookupByLibrary.simpleMessage("التقييم"),
+    "ratingAndUp": m4,
     "region": MessageLookupByLibrary.simpleMessage("المنطقة"),
     "register": MessageLookupByLibrary.simpleMessage("سجل الآن"),
     "reorder": MessageLookupByLibrary.simpleMessage("إعادة الطلب"),
@@ -279,7 +294,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "إعادة تعيين كلمه المرور",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
-    "review": m4,
+    "review": m5,
     "review_hint_text": MessageLookupByLibrary.simpleMessage(
       "شارك ارائك حول هذا المنتج",
     ),
@@ -310,6 +325,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "shipping_to": MessageLookupByLibrary.simpleMessage("الشحن الى"),
     "shop_by_category": MessageLookupByLibrary.simpleMessage("تسوق حسب الفئة"),
     "showDetails": MessageLookupByLibrary.simpleMessage("عرض التفاصيل"),
+    "showProductsRatedAtLeast": MessageLookupByLibrary.simpleMessage(
+      "عرض المنتجات التي تقييمها على الأقل…",
+    ),
     "sign_out": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "sign_out_message": MessageLookupByLibrary.simpleMessage(
       "هل انت متاكد من تسجيل الخروج",
@@ -318,6 +336,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "something_went_wrong": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
     ),
+    "sortBy": MessageLookupByLibrary.simpleMessage("ترتيب حسب"),
+    "sortMostPopular": MessageLookupByLibrary.simpleMessage("الأكثر شيوعًا"),
+    "sortNewest": MessageLookupByLibrary.simpleMessage("الأحدث"),
+    "sortPriceHighLow": MessageLookupByLibrary.simpleMessage(
+      "السعر: من الأعلى إلى الأقل",
+    ),
+    "sortPriceLowHigh": MessageLookupByLibrary.simpleMessage(
+      "السعر: من الأقل إلى الأعلى",
+    ),
+    "sortTopRated": MessageLookupByLibrary.simpleMessage("الأعلى تقييمًا"),
     "startShopping": MessageLookupByLibrary.simpleMessage("ابدأ التسوق"),
     "street": MessageLookupByLibrary.simpleMessage("الشارع"),
     "street_address": MessageLookupByLibrary.simpleMessage("العنوان"),

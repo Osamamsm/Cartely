@@ -28,7 +28,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m3(quantity) => "Qty: ${quantity}";
 
-  static String m4(count) =>
+  static String m4(rating) => "${rating}★ & up";
+
+  static String m5(count) =>
       "${Intl.plural(count, zero: 'No reviews', one: '${count} review', other: '${count} reviews')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -66,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Apartment number",
     ),
     "app_name": MessageLookupByLibrary.simpleMessage("E-Commerce App"),
+    "apply": MessageLookupByLibrary.simpleMessage("Apply"),
     "apt_suite_etc": MessageLookupByLibrary.simpleMessage(
       "Apt. Suite, etc. (Optional)",
     ),
@@ -93,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
+    "clear": MessageLookupByLibrary.simpleMessage("Clear"),
     "clear_cart_confirmation": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to clear all items from your cart?",
     ),
@@ -178,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "governorate": MessageLookupByLibrary.simpleMessage("Governorate"),
     "help_center": MessageLookupByLibrary.simpleMessage("Help Center"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "inStock": MessageLookupByLibrary.simpleMessage("In Stock"),
     "label_as": MessageLookupByLibrary.simpleMessage("LABEL AS"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "light": MessageLookupByLibrary.simpleMessage("Light"),
@@ -188,7 +193,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "login_welcome_subtitle": MessageLookupByLibrary.simpleMessage(
       "Login to continue your journey",
     ),
+    "max": MessageLookupByLibrary.simpleMessage("Max"),
     "member_since": MessageLookupByLibrary.simpleMessage("Member Since"),
+    "min": MessageLookupByLibrary.simpleMessage("Min"),
+    "minimumRating": MessageLookupByLibrary.simpleMessage("Minimum Rating"),
     "my_addresses": MessageLookupByLibrary.simpleMessage("My Addresses"),
     "my_cart": MessageLookupByLibrary.simpleMessage("My Cart"),
     "my_orders": MessageLookupByLibrary.simpleMessage("My Orders"),
@@ -211,6 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Stay updated with the latest offers and discounts",
     ),
     "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+    "onSale": MessageLookupByLibrary.simpleMessage("On Sale"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
     "orderDetailsError": MessageLookupByLibrary.simpleMessage(
       "Unable to load order details",
@@ -294,6 +303,8 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Please wait while we confirm your order. This will only take a moment.",
         ),
+    "price": MessageLookupByLibrary.simpleMessage("Price"),
+    "priceRange": MessageLookupByLibrary.simpleMessage("Price Range"),
     "privacy_policy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "proceed_to_checkout": MessageLookupByLibrary.simpleMessage(
       "Proceed To Checkout",
@@ -314,6 +325,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "quantity": m3,
     "quick_access": MessageLookupByLibrary.simpleMessage("Quick Access"),
+    "rating": MessageLookupByLibrary.simpleMessage("Rating"),
+    "ratingAndUp": m4,
     "region": MessageLookupByLibrary.simpleMessage("Region"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "reorder": MessageLookupByLibrary.simpleMessage("Reorder"),
@@ -322,7 +335,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password reset successfully.",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-    "review": m4,
+    "review": m5,
     "review_hint_text": MessageLookupByLibrary.simpleMessage(
       "Share your thoughts about this product...",
     ),
@@ -355,6 +368,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Shop By Category",
     ),
     "showDetails": MessageLookupByLibrary.simpleMessage("Show Details"),
+    "showProductsRatedAtLeast": MessageLookupByLibrary.simpleMessage(
+      "Show products rated at least…",
+    ),
     "sign_out": MessageLookupByLibrary.simpleMessage("Sign Out"),
     "sign_out_message": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to sign out?",
@@ -366,6 +382,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "something_went_wrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong. Please try again.",
     ),
+    "sortBy": MessageLookupByLibrary.simpleMessage("Sort By"),
+    "sortMostPopular": MessageLookupByLibrary.simpleMessage("Most Popular"),
+    "sortNewest": MessageLookupByLibrary.simpleMessage("Newest"),
+    "sortPriceHighLow": MessageLookupByLibrary.simpleMessage("Price: High–Low"),
+    "sortPriceLowHigh": MessageLookupByLibrary.simpleMessage("Price: Low–High"),
+    "sortTopRated": MessageLookupByLibrary.simpleMessage("Top Rated"),
     "startShopping": MessageLookupByLibrary.simpleMessage("Start Shopping"),
     "street": MessageLookupByLibrary.simpleMessage("Street"),
     "street_address": MessageLookupByLibrary.simpleMessage("Street Address"),
