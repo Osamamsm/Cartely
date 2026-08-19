@@ -9,9 +9,9 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   SignUpCubit(this._signUpUseCase) : super(SignUpInitial());
 
-  Future<void> signUp(String email, String password, String fullName) async {
+  Future<void> signUp(String email, String password, String fullName , String phoneNumber) async {
     emit(SignUpLoading());
-    final result = await _signUpUseCase(email, password, fullName);
+    final result = await _signUpUseCase(email, password, fullName , phoneNumber);
     result.fold(
       (failure) => emit(SignUpFailure(failure.message)),
       (user) => emit(SignUpSuccess()),

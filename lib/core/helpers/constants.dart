@@ -1,7 +1,8 @@
 import 'package:e_commerce/core/models/menu_item.dart';
+import 'package:e_commerce/core/models/payment_method.dart';
 import 'package:e_commerce/features/addresses/presentation/views/saved_addresses_view.dart';
 import 'package:e_commerce/features/auth/presentation/logic/sign_out_cubit/sign_out_cubit.dart';
-import 'package:e_commerce/features/payment/presentation/views/payment_methods_view.dart';
+import 'package:e_commerce/features/orders/presentation/views/orders_view.dart';
 import 'package:e_commerce/features/profile/domain/entities/user_profile_entity.dart';
 import 'package:e_commerce/features/profile/presentation/views/personal_details_view.dart';
 import 'package:e_commerce/features/wish_list/presentation/views/wish_list_view.dart';
@@ -32,14 +33,20 @@ class Constants {
           GoRouter.of(context).push(SavedAddressesView.routeName);
         },
       ),
+      // MenuItem(
+      //   icon: Icons.payment_outlined,
+      //   label: s.payment_methods,
+      //   onTap: () {
+      //     GoRouter.of(context).push(PaymentMethodsView.routeName);
+      //   },
+      // ),
       MenuItem(
-        icon: Icons.payment_outlined,
-        label: s.payment_methods,
+        icon: Icons.receipt_long,
+        label: s.my_orders,
         onTap: () {
-          GoRouter.of(context).push(PaymentMethodsView.routeName);
+          context.push(OrdersView.routeName);
         },
       ),
-      MenuItem(icon: Icons.receipt_long, label: s.order_history, onTap: () {}),
       MenuItem(
         icon: Icons.logout,
         label: s.sign_out,
@@ -49,6 +56,33 @@ class Constants {
       ),
     ];
   }
+
+  static List<PaymentMethod> paymentMethods = [
+    PaymentMethod(
+      id: 'card',
+      type: PaymentType.card,
+      label: 'Debit/Credit Card',
+      description: 'Visa, Mastercard, Amex',
+      isDefault: true,
+      isEnabled: true,
+    ),
+    PaymentMethod(
+      id: 'wallet',
+      type: PaymentType.digitalWallet,
+      label: 'Digital Wallet',
+      description: 'Coming Soon',
+      isDefault: false,
+      isEnabled: false,
+    ),
+    PaymentMethod(
+      id: 'cash',
+      type: PaymentType.cashOnDelivery,
+      label: 'Cash on Delivery',
+      description: 'Pay when you receive',
+      isDefault: false,
+      isEnabled: true,
+    ),
+  ];
 
   static List<Map<String, dynamic>> getProfileMenuSections(
     BuildContext context,
@@ -68,7 +102,9 @@ class Constants {
           {
             'icon': Icons.shopping_bag_outlined,
             'title': s.my_orders,
-            'onTap': () {},
+            'onTap': () {
+              context.push(OrdersView.routeName);
+            },
           },
         ],
       },
@@ -89,13 +125,13 @@ class Constants {
               GoRouter.of(context).push(SavedAddressesView.routeName);
             },
           },
-          {
-            'icon': Icons.credit_card_outlined,
-            'title': s.payment_methods,
-            'onTap': () {
-              GoRouter.of(context).push(PaymentMethodsView.routeName);
-            },
-          },
+          // {
+          //   'icon': Icons.credit_card_outlined,
+          //   'title': s.payment_methods,
+          //   'onTap': () {
+          //     GoRouter.of(context).push(PaymentMethodsView.routeName);
+          //   },
+          // },
         ],
       },
       {
@@ -164,7 +200,6 @@ class Constants {
       },
     ];
   }
-
 
   static List<Map<String, dynamic>> getLanguageOptions(BuildContext context) {
     return [

@@ -20,6 +20,8 @@ class CartButton extends StatelessWidget {
         },
         builder: (context, state) {
           return Badge.count(
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            textColor: Theme.of(context).colorScheme.onPrimary,
             isLabelVisible: state > 0,
             count: state,
             child: const Icon(Icons.shopping_cart_outlined),

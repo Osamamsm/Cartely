@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:e_commerce/core/dependency_injection/di.dart';
-import 'package:e_commerce/core/helpers/testing_lists.dart';
 import 'package:e_commerce/core/logic/image_picker_cubit/image_picker_cubit.dart';
 import 'package:e_commerce/features/addresses/presentation/logic/addresses_cubit/addresses_cubit.dart';
 import 'package:e_commerce/features/addresses/presentation/views/add_address_view.dart';
@@ -16,11 +15,14 @@ import 'package:e_commerce/features/auth/presentation/views/forgot_password_view
 import 'package:e_commerce/features/auth/presentation/views/login_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/register_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/reset_password_view.dart';
+import 'package:e_commerce/features/cart/domain/entities/cart.dart';
 import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce/features/cart/presentation/views/cart_view.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart';
+import 'package:e_commerce/features/checkout/presentation/logic/payment_confirmation_cubit/payment_confirmation_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/views/checkout_view.dart';
+import 'package:e_commerce/features/checkout/presentation/views/payment_confirmation_view.dart';
 import 'package:e_commerce/features/home/presentation/logic/categories_cubit/categories_cubit.dart';
 import 'package:e_commerce/features/home/presentation/logic/get_products_by_category_cubit/get_products_by_category_cubit.dart';
 import 'package:e_commerce/features/home/presentation/logic/get_promotions_cubit/get_promotions_cubit.dart';
@@ -30,6 +32,10 @@ import 'package:e_commerce/features/home/presentation/views/category_products_vi
 import 'package:e_commerce/features/home/presentation/views/home_view.dart';
 import 'package:e_commerce/features/home/presentation/views/search_results_view.dart';
 import 'package:e_commerce/features/notifications/logic/cubit/notifications_settings_cubit.dart';
+import 'package:e_commerce/features/orders/presentation/logic/get_order_details_cubit/get_order_details_cubit.dart';
+import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_cubit.dart';
+import 'package:e_commerce/features/orders/presentation/views/order_details_view.dart';
+import 'package:e_commerce/features/orders/presentation/views/orders_view.dart';
 import 'package:e_commerce/features/payment/presentation/views/add_payment_method_view.dart';
 import 'package:e_commerce/features/payment/presentation/views/payment_methods_view.dart';
 import 'package:e_commerce/features/product/data/models/category.dart';
@@ -229,20 +235,19 @@ GoRouter createRouter(AuthCubit authCubit) {
       ),
       GoRoute(
         path: CheckoutView.routeName,
-        builder: (context, state) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => getIt<CheckoutCubit>()
-                ..initDefaults(
-                  addresses: TestingLists.addresses,
-                  paymentMethods: TestingLists.paymentMethods,
-                  orderItems: TestingLists.orderItems,
-                ),
-            ),
-            BlocProvider(create: (context) => getIt<CheckoutFlowCubit>()),
-          ],
-          child: const CheckoutView(),
-        ),
+        builder: (context, state) {
+          final cart = state.extra as Cart;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    getIt<CheckoutCubit>()..initDefaults(cart: cart),
+              ),
+              BlocProvider(create: (context) => getIt<CheckoutFlowCubit>()),
+            ],
+            child: const CheckoutView(),
+          );
+        },
       ),
       GoRoute(
         path: SearchResultsView.routeName,
@@ -266,6 +271,37 @@ GoRouter createRouter(AuthCubit authCubit) {
             child: const CategoryProductsView(),
           );
         },
+      ),
+      GoRoute(
+        path: OrdersView.routeName,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<GetOrdersCubit>()..getOrders(),
+          child: const OrdersView(),
+        ),
+      ),
+      GoRoute(
+        path: OrderDetailsView.routeName,
+        builder: (context, state) {
+          final orderId = state.extra as String;
+          return BlocProvider(
+            create: (context) =>
+                getIt<GetOrderDetailsCubit>()
+                  ..getOrderDetails(orderId: orderId),
+            child: OrderDetailsView(),
+          );
+        },
+      ),
+      GoRoute(
+        path: PaymentConfirmationView.routeName,
+        builder: ((context, state) {
+          final String orderId =
+              state.uri.queryParameters['merchant_order_id']!;
+          return BlocProvider(
+            create: (context) =>
+                getIt<PaymentConfirmationCubit>(param1: orderId),
+            child: PaymentConfirmationView(),
+          );
+        }),
       ),
     ],
   );

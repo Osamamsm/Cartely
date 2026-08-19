@@ -4,7 +4,7 @@ import 'package:e_commerce/features/addresses/domain/entities/address_entity.dar
 import 'package:e_commerce/features/addresses/presentation/logic/addresses_cubit/addresses_cubit.dart';
 import 'package:e_commerce/features/addresses/presentation/widgets/address_card.dart';
 import 'package:e_commerce/features/addresses/presentation/widgets/saved_addresses_view_body.dart';
-import 'package:e_commerce/generated/l10n.dart';
+import 'package:e_commerce/features/addresses/presentation/widgets/empty_addresses_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -34,12 +34,7 @@ class SavedAddressesBlocBuilder extends StatelessWidget {
         if (state.status == AddressesStatus.success &&
             state.action == AddressesAction.getAddresses &&
             state.addresses.isEmpty) {
-          return Center(
-            child: Text(
-              S.of(context).no_addresses,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-          );
+          return EmptyAddressesBody();
         }
         return _LoadingBody();
       },

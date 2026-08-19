@@ -203,6 +203,10 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
+  void resetCart() {
+    emit(CartState.initial());
+  }
+
   @override
   Future<void> close() {
     for (final timer in _debounceTimers.values) {

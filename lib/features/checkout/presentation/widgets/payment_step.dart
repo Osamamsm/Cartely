@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
-import 'package:e_commerce/core/helpers/testing_lists.dart';
+import 'package:e_commerce/core/models/payment_method.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/continue_button.dart';
@@ -11,15 +11,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PaymentStep extends StatefulWidget {
   final List<PaymentMethod> paymentMethods;
+  final PaymentType selectedPaymentType;
 
-  const PaymentStep({super.key, required this.paymentMethods});
+  const PaymentStep({
+    super.key,
+    required this.paymentMethods,
+    required this.selectedPaymentType,
+  });
 
   @override
   State<PaymentStep> createState() => _PaymentStepState();
 }
 
 class _PaymentStepState extends State<PaymentStep> {
-  String selectedPaymentId = 'card';
+  late PaymentType _selectedPaymentType;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedPaymentType = widget.selectedPaymentType;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,7 +48,9 @@ class _PaymentStepState extends State<PaymentStep> {
                       Text(
                         S.of(context).payment_method,
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withValues(alpha: 0.5),
                           letterSpacing: 1.2,
                         ),
                       ),
@@ -53,13 +67,16 @@ class _PaymentStepState extends State<PaymentStep> {
                     final payment = widget.paymentMethods[index];
                     return _PaymentSelectableCard(
                       payment: payment,
-                      isSelected: payment.id == selectedPaymentId,
+                      isSelected: payment.type == _selectedPaymentType,
                       onTap: () {
-                        context.read<CheckoutCubit>().setPaymentMethodId(
-                          payment.id,
+                        context.read<CheckoutCubit>().setPaymentMethod(
+                          paymentType: payment.type,
                         );
                         setState(() {
-                          selectedPaymentId = payment.id;
+                          context.read<CheckoutCubit>().setPaymentMethod(
+                            paymentType: payment.type,
+                          );
+                          _selectedPaymentType = payment.type;
                         });
                       },
                     );
@@ -84,7 +101,12 @@ class _PaymentStepState extends State<PaymentStep> {
               },
               child: Text(
                 S.of(context).back_to_address,
-                style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5), fontSize: 14),
+                style: TextStyle(
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.5),
+                  fontSize: 14,
+                ),
               ),
             ),
             vGap(8),
@@ -120,6 +142,7 @@ class _PaymentSelectableCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SelectableCardWidget(
+      isEnabled: payment.isEnabled,
       isSelected: isSelected,
       onTap: onTap,
       icon: _getIcon(),

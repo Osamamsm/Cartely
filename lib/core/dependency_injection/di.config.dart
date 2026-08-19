@@ -83,10 +83,22 @@ import 'package:e_commerce/features/cart/domain/use_cases/update_cart_item.dart'
     as _i618;
 import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubit.dart'
     as _i325;
+import 'package:e_commerce/features/checkout/data/data_source/checkout_remote_data_source.dart'
+    as _i209;
+import 'package:e_commerce/features/checkout/data/repo/checkout_repo_impl.dart'
+    as _i254;
+import 'package:e_commerce/features/checkout/domain/repo/checkout_repo.dart'
+    as _i128;
+import 'package:e_commerce/features/checkout/domain/use_cases/place_order_cash_on_delivery_use_case.dart'
+    as _i719;
+import 'package:e_commerce/features/checkout/domain/use_cases/place_order_with_online_payment_use_case.dart'
+    as _i16;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart'
     as _i555;
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart'
     as _i517;
+import 'package:e_commerce/features/checkout/presentation/logic/payment_confirmation_cubit/payment_confirmation_cubit.dart'
+    as _i553;
 import 'package:e_commerce/features/home/presentation/logic/categories_cubit/categories_cubit.dart'
     as _i531;
 import 'package:e_commerce/features/home/presentation/logic/get_products_by_category_cubit/get_products_by_category_cubit.dart'
@@ -99,6 +111,20 @@ import 'package:e_commerce/features/home/presentation/logic/product_search_cubit
     as _i831;
 import 'package:e_commerce/features/notifications/logic/cubit/notifications_settings_cubit.dart'
     as _i382;
+import 'package:e_commerce/features/orders/data/data_source/orders_remote_data_source.dart'
+    as _i800;
+import 'package:e_commerce/features/orders/data/repo/orders_repo_impl.dart'
+    as _i139;
+import 'package:e_commerce/features/orders/domain/repo/orders_repo.dart'
+    as _i144;
+import 'package:e_commerce/features/orders/domain/use_cases/get_order_details_use_case.dart'
+    as _i279;
+import 'package:e_commerce/features/orders/domain/use_cases/get_orders_use_case.dart'
+    as _i594;
+import 'package:e_commerce/features/orders/presentation/logic/get_order_details_cubit/get_order_details_cubit.dart'
+    as _i165;
+import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_cubit.dart'
+    as _i93;
 import 'package:e_commerce/features/product/data/data_source/remote_data_source/products_remote_data_source.dart'
     as _i651;
 import 'package:e_commerce/features/product/data/repos/product_repo_impl.dart'
@@ -146,7 +172,6 @@ extension GetItInjectableX on _i174.GetIt {
     final preferencesModule = _$PreferencesModule();
     final supabaseClientProvider = _$SupabaseClientProvider();
     gh.factory<_i594.ImagePickerCubit>(() => _i594.ImagePickerCubit());
-    gh.factory<_i555.CheckoutCubit>(() => _i555.CheckoutCubit());
     gh.factory<_i517.CheckoutFlowCubit>(() => _i517.CheckoutFlowCubit());
     gh.lazySingleton<_i457.DeepLinkCubit>(() => _i457.DeepLinkCubit());
     await gh.lazySingletonAsync<_i460.SharedPreferences>(
@@ -166,6 +191,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i1063.ProfileRemoteDataSource>(
       () => _i1063.ProfileRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
     );
+    gh.lazySingleton<_i800.OrdersRemoteDataSource>(
+      () => _i800.OrdersRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
+    );
     gh.lazySingleton<_i676.CartRemoteDataSource>(
       () => _i676.CartRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
     );
@@ -184,6 +212,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i56.AddressRepo>(
       () => _i920.AddressRepoImpl(gh<_i295.AddressRemoteDataSource>()),
     );
+    gh.lazySingleton<_i209.CheckoutRemoteDataSource>(
+      () => _i209.CheckoutRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
+    );
+    gh.lazySingleton<_i128.CheckoutRepo>(
+      () => _i254.CheckoutRepoImpl(gh<_i209.CheckoutRemoteDataSource>()),
+    );
     gh.lazySingleton<_i651.ProductRemoteDataSource>(
       () => _i651.ProductSupabaseDataSourceImpl(gh<_i74.SupabaseService>()),
     );
@@ -193,6 +227,22 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i1005.ProductRepo>(
       () => _i977.ProductRepoImpl(gh<_i651.ProductRemoteDataSource>()),
     );
+    gh.lazySingleton<_i144.OrdersRepo>(
+      () => _i139.OrderRepoImpl(gh<_i800.OrdersRemoteDataSource>()),
+    );
+    gh.factoryParam<_i553.PaymentConfirmationCubit, String, dynamic>(
+      (orderId, _) => _i553.PaymentConfirmationCubit(
+        gh<_i144.OrdersRepo>(),
+        gh<_i454.SupabaseClient>(),
+        orderId,
+      ),
+    );
+    gh.factory<_i279.GetOrderDetailsUseCase>(
+      () => _i279.GetOrderDetailsUseCase(gh<_i144.OrdersRepo>()),
+    );
+    gh.factory<_i594.GetOrdersUseCase>(
+      () => _i594.GetOrdersUseCase(gh<_i144.OrdersRepo>()),
+    );
     gh.factory<_i382.NotificationsSettingsCubit>(
       () => _i382.NotificationsSettingsCubit(
         gh<_i164.PushNotificationsService>(),
@@ -200,6 +250,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i380.AuthRepo>(
       () => _i562.AuthRepoImpl(gh<_i254.AuthRemoteDataSource>()),
+    );
+    gh.factory<_i719.PlaceOrderCashOnDeliveryUseCase>(
+      () => _i719.PlaceOrderCashOnDeliveryUseCase(gh<_i128.CheckoutRepo>()),
+    );
+    gh.factory<_i16.PlaceOrderWithOnlinePaymentUseCase>(
+      () => _i16.PlaceOrderWithOnlinePaymentUseCase(gh<_i128.CheckoutRepo>()),
     );
     gh.factory<_i756.WishlistCubit>(
       () => _i756.WishlistCubit(gh<_i733.WishListRepo>()),
@@ -209,6 +265,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i699.GetWishListCubit>(
       () => _i699.GetWishListCubit(gh<_i733.WishListRepo>()),
+    );
+    gh.factory<_i165.GetOrderDetailsCubit>(
+      () => _i165.GetOrderDetailsCubit(gh<_i279.GetOrderDetailsUseCase>()),
+    );
+    gh.factory<_i555.CheckoutCubit>(
+      () => _i555.CheckoutCubit(
+        gh<_i719.PlaceOrderCashOnDeliveryUseCase>(),
+        gh<_i16.PlaceOrderWithOnlinePaymentUseCase>(),
+      ),
     );
     gh.lazySingleton<_i571.CartRepo>(
       () => _i197.CartRepoImpl(gh<_i676.CartRemoteDataSource>()),
@@ -251,6 +316,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i158.ProductDetailsCubit>(
       () => _i158.ProductDetailsCubit(gh<_i1005.ProductRepo>()),
+    );
+    gh.factory<_i93.GetOrdersCubit>(
+      () => _i93.GetOrdersCubit(gh<_i594.GetOrdersUseCase>()),
     );
     gh.factory<_i764.UpdateProfileWithAvatarUseCase>(
       () => _i764.UpdateProfileWithAvatarUseCase(gh<_i245.ProfileRepo>()),

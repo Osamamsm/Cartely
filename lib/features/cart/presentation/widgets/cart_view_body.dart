@@ -21,9 +21,7 @@ class CartViewBody extends StatelessWidget {
           right: 0,
           bottom: 0,
           child: OrderSummaryCard(
-            subtotal: cart.subtotal,
-            shipping: cart.shippingCost,
-            total: cart.total,
+            cart: cart,
           ),
         ),
       ],

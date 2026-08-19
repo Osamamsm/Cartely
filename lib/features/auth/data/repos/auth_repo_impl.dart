@@ -31,12 +31,14 @@ class AuthRepoImpl implements AuthRepo {
     String email,
     String password,
     String fullName,
+    String phoneNumber,
   ) async {
     try {
       final response = await _remoteDataSource.signUp(
         email: email,
         password: password,
         fullName: fullName,
+        phoneNumber: phoneNumber
       );
       final user = response.user;
       return Right(AppUser(id: user!.id, email: user.email!));

@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/core/widgets/gradient_elevated_button.dart';
 import 'package:e_commerce/core/widgets/summary_row.dart';
+import 'package:e_commerce/features/cart/domain/entities/cart.dart';
 import 'package:e_commerce/features/checkout/presentation/views/checkout_view.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -10,17 +11,13 @@ import 'package:go_router/go_router.dart';
 class OrderSummaryCard extends StatelessWidget {
   const OrderSummaryCard({
     super.key,
-    required this.subtotal,
-    required this.shipping,
+    required this.cart,
     this.tax,
-    this.discount, required this.total,
+    this.discount,
   });
-
-  final double subtotal;
-  final double shipping;
+  final Cart cart;
   final double? tax;
   final double? discount;
-  final double total;
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +35,9 @@ class OrderSummaryCard extends StatelessWidget {
 
           child: Column(
             children: [
-              SummaryRow(label: s.subtotal, value: subtotal),
+              SummaryRow(label: s.subtotal, value: cart.subtotal),
               vGap(8),
-              SummaryRow(label: s.shipping, value: shipping),
+              SummaryRow(label: s.shipping, value: cart.shippingCost),
               vGap(8),
               tax != null
                   ? SummaryRow(label: s.tax, value: tax!)
@@ -55,11 +52,13 @@ class OrderSummaryCard extends StatelessWidget {
                   context,
                 ).colorScheme.onSurface.withValues(alpha: .1),
               ),
-              SummaryRow(label: s.total, value: total, isTotal: true),
+              SummaryRow(label: s.total, value: cart.total, isTotal: true),
               vGap(8),
               GradientElevatedButton(
                 onPressed: () {
-                  GoRouter.of(context).push(CheckoutView.routeName);
+                  GoRouter.of(
+                    context,
+                  ).push(CheckoutView.routeName, extra: cart);
                 },
                 child: Text(s.proceed_to_checkout),
               ),

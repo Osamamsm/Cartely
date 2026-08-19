@@ -9,6 +9,7 @@ abstract class AuthRemoteDataSource {
     required String email,
     required String password,
     required String fullName,
+    required String phoneNumber,
   });
 
   Future<void> requestPasswordReset({required String email});
@@ -41,11 +42,12 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String email,
     required String password,
     required String fullName,
+    required String phoneNumber,
   }) async {
     AuthResponse response = await _service.auth.signUp(
       email: email,
       password: password,
-      data: {'fullName': fullName},
+      data: {'fullName': fullName, 'phoneNumber': phoneNumber},
       emailRedirectTo: "my-e-commerce-app://auth/callback",
     );
     return response;

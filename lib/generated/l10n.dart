@@ -1351,6 +1351,461 @@ class S {
   String get no {
     return Intl.message('No', name: 'no', desc: '', args: []);
   }
+
+  /// `No addresses yet`
+  String get no_addresses_found {
+    return Intl.message(
+      'No addresses yet',
+      name: 'no_addresses_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a shipping address to continue with your order.`
+  String get add_address_to_continue_checkout {
+    return Intl.message(
+      'Add a shipping address to continue with your order.',
+      name: 'add_address_to_continue_checkout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong. Please try again.`
+  String get something_went_wrong {
+    return Intl.message(
+      'Something went wrong. Please try again.',
+      name: 'something_went_wrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Number`
+  String get order_number {
+    return Intl.message(
+      'Order Number',
+      name: 'order_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your order has been placed successfully!`
+  String get order_placed_message {
+    return Intl.message(
+      'Your order has been placed successfully!',
+      name: 'order_placed_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Placing Your Order...`
+  String get placing_order {
+    return Intl.message(
+      'Placing Your Order...',
+      name: 'placing_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please wait while we confirm your order. This will only take a moment.`
+  String get please_wait_while_we_process_your_order {
+    return Intl.message(
+      'Please wait while we confirm your order. This will only take a moment.',
+      name: 'please_wait_while_we_process_your_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unfortunately, your order was rejected. Please try again or contact support for assistance.`
+  String get order_rejected_message {
+    return Intl.message(
+      'Unfortunately, your order was rejected. Please try again or contact support for assistance.',
+      name: 'order_rejected_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Rejected`
+  String get order_rejected_title {
+    return Intl.message(
+      'Order Rejected',
+      name: 'order_rejected_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to Cart`
+  String get back_to_cart {
+    return Intl.message(
+      'Back to Cart',
+      name: 'back_to_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue Shopping`
+  String get continue_shopping {
+    return Intl.message(
+      'Continue Shopping',
+      name: 'continue_shopping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Orders`
+  String get view_orders {
+    return Intl.message('View Orders', name: 'view_orders', desc: '', args: []);
+  }
+
+  /// `No orders found`
+  String get noOrdersFound {
+    return Intl.message(
+      'No orders found',
+      name: 'noOrdersFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error: {message}`
+  String ordersError(String message) {
+    return Intl.message(
+      'Error: $message',
+      name: 'ordersError',
+      desc: '',
+      args: [message],
+    );
+  }
+
+  /// `On its way`
+  String get orderOnItsWay {
+    return Intl.message(
+      'On its way',
+      name: 'orderOnItsWay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Order`
+  String get cancelOrder {
+    return Intl.message(
+      'Cancel Order',
+      name: 'cancelOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track Order`
+  String get trackOrder {
+    return Intl.message('Track Order', name: 'trackOrder', desc: '', args: []);
+  }
+
+  /// `Show Details`
+  String get showDetails {
+    return Intl.message(
+      'Show Details',
+      name: 'showDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reorder`
+  String get reorder {
+    return Intl.message('Reorder', name: 'reorder', desc: '', args: []);
+  }
+
+  /// `Delivery Status`
+  String get deliveryStatus {
+    return Intl.message(
+      'Delivery Status',
+      name: 'deliveryStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Items`
+  String get orderItems {
+    return Intl.message('Items', name: 'orderItems', desc: '', args: []);
+  }
+
+  /// `Qty: {quantity}`
+  String quantity(int quantity) {
+    return Intl.message(
+      'Qty: $quantity',
+      name: 'quantity',
+      desc: '',
+      args: [quantity],
+    );
+  }
+
+  /// `Payment Status`
+  String get paymentStatus {
+    return Intl.message(
+      'Payment Status',
+      name: 'paymentStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to load order details`
+  String get orderDetailsError {
+    return Intl.message(
+      'Unable to load order details',
+      name: 'orderDetailsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order #{orderNumber}`
+  String orderNumber(String orderNumber) {
+    return Intl.message(
+      'Order #$orderNumber',
+      name: 'orderNumber',
+      desc: '',
+      args: [orderNumber],
+    );
+  }
+
+  /// `Placed on {date}`
+  String placedOn(String date) {
+    return Intl.message(
+      'Placed on $date',
+      name: 'placedOn',
+      desc: 'Displays the order creation date',
+      args: [date],
+    );
+  }
+
+  /// `Pending`
+  String get orderStatusPending {
+    return Intl.message(
+      'Pending',
+      name: 'orderStatusPending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirmed`
+  String get orderStatusConfirmed {
+    return Intl.message(
+      'Confirmed',
+      name: 'orderStatusConfirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Processing`
+  String get orderStatusProcessing {
+    return Intl.message(
+      'Processing',
+      name: 'orderStatusProcessing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipped`
+  String get orderStatusShipped {
+    return Intl.message(
+      'Shipped',
+      name: 'orderStatusShipped',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Out for Delivery`
+  String get orderStatusOutForDelivery {
+    return Intl.message(
+      'Out for Delivery',
+      name: 'orderStatusOutForDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivered`
+  String get orderStatusDelivered {
+    return Intl.message(
+      'Delivered',
+      name: 'orderStatusDelivered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Returned`
+  String get orderStatusReturned {
+    return Intl.message(
+      'Returned',
+      name: 'orderStatusReturned',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancelled`
+  String get orderStatusCancelled {
+    return Intl.message(
+      'Cancelled',
+      name: 'orderStatusCancelled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Details`
+  String get orderDetails {
+    return Intl.message(
+      'Order Details',
+      name: 'orderDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by order number`
+  String get search_order_by_number {
+    return Intl.message(
+      'Search by order number',
+      name: 'search_order_by_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirming your payment...`
+  String get paymentConfirmingTitle {
+    return Intl.message(
+      'Confirming your payment...',
+      name: 'paymentConfirmingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This usually takes just a few seconds. Please don’t close this screen.`
+  String get paymentConfirmingMessage {
+    return Intl.message(
+      'This usually takes just a few seconds. Please don’t close this screen.',
+      name: 'paymentConfirmingMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Confirmed!`
+  String get paymentConfirmedTitle {
+    return Intl.message(
+      'Payment Confirmed!',
+      name: 'paymentConfirmedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your order has been placed successfully.`
+  String get paymentConfirmedMessage {
+    return Intl.message(
+      'Your order has been placed successfully.',
+      name: 'paymentConfirmedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Failed`
+  String get paymentFailedTitle {
+    return Intl.message(
+      'Payment Failed',
+      name: 'paymentFailedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We couldn’t confirm your payment. Please try again, or use a different payment method.`
+  String get paymentFailedMessage {
+    return Intl.message(
+      'We couldn’t confirm your payment. Please try again, or use a different payment method.',
+      name: 'paymentFailedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirmation Delayed`
+  String get paymentConfirmationDelayedTitle {
+    return Intl.message(
+      'Confirmation Delayed',
+      name: 'paymentConfirmationDelayedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We haven’t received confirmation of your payment yet. Don’t worry — check your orders in a moment, it may still go through.`
+  String get paymentConfirmationDelayedMessage {
+    return Intl.message(
+      'We haven’t received confirmation of your payment yet. Don’t worry — check your orders in a moment, it may still go through.',
+      name: 'paymentConfirmationDelayedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Order Details`
+  String get viewOrderDetails {
+    return Intl.message(
+      'View Order Details',
+      name: 'viewOrderDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue Shopping`
+  String get continueShopping {
+    return Intl.message(
+      'Continue Shopping',
+      name: 'continueShopping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try Again`
+  String get tryAgain {
+    return Intl.message('Try Again', name: 'tryAgain', desc: '', args: []);
+  }
+
+  /// `Back to Home`
+  String get backToHome {
+    return Intl.message('Back to Home', name: 'backToHome', desc: '', args: []);
+  }
+
+  /// `Go to Orders`
+  String get goToOrders {
+    return Intl.message('Go to Orders', name: 'goToOrders', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

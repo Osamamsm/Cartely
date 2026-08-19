@@ -8,25 +8,31 @@ class SelectableCardWidget extends StatelessWidget {
     required this.onTap,
     required this.child,
     required this.icon,
+    this.isEnabled = true,
   });
 
   final bool isSelected;
   final VoidCallback onTap;
   final Widget child;
   final IconData icon;
+  final bool isEnabled;
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return GestureDetector(
-      onTap: onTap,
+      onTap: isEnabled ? onTap : null,
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
+          color: isEnabled
+              ? colorScheme.primaryContainer
+              : colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isSelected
-                ? Theme.of(context).colorScheme.primary
+            color: isEnabled && isSelected
+                ? colorScheme.primary
                 : Colors.transparent,
             width: 1,
           ),
@@ -38,18 +44,24 @@ class SelectableCardWidget extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondaryContainer,
+                color: isEnabled
+                    ? colorScheme.secondaryContainer
+                    : colorScheme.surfaceContainer,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(
                 icon,
-                color: Theme.of(context).colorScheme.primary,
+                color: isEnabled
+                    ? colorScheme.primary
+                    : colorScheme.onSurface.withValues(alpha: 0.4),
                 size: 20,
               ),
             ),
             hGap(16),
-            child,
-            _CircleCheckbox(isSelected: isSelected),
+            Expanded(
+              child: Opacity(opacity: isEnabled ? 1 : 0.5, child: child),
+            ),
+            _CircleCheckbox(isSelected: isSelected, isEnabled: isEnabled),
           ],
         ),
       ),
@@ -58,28 +70,35 @@ class SelectableCardWidget extends StatelessWidget {
 }
 
 class _CircleCheckbox extends StatelessWidget {
-  const _CircleCheckbox({required this.isSelected});
+  const _CircleCheckbox({required this.isSelected, required this.isEnabled});
 
   final bool isSelected;
+  final bool isEnabled;
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       width: 24,
       height: 24,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: isSelected
-              ? Theme.of(context).colorScheme.primary
-              : Theme.of(context).colorScheme.surface,
+          color: !isEnabled
+              ? colorScheme.onSurface.withValues(alpha: 0.2)
+              : isSelected
+              ? colorScheme.primary
+              : colorScheme.surface,
           width: 2,
         ),
-        color: isSelected
-            ? Theme.of(context).colorScheme.primary
+        color: !isEnabled
+            ? colorScheme.surfaceContainerHighest
+            : isSelected
+            ? colorScheme.primary
             : Colors.transparent,
       ),
-      child: isSelected
+      child: isSelected && isEnabled
           ? const Icon(Icons.check, color: Colors.white, size: 16)
           : null,
     );

@@ -163,5 +163,84 @@
     "startShopping": "Start Shopping",
     "clear_cart_confirmation": "Are you sure you want to clear all items from your cart?",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "no_addresses_found": "No addresses yet",
+    "add_address_to_continue_checkout": "Add a shipping address to continue with your order.",
+    "something_went_wrong": "Something went wrong. Please try again.",
+    "order_number": "Order Number",
+    "order_placed_message": "Your order has been placed successfully!",
+    "placing_order": "Placing Your Order...",
+    "please_wait_while_we_process_your_order": "Please wait while we confirm your order. This will only take a moment.",
+    "order_rejected_message": "Unfortunately, your order was rejected. Please try again or contact support for assistance.",
+    "order_rejected_title": "Order Rejected",
+    "back_to_cart": "Back to Cart",
+    "continue_shopping": "Continue Shopping",
+    "view_orders": "View Orders",
+    "noOrdersFound": "No orders found",
+    "ordersError": "Error: {message}",
+    "@ordersError": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "orderOnItsWay": "On its way",
+  "cancelOrder": "Cancel Order",
+  "trackOrder": "Track Order",
+  "showDetails": "Show Details",
+  "reorder": "Reorder",
+  "deliveryStatus": "Delivery Status",
+  "orderItems": "Items",
+  "quantity": "Qty: {quantity}",
+  "@quantity": {
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentStatus": "Payment Status",
+  "orderDetailsError": "Unable to load order details",
+  "orderNumber": "Order #{orderNumber}",
+  "@orderNumber": {
+    "placeholders": {
+      "orderNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "placedOn": "Placed on {date}",
+  "@placedOn": {
+    "description": "Displays the order creation date",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "orderStatusPending": "Pending",
+  "orderStatusConfirmed": "Confirmed",
+  "orderStatusProcessing": "Processing",
+  "orderStatusShipped": "Shipped",
+  "orderStatusOutForDelivery": "Out for Delivery",
+  "orderStatusDelivered": "Delivered",
+  "orderStatusReturned": "Returned",
+  "orderStatusCancelled": "Cancelled",
+  "orderDetails" : "Order Details",
+  "search_order_by_number":"Search by order number",
+  "paymentConfirmingTitle": "Confirming your payment...",
+  "paymentConfirmingMessage": "This usually takes just a few seconds. Please don’t close this screen.",
+  "paymentConfirmedTitle": "Payment Confirmed!",
+  "paymentConfirmedMessage": "Your order has been placed successfully.",
+  "paymentFailedTitle": "Payment Failed",
+  "paymentFailedMessage": "We couldn’t confirm your payment. Please try again, or use a different payment method.",
+  "paymentConfirmationDelayedTitle": "Confirmation Delayed",
+  "paymentConfirmationDelayedMessage": "We haven’t received confirmation of your payment yet. Don’t worry — check your orders in a moment, it may still go through.",
+  "viewOrderDetails": "View Order Details",
+  "continueShopping": "Continue Shopping",
+  "tryAgain": "Try Again",
+  "backToHome": "Back to Home",
+  "goToOrders": "Go to Orders"
 }
+

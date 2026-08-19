@@ -11,7 +11,7 @@ const ColorScheme darkColorScheme = ColorScheme(
   primaryContainer: Color(0xFF1E293B), // Slate-800 — cards, containers
   onPrimaryContainer: Color(0xFFE2E8F0),
   surfaceContainerHighest: Color(0xFF1E293B),
-  error: Color(0xFFFCA5A5), // Red-300 — softer on dark bg
+  error: Color.fromARGB(255, 218, 70, 70), // Red-300 — softer on dark bg
   onError: Color(0xFF7F1D1D),
   outline: Color(0xFF334155), // Slate-700 — subtle borders
 );

@@ -13,13 +13,14 @@ class SavedAddressesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: S.of(context).my_addresses,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        onPressed: () {
-          GoRouter.of(context).push(AddAddressView.routeName);
-        },
-        child: Icon(Icons.add, color: Theme.of(context).colorScheme.onPrimary),
-      ),
+      actionWidgets: [
+        IconButton(
+          onPressed: () {
+            GoRouter.of(context).push(AddAddressView.routeName);
+          },
+          icon: const Icon(Icons.add),
+        ),
+      ],
       child: SavedAddressesBlocBuilder(),
     );
   }

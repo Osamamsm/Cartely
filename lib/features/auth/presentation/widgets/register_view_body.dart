@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/core/helpers/validators.dart';
+import 'package:e_commerce/core/widgets/custom_labeled_text_form_field.dart';
 import 'package:e_commerce/features/auth/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:e_commerce/features/auth/presentation/widgets/email_text_field.dart';
@@ -20,7 +21,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
 
   final passwordController = TextEditingController();
 
-  late String name, email, password, confirmPassword;
+  late String name, email, password, confirmPassword, phoneNumber;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -48,6 +49,17 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 onSaved: (value) {
                   email = value!;
                 },
+              ),
+              vGap(20),
+              CustomLabeledTextFormField(
+                label: S.of(context).phone_number,
+                suffixIcon: Icons.phone,
+                validator: Validators.phoneNumberValidator,
+                onSaved: (value) {
+                  phoneNumber = value!;
+                },
+                keyboardType: TextInputType.phone,
+                obscureText: false,
               ),
               vGap(20),
               PasswordTextField(
@@ -78,7 +90,12 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    context.read<SignUpCubit>().signUp(email, password, name);
+                    context.read<SignUpCubit>().signUp(
+                      email,
+                      password,
+                      name,
+                      phoneNumber,
+                    );
                   }
                 },
                 child: Text(S.of(context).register),
