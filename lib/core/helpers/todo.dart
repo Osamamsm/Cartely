@@ -1,8 +1,5 @@
-
-//Todo: apply localizations to product data across the app
 //TODO: apply pagination across nedding features within the app
 //TODO: create splash screen 
-//TODO: add filter for inStock option in home feed
 //todo: integrate reviews feature with ui
 //todo: fixing light theme
 //todo: testing all loading, empty and failure states across the ui 

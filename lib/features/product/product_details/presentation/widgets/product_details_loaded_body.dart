@@ -43,11 +43,9 @@ class ProductDetailsLoadedBody extends StatelessWidget {
             vGap(20),
             ProductHeaderSection(productDetails: product),
             vGap(10),
-
             // Dynamic variation selectors — no hardcoding
             ...variationNames.map((variationName) {
               final options = availableOptionsFor(variationName);
-
               return Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: VariationSelector(
@@ -62,8 +60,7 @@ class ProductDetailsLoadedBody extends StatelessWidget {
                 ),
               );
             }),
-
-            ProductDescriptionSection(description: product.enDescription),
+            ProductDescriptionSection(productDetails: product),
             vGap(10),
             ProductReviewsSection(
               productId: product.productId,

@@ -19,29 +19,22 @@ class ColorSelectorItem extends StatelessWidget {
   final Color activeBorderColor;
   final VoidCallback onTap;
 
-  Color _getContrastColor(Color backgroundColor) {
-    final luminance = backgroundColor.computeLuminance();
-    return luminance > 0.5 ? Colors.black : Colors.white;
-  }
-
   Color _parseHex(String hex) =>
       Color(int.parse(hex.replaceFirst('#', '0xFF')));
 
   @override
   Widget build(BuildContext context) {
-    final color = option.hexCode != null
-        ? _parseHex(option.hexCode!)
-        : Colors.grey;
+    final color = option.hexCode != null ? _parseHex(option.hexCode!) : Colors.grey;
 
     return RepaintBoundary(
       child: GestureDetector(
-        onTap:  onTap,
+        onTap: onTap,
         child: Opacity(
           opacity: outOfStock ? 0.35 : 1.0,
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 100),
+            duration: const Duration(milliseconds: 150),
             curve: Curves.easeOut,
-            width: isSelected ? size * 1.9 : size,
+            width: size,
             height: size,
             padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
@@ -55,27 +48,7 @@ class ColorSelectorItem extends StatelessWidget {
                 color: color,
                 borderRadius: BorderRadius.circular(size / 2),
               ),
-              // strikethrough line for out of stock
-              child: outOfStock
-                  ? CustomPaint(painter: _StrikethroughPainter())
-                  : isSelected
-                      ? TweenAnimationBuilder(
-                          tween: Tween(begin: 0.0, end: 1.0),
-                          duration: const Duration(milliseconds: 200),
-                          curve: const Interval(0.5, 1.0, curve: Curves.easeIn),
-                          builder: (context, value, child) =>
-                              Opacity(opacity: value, child: child),
-                          child: Center(
-                            child: Text(
-                              option.optionEn,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge
-                                  ?.copyWith(color: _getContrastColor(color)),
-                            ),
-                          ),
-                        )
-                      : null,
+              child: outOfStock ? CustomPaint(painter: _StrikethroughPainter()) : null,
             ),
           ),
         ),
@@ -91,7 +64,7 @@ class _StrikethroughPainter extends CustomPainter {
       Offset(size.width * 0.15, size.height * 0.85),
       Offset(size.width * 0.85, size.height * 0.15),
       Paint()
-        ..color = Colors.white.withOpacity(0.8)
+        ..color = Colors.white.withValues(alpha: 0.8)
         ..strokeWidth = 1.5,
     );
   }

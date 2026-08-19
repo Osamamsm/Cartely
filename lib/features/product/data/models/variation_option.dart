@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class VariationOption {
   final String variationEn;
   final String variationAr;
@@ -20,4 +22,13 @@ class VariationOption {
     optionAr: j['option_ar'],
     hexCode: j['hex_code'],
   );
+
+  bool _isArabic(BuildContext context) =>
+      Localizations.localeOf(context).languageCode == 'ar';
+
+  String localizedVariation(BuildContext context) =>
+      _isArabic(context) ? variationAr : variationEn;
+
+  String localizedOption(BuildContext context) =>
+      _isArabic(context) ? optionAr : optionEn;
 }

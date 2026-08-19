@@ -2,8 +2,8 @@ import 'package:custom_sliding_segmented_control/custom_sliding_segmented_contro
 import 'package:e_commerce/features/product/data/models/variation_option.dart';
 import 'package:flutter/material.dart';
 
-class SizeSelector extends StatelessWidget {
-  const SizeSelector({
+class TextVariationSelector extends StatelessWidget {
+  const TextVariationSelector({
     super.key,
     required this.options,
     required this.selectedOptionEn,
@@ -18,11 +18,10 @@ class SizeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Build the map the package expects, with out-of-stock styled differently
     final childrenMap = {
       for (final opt in options)
         opt.optionEn: Text(
-          opt.optionEn,
+          opt.localizedOption(context),
           style: TextStyle(
             decoration: isOutOfStock(opt.optionEn)
                 ? TextDecoration.lineThrough
@@ -47,10 +46,7 @@ class SizeSelector extends StatelessWidget {
       ),
       isStretch: true,
       children: childrenMap,
-      onValueChanged: (value) {
-        // Silently ignore taps on out-of-stock options
-        onChanged(value);
-      },
+      onValueChanged: onChanged,
     );
   }
 }

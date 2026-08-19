@@ -32,7 +32,14 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
       orElse: () => product.productItems.first,
     );
 
-    return {for (final v in defaultItem.variations) v.variationEn: v.optionEn};
+    final selection = {
+      for (final v in defaultItem.variations) v.variationEn: v.optionEn,
+    };
+    print('DEFAULT ITEM: ${defaultItem.id}');
+    print('DEFAULT VARIATIONS: ${defaultItem.variations}');
+    print('DEFAULT SELECTION: $selection');
+
+    return selection;
   }
 
   void selectOption(String variationEn, String optionEn) {
