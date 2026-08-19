@@ -4,6 +4,7 @@ class PaymentMethod {
   final String label;
   final String description;
   final bool isDefault;
+  final bool isEnabled;
 
   PaymentMethod({
     required this.id,
@@ -11,6 +12,7 @@ class PaymentMethod {
     required this.label,
     required this.description,
     required this.isDefault,
+    required this.isEnabled
   });
 }
 

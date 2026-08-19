@@ -142,6 +142,7 @@ class _PaymentSelectableCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SelectableCardWidget(
+      isEnabled: payment.isEnabled,
       isSelected: isSelected,
       onTap: onTap,
       icon: _getIcon(),

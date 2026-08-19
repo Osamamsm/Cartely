@@ -1,8 +1,8 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
-import 'package:e_commerce/core/helpers/testing_lists.dart';
 import 'package:e_commerce/features/payment/presentation/widgets/payment_card_footer.dart';
 import 'package:e_commerce/features/payment/presentation/widgets/payment_card_header.dart';
 import 'package:e_commerce/features/payment/presentation/widgets/payment_card_number.dart';
+import 'package:e_commerce/features/payment/presentation/widgets/payment_methods_view_body.dart';
 import 'package:flutter/material.dart';
 
 class PaymentCard extends StatelessWidget {

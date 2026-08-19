@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/dependency_injection/di.dart';
-import 'package:e_commerce/core/helpers/testing_lists.dart';
+import 'package:e_commerce/core/helpers/constants.dart';
 import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
 import 'package:e_commerce/features/addresses/presentation/logic/addresses_cubit/addresses_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart';
@@ -42,7 +42,7 @@ class CheckoutFormBody extends StatelessWidget {
                     child: AddressStep(),
                   ),
                   PaymentStep(
-                    paymentMethods: TestingLists.paymentMethods,
+                    paymentMethods: Constants.paymentMethods,
                     selectedPaymentType: context
                         .read<CheckoutCubit>()
                         .state
@@ -63,7 +63,7 @@ class CheckoutFormBody extends StatelessWidget {
                           label: '',
                           isDefault: false,
                         ),
-                    selectedPayment: TestingLists.paymentMethods.firstWhere(
+                    selectedPayment: Constants.paymentMethods.firstWhere(
                       (p) =>
                           p.type ==
                           context
