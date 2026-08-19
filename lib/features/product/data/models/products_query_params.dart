@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/home/presentation/widgets/products_filter_sort_bar.dart';
+import 'package:e_commerce/features/home/presentation/widgets/filters/product_filter_state.dart';
 
 class ProductsQueryParams {
   final String? categoryId;
@@ -34,6 +34,7 @@ class ProductsQueryParams {
       minPrice: filters.priceRange?.start,
       maxPrice: filters.priceRange?.end,
       onSaleOnly: filters.onSaleOnly,
+      inStockOnly: filters.inStockOnly,
       minRating: filters.minRating,
       sortBy: _sortOptionToString(filters.sortBy),
       limit: limit,

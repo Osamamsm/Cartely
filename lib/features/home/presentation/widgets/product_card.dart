@@ -39,7 +39,9 @@ class ProductCard extends StatelessWidget {
           ),
           vGap(8),
           Text(
-            product.enName,
+            Localizations.localeOf(context).languageCode == 'ar'
+                ? product.arName
+                : product.enName,
             style: Theme.of(context).textTheme.titleSmall,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
