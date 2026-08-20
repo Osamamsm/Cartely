@@ -52,11 +52,12 @@ class ProductRepoImpl implements ProductRepo {
 
   @override
   Future<Either<Failure, List<Product>>> getProductsByCategory(
-    String categoryId,
+    {required String categoryId,required int page}
   ) async {
     try {
       final products = await _remoteDataSource.getProductsByCategory(
-        categoryId,
+        categoryId: categoryId,
+        page: page
       );
       return Right(products);
     } catch (e) {
