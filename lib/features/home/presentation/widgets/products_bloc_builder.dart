@@ -13,14 +13,14 @@ class ProductsBlocBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductFeedCubit, ProductFeedState>(
       builder: (context, state) {
-        if (state is ProductFeedError) {
+        if (state.status == ProductsStatus.failed) {
           return ProductsErrorSliver(
-            message: state.message,
+            message: state.errMessage,
             onRetry: () {
               context.read<ProductFeedCubit>().loadProducts();
             },
           );
-        } else if (state is ProductFeedLoaded) {
+        } else if (state.status == ProductsStatus.loaded) {
           return ProductsGridView(products: state.products);
         }
         return ProductsGridView(

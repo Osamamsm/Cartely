@@ -10,12 +10,17 @@ class ProductFeedCubit extends Cubit<ProductFeedState> {
   final ProductRepo _productRepo;
   ProductsQueryParams _currentParams = ProductsQueryParams.initial();
 
-  ProductFeedCubit(this._productRepo) : super(ProductFeedInitial());
+  ProductFeedCubit(this._productRepo) : super(ProductFeedState());
+
+  int _currentPage = 1;
+
+  final int _pageSize = 10;
 
   Future<void> setFilters(ProductFilterState filters) async {
     _currentParams = ProductsQueryParams.fromFilterState(
       filters,
       categoryId: _currentParams.categoryId,
+      page: _currentPage,
     );
     await loadProducts();
   }
@@ -23,11 +28,52 @@ class ProductFeedCubit extends Cubit<ProductFeedState> {
   Future<void> refresh() => loadProducts();
 
   Future<void> loadProducts() async {
-    emit(ProductFeedLoading());
+    emit(state.copyWith(status: ProductsStatus.loading));
     final result = await _productRepo.getProducts(_currentParams);
     result.fold(
-      (failure) => emit(ProductFeedError(failure.message.toString())),
-      (products) => emit(ProductFeedLoaded(products)),
+      (failure) => emit(
+        state.copyWith(
+          status: ProductsStatus.failed,
+          errMessage: failure.message.toString(),
+        ),
+      ),
+      (products) => emit(
+        state.copyWith(status: ProductsStatus.loaded, products: products),
+      ),
+    );
+  }
+
+  Future<void> loadMoreProducts() async {
+    if (state.isLoadingMore || !state.hasMore) return;
+
+    emit(state.copyWith(isLoadingMore: true));
+
+    final nextPage = _currentPage + 1;
+
+    final result = await _productRepo.getProducts(
+      _currentParams.copyWith(page: nextPage),
+    );
+
+    result.fold(
+      (failure) {
+        emit(
+          state.copyWith(
+            isLoadingMore: false,
+            errMessage: failure.message,
+            status: ProductsStatus.failed,
+          ),
+        );
+      },
+      (newProducts) {
+        _currentPage = nextPage;
+        emit(
+          state.copyWith(
+            products: [...state.products, ...newProducts],
+            isLoadingMore: false,
+            hasMore: newProducts.length >= _pageSize,
+          ),
+        );
+      },
     );
   }
 }

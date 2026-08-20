@@ -9,7 +9,7 @@ class ProductsQueryParams {
   final double? minRating;
   final String sortBy;
   final int limit;
-  final int offset;
+  final int page;
 
   const ProductsQueryParams({
     this.categoryId,
@@ -20,14 +20,14 @@ class ProductsQueryParams {
     this.minRating,
     this.sortBy = 'newest',
     this.limit = 20,
-    this.offset = 0,
+    required this.page,
   });
 
   factory ProductsQueryParams.fromFilterState(
     ProductFilterState filters, {
     String? categoryId,
-    int limit = 20,
-    int offset = 0,
+    int limit = 10,
+    required int page,
   }) {
     return ProductsQueryParams(
       categoryId: categoryId,
@@ -38,12 +38,12 @@ class ProductsQueryParams {
       minRating: filters.minRating,
       sortBy: _sortOptionToString(filters.sortBy),
       limit: limit,
-      offset: offset,
+      page: page,
     );
   }
 
   factory ProductsQueryParams.initial() {
-    return ProductsQueryParams();
+    return ProductsQueryParams(page: 1);
   }
 
   ProductsQueryParams copyWith({
@@ -55,7 +55,7 @@ class ProductsQueryParams {
     double? minRating,
     String? sortBy,
     int? limit,
-    int? offset,
+    int? page,
   }) {
     return ProductsQueryParams(
       categoryId: categoryId ?? this.categoryId,
@@ -66,7 +66,7 @@ class ProductsQueryParams {
       minRating: minRating ?? this.minRating,
       sortBy: sortBy ?? this.sortBy,
       limit: limit ?? this.limit,
-      offset: offset ?? this.offset,
+      page: page ?? this.page,
     );
   }
 

@@ -51,6 +51,8 @@ class ProductSupabaseDataSourceImpl implements ProductRemoteDataSource {
         'p_sort_by': params.sortBy.toString().split('.').last,
         'p_on_sale_only': params.onSaleOnly,
         'p_min_rating': params.minRating,
+        'p_page': params.page,
+        'p_limit': params.limit
       },
     );
     final List<Product> products = response
