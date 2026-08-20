@@ -23,11 +23,11 @@ class WishListViewBody extends StatelessWidget {
             state.wishListedIds,
           );
         },
-        child: BlocBuilder<GetWishListCubit, GetWishListState>(
+        child: BlocBuilder<GetWishListCubit, GetWishlistState>(
           builder: (context, state) {
-            if (state is GetWishListFailure) {
-              return WishlistFailureBody(message: state.message);
-            } else if (state is GetWishListSuccess) {
+            if (state.status == WishlistStatus.failed) {
+              return WishlistFailureBody(message: state.errMessage);
+            } else if (state.status == WishlistStatus.loaded) {
               final products = state.products;
               if (products.isEmpty) {
                 return WishlistEmptyBody(onBrowse: () {});

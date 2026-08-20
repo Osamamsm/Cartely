@@ -1,24 +1,35 @@
-
 import 'package:e_commerce/features/product/data/models/product.dart';
 
-sealed class GetWishListState {
-  const GetWishListState();
-
-  
-}
-
-final class GetWishListInitial extends GetWishListState {}
-
-final class GetWishListLoading extends GetWishListState {}
-
-final class GetWishListSuccess extends GetWishListState {
+class GetWishlistState {
   final List<Product> products;
+  final WishlistStatus status;
+  final bool isLoadingMore;
+  final bool hasMore;
+  final String errMessage;
 
-  const GetWishListSuccess(this.products);
+  const GetWishlistState({
+    this.products = const [],
+    this.status = WishlistStatus.initial,
+    this.isLoadingMore = false,
+    this.hasMore = true,
+    this.errMessage = "",
+  });
+
+  GetWishlistState copyWith({
+    List<Product>? products,
+    WishlistStatus? status,
+    bool? isLoadingMore,
+    bool? hasMore,
+    String? errMessage,
+  }) {
+    return GetWishlistState(
+      products: products ?? this.products,
+      status: status ?? this.status,
+      isLoadingMore: isLoadingMore ?? this.isLoadingMore,
+      hasMore: hasMore ?? this.hasMore,
+      errMessage: errMessage ?? this.errMessage,
+    );
+  }
 }
 
-final class GetWishListFailure extends GetWishListState {
-  final String message;
-
-  const GetWishListFailure(this.message);
-}
+enum WishlistStatus { initial, loading, loaded, failed }

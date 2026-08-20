@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 abstract class WishlistRemoteDataSource {
   Future<void> addToWishList(String productId);
   Future<void> removeFromWishList(String productId);
-  Future<List<Product>> getWishList();
+  Future<List<Product>> getWishList({required int page});
   Future<List<String>> getWishlistIds();
 }
 
@@ -29,14 +29,14 @@ class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource {
   }
 
   @override
-  Future<List<Product>> getWishList() async {
+  Future<List<Product>> getWishList({required int page}) async {
     final currentUser = _supabaseService.currentUser;
     if (currentUser == null) {
       throw Exception('User not authenticated');
     }
     final List<dynamic> response = await _supabaseService.rpc(
       function: 'get_wishlist',
-      params: {'p_user_id': currentUser.id},
+      params: {'p_user_id': currentUser.id, 'p_page': page},
     );
     final List<Product> products = response
         .map((row) => Product.fromSupabaseRow(row))
@@ -71,8 +71,8 @@ class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource {
     );
 
     final ids = (response as List)
-      .map((item) => item['product_id'] as String)
-      .toList();
+        .map((item) => item['product_id'] as String)
+        .toList();
 
     return ids;
   }

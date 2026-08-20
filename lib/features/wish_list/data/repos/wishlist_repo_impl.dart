@@ -22,9 +22,11 @@ class WishlistRepoImpl implements WishListRepo {
   }
 
   @override
-  Future<Either<Failure, List<Product>>> getWishList() async {
+  Future<Either<Failure, List<Product>>> getWishList({
+    required int page,
+  }) async {
     try {
-      final products = await _remoteDataSource.getWishList();
+      final products = await _remoteDataSource.getWishList(page: page);
       return Right(products);
     } catch (e) {
       return Left(ExceptionMapper.mapExceptionToFailure(e));
@@ -40,7 +42,7 @@ class WishlistRepoImpl implements WishListRepo {
       return Left(ExceptionMapper.mapExceptionToFailure(e));
     }
   }
-  
+
   @override
   Future<Either<Failure, List<String>>> getWishlistIds() async {
     try {
