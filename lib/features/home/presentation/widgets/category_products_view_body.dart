@@ -2,6 +2,7 @@ import 'package:e_commerce/core/helpers/constants.dart';
 import 'package:e_commerce/features/home/presentation/logic/get_products_by_category_cubit/get_products_by_category_cubit.dart';
 import 'package:e_commerce/features/home/presentation/logic/get_products_by_category_cubit/get_products_by_category_state.dart';
 import 'package:e_commerce/features/home/presentation/widgets/categories_list_view.dart';
+import 'package:e_commerce/features/home/presentation/widgets/loaded_products_grid.dart';
 import 'package:e_commerce/features/home/presentation/widgets/product_card.dart';
 import 'package:e_commerce/features/product/data/models/category.dart';
 import 'package:e_commerce/features/product/data/models/product.dart';
@@ -33,7 +34,16 @@ class CategoryProductsViewBody extends StatelessWidget {
           BlocBuilder<GetProductsByCategoryCubit, GetProductsByCategoryState>(
             builder: (context, state) {
               if (state.status == ProductsStatus.loaded) {
-                return _LoadedProductsGrid(products: state.products);
+                return Expanded(
+                  child: LoadedProductsGrid(
+                    products: state.products,
+                    onLoadMore: () {
+                      context
+                          .read<GetProductsByCategoryCubit>()
+                          .loadMoreProducts();
+                    },
+                  ),
+                );
               } else if (state.status == ProductsStatus.failed) {
                 return Center(child: Text(state.errMessage));
               }
@@ -41,59 +51,6 @@ class CategoryProductsViewBody extends StatelessWidget {
             },
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _LoadedProductsGrid extends StatefulWidget {
-  const _LoadedProductsGrid({required this.products});
-
-  final List<Product> products;
-
-  @override
-  State<_LoadedProductsGrid> createState() => _LoadedProductsGridState();
-}
-
-class _LoadedProductsGridState extends State<_LoadedProductsGrid> {
-  late final ScrollController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = ScrollController()..addListener(_onScroll);
-  }
-
-  void _onScroll() {
-    if (!_controller.hasClients) return;
-    final position = _controller.position.pixels;
-    final max = _controller.position.maxScrollExtent;
-    if (position >= max - 200) {
-      context.read<GetProductsByCategoryCubit>().loadMoreProducts();
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.removeListener(_onScroll);
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView(
-        controller: _controller,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 25,
-          mainAxisSpacing: 10,
-          childAspectRatio: .52,
-        ),
-        children: widget.products
-            .map((product) => ProductCard(product: product))
-            .toList(),
       ),
     );
   }

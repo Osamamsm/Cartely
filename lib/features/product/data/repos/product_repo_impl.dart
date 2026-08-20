@@ -51,13 +51,14 @@ class ProductRepoImpl implements ProductRepo {
   }
 
   @override
-  Future<Either<Failure, List<Product>>> getProductsByCategory(
-    {required String categoryId,required int page}
-  ) async {
+  Future<Either<Failure, List<Product>>> getProductsByCategory({
+    required String categoryId,
+    required int page,
+  }) async {
     try {
       final products = await _remoteDataSource.getProductsByCategory(
         categoryId: categoryId,
-        page: page
+        page: page,
       );
       return Right(products);
     } catch (e) {
@@ -66,9 +67,15 @@ class ProductRepoImpl implements ProductRepo {
   }
 
   @override
-  Future<Either<Failure, List<Product>>> searchProducts(String query) async {
+  Future<Either<Failure, List<Product>>> searchProducts({
+    required String query,
+    required int page,
+  }) async {
     try {
-      final products = await _remoteDataSource.searchProducts(query);
+      final products = await _remoteDataSource.searchProducts(
+        query: query,
+        page: page,
+      );
       return Right(products);
     } catch (e) {
       return Left(ExceptionMapper.mapExceptionToFailure(e));

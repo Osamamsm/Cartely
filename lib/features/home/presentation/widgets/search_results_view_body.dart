@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/helpers/constants.dart';
 import 'package:e_commerce/features/home/presentation/logic/product_search_cubit/product_search_cubit.dart';
 import 'package:e_commerce/features/home/presentation/logic/product_search_cubit/product_search_state.dart';
-import 'package:e_commerce/features/home/presentation/widgets/product_card.dart';
+import 'package:e_commerce/features/home/presentation/widgets/loaded_products_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,23 +14,18 @@ class SearchResultsViewBody extends StatelessWidget {
       padding: Constants.kHorizontalPaddingMedium,
       child: BlocBuilder<ProductSearchCubit, ProductSearchState>(
         builder: (context, state) {
-          if (state is ProductSearchError) {
-            return Center(child: Text(state.message));
-          } else if (state is ProductSearchLoaded) {
+          if (state.status == ProductsStatus.failed) {
+            return Center(child: Text(state.errMessage));
+          } else if (state.status == ProductsStatus.loaded) {
             final products = state.products;
             if (products.isEmpty) {
               return const Center(child: Text('No results found.'));
             }
-            return GridView(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 25,
-                mainAxisSpacing: 10,
-                childAspectRatio: .4,
-              ),
-              children: products
-                  .map((product) => ProductCard(product: product))
-                  .toList(),
+            return LoadedProductsGrid(
+              products: products,
+              onLoadMore: () {
+                context.read<ProductSearchCubit>().loadMoreProducts();
+              },
             );
           }
           return const Center(child: CircularProgressIndicator());

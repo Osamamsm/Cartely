@@ -10,6 +10,6 @@ abstract class ProductRepo {
   Future<Either<Failure, List<Category>>> getCategories();
   Future<Either<Failure, ProductDetails>> getProductDetails(String productId);
   Future<Either<Failure, List<Product>>> getProductsByCategory({required String categoryId,required int page});
-  Future<Either<Failure, List<Product>>> searchProducts(String query);
+  Future<Either<Failure, List<Product>>> searchProducts({required String query,required int page});
   Future<Either<Failure, List<Promotion>>> getPromotions();
 }

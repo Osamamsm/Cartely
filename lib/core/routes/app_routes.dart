@@ -255,7 +255,7 @@ GoRouter createRouter(AuthCubit authCubit) {
           final String query = state.extra as String? ?? '';
           return BlocProvider(
             create: (context) =>
-                getIt<ProductSearchCubit>()..searchProducts(query),
+                getIt<ProductSearchCubit>()..searchProducts(query: query),
             child: SearchResultsView(query: query),
           );
         },

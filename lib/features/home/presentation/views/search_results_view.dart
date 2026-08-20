@@ -20,7 +20,7 @@ class SearchResultsView extends StatelessWidget {
           prefixIcon: Icon(Icons.search_sharp),
         ),
         onFieldSubmitted: (value) =>
-            context.read<ProductSearchCubit>().searchProducts(value),
+            context.read<ProductSearchCubit>().searchProducts(query: value),
       ),
       child: SearchResultsViewBody(),
     );
