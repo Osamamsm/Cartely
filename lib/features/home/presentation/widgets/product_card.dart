@@ -72,7 +72,7 @@ class ProductCard extends StatelessWidget {
             children: [
               if (hasDiscount) ...[
                 Text(
-                  '\$${product.basePrice.toStringAsFixed(2)}',
+                  'E£${product.basePrice.toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     decoration: TextDecoration.lineThrough,
                     decorationColor: Theme.of(
@@ -85,7 +85,7 @@ class ProductCard extends StatelessWidget {
                 ),
                 hGap(6),
                 Text(
-                  '\$${product.discountedPrice.toStringAsFixed(2)}',
+                  'E£${product.discountedPrice.toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: Theme.of(context).colorScheme.error,
                     fontWeight: FontWeight.bold,
@@ -93,7 +93,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ] else
                 Text(
-                  '\$${product.basePrice.toStringAsFixed(2)}',
+                  'E£${product.basePrice.toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
             ],

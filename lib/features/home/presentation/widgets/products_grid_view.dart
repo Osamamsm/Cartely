@@ -26,7 +26,7 @@ class ProductsGridView extends StatelessWidget {
         childAspectRatio: .52,
       ),
       delegate: SliverChildBuilderDelegate((context, index) {
-        if (index > products.length) {
+        if (index == products.length) {
           return Skeletonizer(
             child: ProductCard(product: Product.placeholder()),
           );

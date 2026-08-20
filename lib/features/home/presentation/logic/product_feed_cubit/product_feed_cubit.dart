@@ -17,6 +17,8 @@ class ProductFeedCubit extends Cubit<ProductFeedState> {
   final int _pageSize = 10;
 
   Future<void> setFilters(ProductFilterState filters) async {
+    emit(state.copyWith(hasMore: true));
+    _currentPage = 1;
     _currentParams = ProductsQueryParams.fromFilterState(
       filters,
       categoryId: _currentParams.categoryId,
