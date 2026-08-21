@@ -43,6 +43,7 @@ dependencies:
   flutter_local_notifications: ^21.0.0
   flutter_localizations:
     sdk: flutter
+  flutter_native_splash: ^2.4.8
   flutter_rating_bar: ^4.0.1
   flutter_screenutil: ^5.9.3
   get_it: ^9.2.0
@@ -68,6 +69,19 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
+flutter_native_splash:
+  color: "#60A5FA"
+  image: assets\logo\dark_on_light_logo.png
+
+  color_dark: "#1E3A5F"
+  image_dark: assets\logo\light_on_dark_logo.png
+
+  android_12:
+    color: "#60A5FA"
+    image: assets\logo\dark_on_light_logo_12.png
+
+    color_dark: "#1E3A5F"
+    image_dark: assets\logo\light_on_dark_logo_12.png
 flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -75,9 +89,8 @@ flutter:
   uses-material-design: true
   generate: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/logo/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
