@@ -145,6 +145,24 @@ import 'package:e_commerce/features/profile/domain/use_cases/update_profile_with
     as _i764;
 import 'package:e_commerce/features/profile/presentation/logic/cubit/profile_cubit.dart'
     as _i725;
+import 'package:e_commerce/features/reviews/data/data_source/reviews_remote_data_source.dart'
+    as _i546;
+import 'package:e_commerce/features/reviews/data/repo/reviews_repo_impl.dart'
+    as _i1035;
+import 'package:e_commerce/features/reviews/domain/repo/reviews_repo.dart'
+    as _i719;
+import 'package:e_commerce/features/reviews/domain/use_cases/add_review_use_case.dart'
+    as _i108;
+import 'package:e_commerce/features/reviews/domain/use_cases/delete_review_use_case.dart'
+    as _i95;
+import 'package:e_commerce/features/reviews/domain/use_cases/edit_review_use_case.dart'
+    as _i190;
+import 'package:e_commerce/features/reviews/domain/use_cases/get_product_reviews_use_case.dart'
+    as _i36;
+import 'package:e_commerce/features/reviews/domain/use_cases/get_reviewable_products_use_case.dart'
+    as _i842;
+import 'package:e_commerce/features/reviews/domain/use_cases/get_user_reviews_use_case.dart'
+    as _i502;
 import 'package:e_commerce/features/settings/presentation/logic/cubit/app_settings_cubit.dart'
     as _i259;
 import 'package:e_commerce/features/wish_list/data/data_sources/wishlist_remote_data_source.dart'
@@ -191,6 +209,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i1063.ProfileRemoteDataSource>(
       () => _i1063.ProfileRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
     );
+    gh.lazySingleton<_i546.ReviewsRemoteDataSource>(
+      () => _i546.ReviewsRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
+    );
     gh.lazySingleton<_i800.OrdersRemoteDataSource>(
       () => _i800.OrdersRemoteDataSourceImpl(gh<_i74.SupabaseService>()),
     );
@@ -229,6 +250,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i144.OrdersRepo>(
       () => _i139.OrderRepoImpl(gh<_i800.OrdersRemoteDataSource>()),
+    );
+    gh.lazySingleton<_i719.ReviewsRepo>(
+      () => _i1035.ReviewsRepoImpl(gh<_i546.ReviewsRemoteDataSource>()),
     );
     gh.factoryParam<_i553.PaymentConfirmationCubit, String, dynamic>(
       (orderId, _) => _i553.PaymentConfirmationCubit(
@@ -319,6 +343,24 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i93.GetOrdersCubit>(
       () => _i93.GetOrdersCubit(gh<_i594.GetOrdersUseCase>()),
+    );
+    gh.factory<_i108.AddReviewUseCase>(
+      () => _i108.AddReviewUseCase(gh<_i719.ReviewsRepo>()),
+    );
+    gh.factory<_i95.DeleteReviewUseCase>(
+      () => _i95.DeleteReviewUseCase(gh<_i719.ReviewsRepo>()),
+    );
+    gh.factory<_i190.EditReviewUseCase>(
+      () => _i190.EditReviewUseCase(gh<_i719.ReviewsRepo>()),
+    );
+    gh.factory<_i36.GetProductReviewsUseCase>(
+      () => _i36.GetProductReviewsUseCase(gh<_i719.ReviewsRepo>()),
+    );
+    gh.factory<_i842.GetReviewableProductsUseCase>(
+      () => _i842.GetReviewableProductsUseCase(gh<_i719.ReviewsRepo>()),
+    );
+    gh.factory<_i502.GetUserReviewsUseCase>(
+      () => _i502.GetUserReviewsUseCase(gh<_i719.ReviewsRepo>()),
     );
     gh.factory<_i764.UpdateProfileWithAvatarUseCase>(
       () => _i764.UpdateProfileWithAvatarUseCase(gh<_i245.ProfileRepo>()),
