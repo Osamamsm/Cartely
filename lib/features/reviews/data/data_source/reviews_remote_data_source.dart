@@ -2,7 +2,7 @@ import 'package:e_commerce/core/supabase/supabase_service.dart';
 import 'package:e_commerce/features/reviews/data/models/product_review_model.dart';
 import 'package:e_commerce/features/reviews/data/models/reviewable_product_model.dart';
 import 'package:e_commerce/features/reviews/data/models/user_review_model.dart';
-import 'package:e_commerce/features/reviews/data/review_operation_result_model.dart';
+import 'package:e_commerce/features/reviews/data/models/review_operation_result_model.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class ReviewsRemoteDataSource {
