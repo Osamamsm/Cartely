@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/cart/domain/entities/cart_operation_result.dart';
+import 'package:e_commerce/features/reviews/domain/entities/review_operation_result.dart';
 
 class ReviewOperationResultModel {
   final bool success;
@@ -16,7 +16,7 @@ class ReviewOperationResultModel {
     );
   }
 
-  CartOperationResult toEntity() {
-    return CartOperationResult(success: success, message: message);
+  ReviewOperationResult toEntity() {
+    return ReviewOperationResult(success: success, message: message);
   }
 }
