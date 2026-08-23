@@ -2,6 +2,8 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/core/widgets/custom_popup_menu_button.dart';
 import 'package:e_commerce/core/widgets/show_error_dialog.dart';
+import 'package:e_commerce/features/profile/presentation/logic/cubit/profile_cubit.dart';
+import 'package:e_commerce/features/profile/presentation/logic/cubit/profile_state.dart';
 import 'package:e_commerce/features/reviews/presentation/logic/product_reviews_cubit/product_reviews_cubit.dart';
 import 'package:e_commerce/features/reviews/presentation/widgets/custom_rating_bar.dart';
 import 'package:e_commerce/features/reviews/domain/entities/product_review.dart';
@@ -18,6 +20,12 @@ class ReviewCard extends StatelessWidget {
   final ProductReview review;
   @override
   Widget build(BuildContext context) {
+    final profileCubit = context.read<ProfileCubit>();
+    final state = profileCubit.state;
+    bool isMyReview = false;
+    if (state is ProfileLoaded) {
+      isMyReview = review.userId == state.userProfileEntity.id;
+    }
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -43,37 +51,38 @@ class ReviewCard extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              Spacer(flex: 1),
-              CustomPopupMenuButton(
-                onEdit: () {
-                  openProductReviewSheet(
-                    context: context,
-                    reviewId: review.id,
-                    initialComment: review.comment,
-                    initialRating: review.rating,
-                    isEdit: true,
-                  );
-                },
-                onDelete: () {
-                  showCustomDialog(
-                    context: context,
-                    message: S.of(context).delete_review_confirmation,
-                    okBtnText: S.of(context).yes,
-                    cancelBtnText: S.of(context).no,
-                    dialogType: DialogType.warning,
-                    onOkPressed: () {
-                      context.read<ProductReviewsCubit>().deleteReview(
-                        review.id,
-                      );
-                    },
-                    showCancelBtn: true,
+              const Spacer(flex: 1),
+              if (isMyReview)
+                CustomPopupMenuButton(
+                  onEdit: () {
+                    openProductReviewSheet(
+                      context: context,
+                      reviewId: review.id,
+                      initialComment: review.comment,
+                      initialRating: review.rating,
+                      isEdit: true,
+                    );
+                  },
+                  onDelete: () {
+                    showCustomDialog(
+                      context: context,
+                      message: S.of(context).delete_review_confirmation,
+                      okBtnText: S.of(context).yes,
+                      cancelBtnText: S.of(context).no,
+                      dialogType: DialogType.warning,
+                      onOkPressed: () {
+                        context.read<ProductReviewsCubit>().deleteReview(
+                          review.id,
+                        );
+                      },
+                      showCancelBtn: true,
 
-                    onCancelPressed: () {
-                      context.pop();
-                    },
-                  );
-                },
-              ),
+                      onCancelPressed: () {
+                        context.pop();
+                      },
+                    );
+                  },
+                ),
             ],
           ),
           vGap(8),
