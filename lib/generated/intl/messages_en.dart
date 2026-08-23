@@ -342,6 +342,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "quantity": m4,
     "quick_access": MessageLookupByLibrary.simpleMessage("Quick Access"),
+    "rate_this_product": MessageLookupByLibrary.simpleMessage(
+      "Rate this product",
+    ),
+    "rate_your_purchases": MessageLookupByLibrary.simpleMessage(
+      "Rate Your Purchases",
+    ),
     "rating": MessageLookupByLibrary.simpleMessage("Rating"),
     "ratingAndUp": m5,
     "region": MessageLookupByLibrary.simpleMessage("Region"),

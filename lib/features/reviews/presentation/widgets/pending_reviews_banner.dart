@@ -1,7 +1,9 @@
 import 'package:e_commerce/features/reviews/presentation/logic/reviewable_products_cubit/reviewable_products_cubit.dart';
+import 'package:e_commerce/features/reviews/presentation/views/rate_your_purchases_view.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class PendingReviewsBanner extends StatelessWidget {
   const PendingReviewsBanner({super.key});
@@ -37,7 +39,7 @@ class PendingReviewsBanner extends StatelessWidget {
             ),
             trailing: Icon(Icons.chevron_right, color: theme.onPrimary),
             onTap: () {
-              //Todo: navigate to the rate your purchases view
+              context.push(RateYourPurchasesView.routeName);
             },
           ),
         );

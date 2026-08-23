@@ -13,6 +13,7 @@ class ProductDetailsLoadedBody extends StatelessWidget {
     required this.selectedOptions,
     required this.availableOptionsFor,
     required this.isOptionOutOfStock,
+    this.openReviewForm = false,
   });
 
   final ProductDetails product;
@@ -20,11 +21,13 @@ class ProductDetailsLoadedBody extends StatelessWidget {
   final Map<String, String> selectedOptions;
   final List<VariationOption> Function(String) availableOptionsFor;
   final bool Function(String, String) isOptionOutOfStock;
+  final bool openReviewForm;
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
+      initialIndex: openReviewForm ? 1 : 0,
       child: Column(
         children: [
           TabBar(

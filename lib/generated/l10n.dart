@@ -2030,6 +2030,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Rate Your Purchases`
+  String get rate_your_purchases {
+    return Intl.message(
+      'Rate Your Purchases',
+      name: 'rate_your_purchases',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate this product`
+  String get rate_this_product {
+    return Intl.message(
+      'Rate this product',
+      name: 'rate_this_product',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

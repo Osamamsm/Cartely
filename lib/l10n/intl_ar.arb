@@ -265,6 +265,8 @@
       "label": { "type": "String" }
     }
   },
-  "pendingReviewsSubtitle": "اضغط لتقييم مشترياتك الأخيرة"
+  "pendingReviewsSubtitle": "اضغط لتقييم مشترياتك الأخيرة",
+  "rate_your_purchases": "قيم مشترياتك",
+  "rate_this_product": "قيم هذا المنتج"
 }
 

@@ -40,6 +40,21 @@ class ReviewableProduct extends Equatable {
     return languageCode == 'ar' ? variationAr : variationEn;
   }
 
+  factory ReviewableProduct.placeholder() => ReviewableProduct(
+    orderLineId: 'orderLineId',
+    orderId: 'orderId',
+    orderNumber: 'orderNumber',
+    productId: 'productId',
+    productNameEn: 'productNameEn',
+    productNameAr: 'productNameAr',
+    productImageUrl: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    variationEn: 'variationEn',
+    variationAr: 'variationAr',
+    quantity: 1,
+    price: 1,
+    purchasedAt: DateTime.now(),
+  );
+
   @override
   List<Object?> get props => [
     orderLineId,

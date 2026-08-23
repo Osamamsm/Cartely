@@ -277,6 +277,8 @@
       "label": { "type": "String" }
     }
   },
-  "pendingReviewsSubtitle": "Tap to rate your recent purchases"
+  "pendingReviewsSubtitle": "Tap to rate your recent purchases",
+  "rate_your_purchases": "Rate Your Purchases",
+  "rate_this_product": "Rate this product"
 }
 

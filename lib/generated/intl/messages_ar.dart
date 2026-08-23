@@ -304,6 +304,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "quantity": m4,
     "quick_access": MessageLookupByLibrary.simpleMessage("الوصول السريع"),
+    "rate_this_product": MessageLookupByLibrary.simpleMessage("قيم هذا المنتج"),
+    "rate_your_purchases": MessageLookupByLibrary.simpleMessage("قيم مشترياتك"),
     "rating": MessageLookupByLibrary.simpleMessage("التقييم"),
     "ratingAndUp": m5,
     "region": MessageLookupByLibrary.simpleMessage("المنطقة"),

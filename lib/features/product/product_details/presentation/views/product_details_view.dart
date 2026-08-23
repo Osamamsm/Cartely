@@ -14,7 +14,17 @@ class ProductDetailsView extends StatelessWidget {
   static const routeName = '/product-details-view';
   @override
   Widget build(BuildContext context) {
-    final productId = GoRouterState.of(context).extra as String;
+    final extra = GoRouterState.of(context).extra;
+    final String productId;
+    final bool openReviewForm;
+
+    if (extra is Map) {
+      productId = extra['productId'] as String;
+      openReviewForm = extra['openReviewForm'] as bool? ?? false;
+    } else {
+      productId = extra as String;
+      openReviewForm = false;
+    }
     return CustomScaffold(
       actionWidgets: [
         BlocSelector<WishlistCubit, WishlistState, bool>(
@@ -32,7 +42,7 @@ class ProductDetailsView extends StatelessWidget {
         const CartButton(),
       ],
       customBottomNavigationBar: ProductPurchaseBar(),
-      child: ProductDetailsViewBody(productId: productId),
+      child: ProductDetailsViewBody(productId: productId, openReviewForm: openReviewForm),
     );
   }
 }
