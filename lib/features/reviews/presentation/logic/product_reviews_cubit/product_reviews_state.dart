@@ -55,13 +55,13 @@ base class ProductReviewsLoaded extends ProductReviewsState {
   List<Object?> get props => [reviews, currentPage, hasMore, isLoadingMore];
 }
 
-final class ProductReviewsActionFailed extends ProductReviewsLoaded {
+final class ProductReviewsActionResult extends ProductReviewsLoaded {
   final String message;
-  final bool isException;
+  final bool isError;
 
-  const ProductReviewsActionFailed({
+ const ProductReviewsActionResult({
     required this.message,
-    required this.isException,
+    required this.isError,
     required super.reviews,
     required super.currentPage,
     required super.hasMore,
@@ -69,20 +69,5 @@ final class ProductReviewsActionFailed extends ProductReviewsLoaded {
   });
 
   @override
-  List<Object?> get props => [...super.props, message, isException];
-}
-
-final class ProductReviewsAddSucceeded extends ProductReviewsLoaded {
-  final String productId;
-
-  const ProductReviewsAddSucceeded({
-    required this.productId,
-    required super.reviews,
-    required super.currentPage,
-    required super.hasMore,
-    super.isLoadingMore,
-  });
-
-  @override
-  List<Object?> get props => [...super.props, productId];
+  List<Object?> get props => [...super.props, message, isError];
 }

@@ -106,32 +106,33 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
       rating: rating,
     );
 
-    result.fold(
-      (failure) => emit(
-        ProductReviewsActionFailed(
+    await result.fold(
+      (failure) async => emit(
+        ProductReviewsActionResult(
           message: failure.message,
-          isException: true,
+          isError: true,
           reviews: current.reviews,
           currentPage: current.currentPage,
           hasMore: current.hasMore,
         ),
       ),
-      (operationResult) {
+      (operationResult) async {
         if (operationResult.success) {
           emit(
-            ProductReviewsAddSucceeded(
-              productId: productId,
+            ProductReviewsActionResult(
+              message: operationResult.message,
+              isError: true,
               reviews: current.reviews,
               currentPage: current.currentPage,
               hasMore: current.hasMore,
             ),
           );
-          _fetchPage(page: 1, append: false);
+          await _fetchPage(page: 1, append: false);
         } else {
           emit(
-            ProductReviewsActionFailed(
+            ProductReviewsActionResult(
               message: operationResult.message,
-              isException: false,
+              isError: true,
               reviews: current.reviews,
               currentPage: current.currentPage,
               hasMore: current.hasMore,
@@ -181,9 +182,9 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
 
     result.fold(
       (failure) => emit(
-        ProductReviewsActionFailed(
+        ProductReviewsActionResult(
           message: failure.message,
-          isException: true,
+          isError: true,
           reviews: rollbackReviews,
           currentPage: rollbackPage,
           hasMore: rollbackHasMore,
@@ -192,16 +193,26 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
       (operationResult) {
         if (!operationResult.success) {
           emit(
-            ProductReviewsActionFailed(
+            ProductReviewsActionResult(
               message: operationResult.message,
-              isException: false,
+              isError:
+                  false, // business-level "failure" but not exception — see note below
               reviews: rollbackReviews,
               currentPage: rollbackPage,
               hasMore: rollbackHasMore,
             ),
           );
+        } else {
+          emit(
+            ProductReviewsActionResult(
+              message: operationResult.message,
+              isError: false,
+              reviews: optimisticList,
+              currentPage: current.currentPage,
+              hasMore: current.hasMore,
+            ),
+          );
         }
-        // success: optimistic list already reflects the change, nothing more to do.
       },
     );
   }
@@ -224,9 +235,9 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
 
     result.fold(
       (failure) => emit(
-        ProductReviewsActionFailed(
+        ProductReviewsActionResult(
           message: failure.message,
-          isException: true,
+          isError: true,
           reviews: rollbackReviews,
           currentPage: rollbackPage,
           hasMore: rollbackHasMore,
@@ -235,12 +246,22 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
       (operationResult) {
         if (!operationResult.success) {
           emit(
-            ProductReviewsActionFailed(
+            ProductReviewsActionResult(
               message: operationResult.message,
-              isException: false,
+              isError: false,
               reviews: rollbackReviews,
               currentPage: rollbackPage,
               hasMore: rollbackHasMore,
+            ),
+          );
+        } else {
+          emit(
+            ProductReviewsActionResult(
+              message: operationResult.message,
+              isError: false,
+              reviews: optimisticList,
+              currentPage: current.currentPage,
+              hasMore: current.hasMore,
             ),
           );
         }
