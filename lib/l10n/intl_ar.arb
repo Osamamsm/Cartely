@@ -247,6 +247,26 @@
   "min": "الحد الأدنى",
   "max": "الحد الأقصى",
   "apply": "تطبيق",
-  "inStock": "متوفر في المخزون"
+  "inStock": "متوفر في المخزون",
+  "product_info": "معلومات المنتج",
+  "all" : "الكل",
+  "no_reviews_yet": "لا توجد مراجعات حتى الآن",
+  "select_rating_error": "يرجى اختيار تقييم.",
+  "review_comment_error": "يرجى إدخال تعليق.",
+  "edit_review": "تعديل المراجعة",
+  "delete_review": "حذف المراجعة",
+  "delete_review_confirmation": "هل أنت متأكد أنك تريد حذف المراجعة؟",
+  "my_reviews": "مراجعاتي",
+  "edited":"تم التعديل",
+  "pendingReviewsTitle": "{form, select, one{لديك منتج {label} بانتظار التقييم} other{لديك {label} منتجات بانتظار التقييم}}",
+  "@pendingReviewsTitle": {
+    "placeholders": {
+      "form": { "type": "String" },
+      "label": { "type": "String" }
+    }
+  },
+  "pendingReviewsSubtitle": "اضغط لتقييم مشترياتك الأخيرة",
+  "rate_your_purchases": "قيم مشترياتك",
+  "rate_this_product": "قيم هذا المنتج"
 }
 

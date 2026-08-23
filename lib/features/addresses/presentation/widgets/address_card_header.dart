@@ -49,7 +49,6 @@ class AddressCardHeader extends StatelessWidget {
         if (address.isDefault) DefaultFlagWidget(),
         const Spacer(),
         CustomPopupMenuButton(
-          isDefault: address.isDefault,
           onEdit: () {
             context.push(EditAddressView.routeName, extra: address);
           },
@@ -60,19 +59,6 @@ class AddressCardHeader extends StatelessWidget {
               dialogType: DialogType.warning,
               onOkPressed: () {
                 context.read<AddressesCubit>().deleteAddress(address.id!);
-              },
-              showCancelBtn: true,
-
-              onCancelPressed: () {},
-            );
-          },
-          onSetAsDefault: () {
-            showCustomDialog(
-              context: context,
-              message: "Are you sure ,you want to set this address as default",
-              dialogType: DialogType.warning,
-              onOkPressed: () {
-                context.read<AddressesCubit>().setDefaultAddress(address.id!);
               },
               showCancelBtn: true,
 

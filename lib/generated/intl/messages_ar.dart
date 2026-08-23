@@ -24,13 +24,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(message) => "حدث خطأ: ${message}";
 
-  static String m2(date) => "تم الطلب في ${date}";
+  static String m2(form, label) =>
+      "${Intl.select(form, {'one': 'لديك منتج ${label} بانتظار التقييم', 'other': 'لديك ${label} منتجات بانتظار التقييم'})}";
 
-  static String m3(quantity) => "الكمية: ${quantity}";
+  static String m3(date) => "تم الطلب في ${date}";
 
-  static String m4(rating) => "${rating}★ فأعلى";
+  static String m4(quantity) => "الكمية: ${quantity}";
 
-  static String m5(count) =>
+  static String m5(rating) => "${rating}★ فأعلى";
+
+  static String m6(count) =>
       "${Intl.plural(count, zero: 'لا مراجعات', one: '${count} مراجعة', two: '${count} مراجعتان', few: '${count} مراجعات', many: '${count} مراجعة', other: '${count} مراجعة')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -57,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "address_updated_successfully": MessageLookupByLibrary.simpleMessage(
       "تم تحديث العنوان بنجاح",
     ),
+    "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "apartment_number": MessageLookupByLibrary.simpleMessage("رقم الشقة"),
     "app_name": MessageLookupByLibrary.simpleMessage("E-Commerce App"),
     "apply": MessageLookupByLibrary.simpleMessage("تطبيق"),
@@ -112,6 +116,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "dark": MessageLookupByLibrary.simpleMessage("داكن"),
     "default_": MessageLookupByLibrary.simpleMessage("الافتراضي"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "delete_review": MessageLookupByLibrary.simpleMessage("حذف المراجعة"),
+    "delete_review_confirmation": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد حذف المراجعة؟",
+    ),
     "deliveryStatus": MessageLookupByLibrary.simpleMessage("حالة التوصيل"),
     "delivery_address": MessageLookupByLibrary.simpleMessage("عنوان التوصيل"),
     "discount": MessageLookupByLibrary.simpleMessage("الخصم"),
@@ -119,6 +127,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
     "edit_address": MessageLookupByLibrary.simpleMessage("تعديل العنوان"),
     "edit_profile": MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
+    "edit_review": MessageLookupByLibrary.simpleMessage("تعديل المراجعة"),
+    "edited": MessageLookupByLibrary.simpleMessage("تم التعديل"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
     "email_hint": MessageLookupByLibrary.simpleMessage(
       "أدخل البريد الالكتروني",
@@ -176,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_addresses": MessageLookupByLibrary.simpleMessage("عناويني"),
     "my_cart": MessageLookupByLibrary.simpleMessage("عربتي"),
     "my_orders": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "my_reviews": MessageLookupByLibrary.simpleMessage("مراجعاتي"),
     "no": MessageLookupByLibrary.simpleMessage("لا"),
     "noOrdersFound": MessageLookupByLibrary.simpleMessage("لا توجد طلبات"),
     "no_account": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
@@ -184,6 +195,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "لا توجد عناوين بعد",
     ),
     "no_changes_done": MessageLookupByLibrary.simpleMessage("لا توجد تغييرات"),
+    "no_reviews_yet": MessageLookupByLibrary.simpleMessage(
+      "لا توجد مراجعات حتى الآن",
+    ),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "offers_promotions": MessageLookupByLibrary.simpleMessage(
       "العروض الترويجية",
@@ -256,12 +270,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "payment_method": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "payment_methods": MessageLookupByLibrary.simpleMessage("طرق الدفع"),
     "payment_step": MessageLookupByLibrary.simpleMessage("الدفع"),
+    "pendingReviewsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "اضغط لتقييم مشترياتك الأخيرة",
+    ),
+    "pendingReviewsTitle": m2,
     "personal_details": MessageLookupByLibrary.simpleMessage(
       "التفاصيل الشخصية",
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "place_order": MessageLookupByLibrary.simpleMessage("تأكيد الطلب"),
-    "placedOn": m2,
+    "placedOn": m3,
     "placing_order": MessageLookupByLibrary.simpleMessage("جارٍ تقديم طلبك..."),
     "please_wait_while_we_process_your_order":
         MessageLookupByLibrary.simpleMessage(
@@ -274,6 +292,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الانتقال للدفع",
     ),
     "product_description": MessageLookupByLibrary.simpleMessage("وصف المنتج"),
+    "product_info": MessageLookupByLibrary.simpleMessage("معلومات المنتج"),
     "product_reviews": MessageLookupByLibrary.simpleMessage("اراء العملاء"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "profile_updated_successfully": MessageLookupByLibrary.simpleMessage(
@@ -283,10 +302,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "push_notifications_subtitle": MessageLookupByLibrary.simpleMessage(
       "تلقي تحديثات حول طلباتك وعروضنا الحصرية",
     ),
-    "quantity": m3,
+    "quantity": m4,
     "quick_access": MessageLookupByLibrary.simpleMessage("الوصول السريع"),
+    "rate_this_product": MessageLookupByLibrary.simpleMessage("قيم هذا المنتج"),
+    "rate_your_purchases": MessageLookupByLibrary.simpleMessage("قيم مشترياتك"),
     "rating": MessageLookupByLibrary.simpleMessage("التقييم"),
-    "ratingAndUp": m4,
+    "ratingAndUp": m5,
     "region": MessageLookupByLibrary.simpleMessage("المنطقة"),
     "register": MessageLookupByLibrary.simpleMessage("سجل الآن"),
     "reorder": MessageLookupByLibrary.simpleMessage("إعادة الطلب"),
@@ -294,7 +315,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "إعادة تعيين كلمه المرور",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
-    "review": m5,
+    "review": m6,
+    "review_comment_error": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال تعليق.",
+    ),
     "review_hint_text": MessageLookupByLibrary.simpleMessage(
       "شارك ارائك حول هذا المنتج",
     ),
@@ -312,6 +336,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "security": MessageLookupByLibrary.simpleMessage("الامان"),
     "see_all_reviews": MessageLookupByLibrary.simpleMessage("شاهد جميع الاراء"),
     "select_language": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
+    "select_rating_error": MessageLookupByLibrary.simpleMessage(
+      "يرجى اختيار تقييم.",
+    ),
     "select_theme": MessageLookupByLibrary.simpleMessage("اختر المظهر"),
     "set_as_default": MessageLookupByLibrary.simpleMessage("تعيين كافتراضي"),
     "set_as_default_address": MessageLookupByLibrary.simpleMessage(

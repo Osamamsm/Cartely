@@ -1926,6 +1926,130 @@ class S {
   String get inStock {
     return Intl.message('In Stock', name: 'inStock', desc: '', args: []);
   }
+
+  /// `Product Information`
+  String get product_info {
+    return Intl.message(
+      'Product Information',
+      name: 'product_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message('All', name: 'all', desc: '', args: []);
+  }
+
+  /// `No reviews yet`
+  String get no_reviews_yet {
+    return Intl.message(
+      'No reviews yet',
+      name: 'no_reviews_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a rating.`
+  String get select_rating_error {
+    return Intl.message(
+      'Please select a rating.',
+      name: 'select_rating_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a comment.`
+  String get review_comment_error {
+    return Intl.message(
+      'Please enter a comment.',
+      name: 'review_comment_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Review`
+  String get edit_review {
+    return Intl.message('Edit Review', name: 'edit_review', desc: '', args: []);
+  }
+
+  /// `Delete Review`
+  String get delete_review {
+    return Intl.message(
+      'Delete Review',
+      name: 'delete_review',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this review?`
+  String get delete_review_confirmation {
+    return Intl.message(
+      'Are you sure you want to delete this review?',
+      name: 'delete_review_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Reviews`
+  String get my_reviews {
+    return Intl.message('My Reviews', name: 'my_reviews', desc: '', args: []);
+  }
+
+  /// `Edited`
+  String get edited {
+    return Intl.message('Edited', name: 'edited', desc: '', args: []);
+  }
+
+  /// `{form, select, one{You have {label} item to review} other{You have {label} items to review}}`
+  String pendingReviewsTitle(String form, String label) {
+    return Intl.select(
+      form,
+      {
+        'one': 'You have $label item to review',
+        'other': 'You have $label items to review',
+      },
+      name: 'pendingReviewsTitle',
+      desc: '',
+      args: [form, label],
+    );
+  }
+
+  /// `Tap to rate your recent purchases`
+  String get pendingReviewsSubtitle {
+    return Intl.message(
+      'Tap to rate your recent purchases',
+      name: 'pendingReviewsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate Your Purchases`
+  String get rate_your_purchases {
+    return Intl.message(
+      'Rate Your Purchases',
+      name: 'rate_your_purchases',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate this product`
+  String get rate_this_product {
+    return Intl.message(
+      'Rate this product',
+      name: 'rate_this_product',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

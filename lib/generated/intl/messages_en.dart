@@ -24,13 +24,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(message) => "Error: ${message}";
 
-  static String m2(date) => "Placed on ${date}";
+  static String m2(form, label) =>
+      "${Intl.select(form, {'one': 'You have ${label} item to review', 'other': 'You have ${label} items to review'})}";
 
-  static String m3(quantity) => "Qty: ${quantity}";
+  static String m3(date) => "Placed on ${date}";
 
-  static String m4(rating) => "${rating}★ & up";
+  static String m4(quantity) => "Qty: ${quantity}";
 
-  static String m5(count) =>
+  static String m5(rating) => "${rating}★ & up";
+
+  static String m6(count) =>
       "${Intl.plural(count, zero: 'No reviews', one: '${count} review', other: '${count} reviews')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -64,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "address_updated_successfully": MessageLookupByLibrary.simpleMessage(
       "Address updated successfully",
     ),
+    "all": MessageLookupByLibrary.simpleMessage("All"),
     "apartment_number": MessageLookupByLibrary.simpleMessage(
       "Apartment number",
     ),
@@ -133,6 +137,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "default_": MessageLookupByLibrary.simpleMessage("Default"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "delete_review": MessageLookupByLibrary.simpleMessage("Delete Review"),
+    "delete_review_confirmation": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete this review?",
+    ),
     "deliveryStatus": MessageLookupByLibrary.simpleMessage("Delivery Status"),
     "delivery_address": MessageLookupByLibrary.simpleMessage(
       "DELIVERY ADDRESS",
@@ -142,6 +150,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Edit"),
     "edit_address": MessageLookupByLibrary.simpleMessage("Edit Address"),
     "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+    "edit_review": MessageLookupByLibrary.simpleMessage("Edit Review"),
+    "edited": MessageLookupByLibrary.simpleMessage("Edited"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_hint": MessageLookupByLibrary.simpleMessage("Enter your email"),
     "emptyCart": MessageLookupByLibrary.simpleMessage("Your cart is empty"),
@@ -200,6 +210,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_addresses": MessageLookupByLibrary.simpleMessage("My Addresses"),
     "my_cart": MessageLookupByLibrary.simpleMessage("My Cart"),
     "my_orders": MessageLookupByLibrary.simpleMessage("My Orders"),
+    "my_reviews": MessageLookupByLibrary.simpleMessage("My Reviews"),
     "new_password": MessageLookupByLibrary.simpleMessage("New Password"),
     "no": MessageLookupByLibrary.simpleMessage("No"),
     "noOrdersFound": MessageLookupByLibrary.simpleMessage("No orders found"),
@@ -211,6 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "No addresses yet",
     ),
     "no_changes_done": MessageLookupByLibrary.simpleMessage("No changes done"),
+    "no_reviews_yet": MessageLookupByLibrary.simpleMessage("No reviews yet"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "offers_promotions": MessageLookupByLibrary.simpleMessage(
       "Offers & Promotions",
@@ -290,12 +302,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "payment_method": MessageLookupByLibrary.simpleMessage("PAYMENT METHOD"),
     "payment_methods": MessageLookupByLibrary.simpleMessage("Payment Methods"),
     "payment_step": MessageLookupByLibrary.simpleMessage("Payment"),
+    "pendingReviewsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Tap to rate your recent purchases",
+    ),
+    "pendingReviewsTitle": m2,
     "personal_details": MessageLookupByLibrary.simpleMessage(
       "Personal Details",
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "place_order": MessageLookupByLibrary.simpleMessage("Place Order"),
-    "placedOn": m2,
+    "placedOn": m3,
     "placing_order": MessageLookupByLibrary.simpleMessage(
       "Placing Your Order...",
     ),
@@ -312,6 +328,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "product_description": MessageLookupByLibrary.simpleMessage(
       "Product Description",
     ),
+    "product_info": MessageLookupByLibrary.simpleMessage("Product Information"),
     "product_reviews": MessageLookupByLibrary.simpleMessage("Customer Reviews"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profile_updated_successfully": MessageLookupByLibrary.simpleMessage(
@@ -323,10 +340,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "push_notifications_subtitle": MessageLookupByLibrary.simpleMessage(
       "Receive updates about your orders and exclusive offers",
     ),
-    "quantity": m3,
+    "quantity": m4,
     "quick_access": MessageLookupByLibrary.simpleMessage("Quick Access"),
+    "rate_this_product": MessageLookupByLibrary.simpleMessage(
+      "Rate this product",
+    ),
+    "rate_your_purchases": MessageLookupByLibrary.simpleMessage(
+      "Rate Your Purchases",
+    ),
     "rating": MessageLookupByLibrary.simpleMessage("Rating"),
-    "ratingAndUp": m4,
+    "ratingAndUp": m5,
     "region": MessageLookupByLibrary.simpleMessage("Region"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "reorder": MessageLookupByLibrary.simpleMessage("Reorder"),
@@ -335,7 +358,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password reset successfully.",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-    "review": m5,
+    "review": m6,
+    "review_comment_error": MessageLookupByLibrary.simpleMessage(
+      "Please enter a comment.",
+    ),
     "review_hint_text": MessageLookupByLibrary.simpleMessage(
       "Share your thoughts about this product...",
     ),
@@ -353,6 +379,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "security": MessageLookupByLibrary.simpleMessage("Security"),
     "see_all_reviews": MessageLookupByLibrary.simpleMessage("See All Reviews"),
     "select_language": MessageLookupByLibrary.simpleMessage("Select Language"),
+    "select_rating_error": MessageLookupByLibrary.simpleMessage(
+      "Please select a rating.",
+    ),
     "select_theme": MessageLookupByLibrary.simpleMessage("Select Theme"),
     "set_as_default": MessageLookupByLibrary.simpleMessage("Set as Default"),
     "set_as_default_address": MessageLookupByLibrary.simpleMessage(

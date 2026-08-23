@@ -11,9 +11,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
-  const ProductDetailsViewBody({super.key, required this.productId});
+  const ProductDetailsViewBody({
+    super.key,
+    required this.productId,
+    this.openReviewForm = false,
+  });
 
   final String productId;
+  final bool openReviewForm;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +45,7 @@ class ProductDetailsViewBody extends StatelessWidget {
 
           case CartStatus.error:
             showCartSnackBar(
-              context:context,
+              context: context,
               message: state.message!,
               backgroundColor: Colors.red.shade600,
               icon: Icons.wifi_off_rounded,
@@ -70,6 +75,7 @@ class ProductDetailsViewBody extends StatelessWidget {
               selectedOptions: state.selectedOptions,
               availableOptionsFor: state.availableOptionsFor,
               isOptionOutOfStock: state.isOptionOutOfStock,
+              openReviewForm: openReviewForm,
             );
           } else if (state is ProductDetailsError) {
             return ProductDetailsErrorBody(
@@ -86,5 +92,3 @@ class ProductDetailsViewBody extends StatelessWidget {
     );
   }
 }
-
-
