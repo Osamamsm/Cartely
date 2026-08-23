@@ -53,7 +53,7 @@ class ReviewsRemoteDataSourceImpl implements ReviewsRemoteDataSource {
       },
     );
 
-    return ReviewOperationResultModel.fromJson(response.data);
+    return ReviewOperationResultModel.fromJson(response);
   }
 
   @override
@@ -64,7 +64,7 @@ class ReviewsRemoteDataSourceImpl implements ReviewsRemoteDataSource {
       function: 'delete_review',
       params: {'p_review_id': reviewId},
     );
-    return ReviewOperationResultModel.fromJson(response.data);
+    return ReviewOperationResultModel.fromJson(response);
   }
 
   @override
@@ -81,7 +81,7 @@ class ReviewsRemoteDataSourceImpl implements ReviewsRemoteDataSource {
         'p_rating': rating,
       },
     );
-    return ReviewOperationResultModel.fromJson(response.data);
+    return ReviewOperationResultModel.fromJson(response);
   }
 
   @override
@@ -98,7 +98,7 @@ class ReviewsRemoteDataSourceImpl implements ReviewsRemoteDataSource {
         'p_page': page,
       },
     );
-    return (response.data as List)
+    return (response as List)
         .map((e) => ProductReviewModel.fromJson(e))
         .toList();
   }
@@ -111,7 +111,7 @@ class ReviewsRemoteDataSourceImpl implements ReviewsRemoteDataSource {
       function: 'get_reviewable_products',
       params: {'p_page': page},
     );
-    return (response.data as List)
+    return (response as List)
         .map((e) => ReviewableProductModel.fromJson(e))
         .toList();
   }
@@ -122,7 +122,7 @@ class ReviewsRemoteDataSourceImpl implements ReviewsRemoteDataSource {
       function: 'get_user_reviews',
       params: {'p_page': page},
     );
-    return (response.data as List)
+    return (response as List)
         .map((e) => UserReviewModel.fromJson(e))
         .toList();
   }
