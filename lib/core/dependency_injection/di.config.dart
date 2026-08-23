@@ -163,6 +163,12 @@ import 'package:e_commerce/features/reviews/domain/use_cases/get_reviewable_prod
     as _i842;
 import 'package:e_commerce/features/reviews/domain/use_cases/get_user_reviews_use_case.dart'
     as _i502;
+import 'package:e_commerce/features/reviews/presentation/logic/product_reviews_cubit/product_reviews_cubit.dart'
+    as _i550;
+import 'package:e_commerce/features/reviews/presentation/logic/reviewable_products_cubit/reviewable_products_cubit.dart'
+    as _i226;
+import 'package:e_commerce/features/reviews/presentation/logic/user_reviews_ccubit/user_reviews_cubit.dart'
+    as _i602;
 import 'package:e_commerce/features/settings/presentation/logic/cubit/app_settings_cubit.dart'
     as _i259;
 import 'package:e_commerce/features/wish_list/data/data_sources/wishlist_remote_data_source.dart'
@@ -395,6 +401,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i618.UpdateCartItemUseCase>(
       () => _i618.UpdateCartItemUseCase(gh<_i571.CartRepo>()),
     );
+    gh.factory<_i550.ProductReviewsCubit>(
+      () => _i550.ProductReviewsCubit(
+        gh<_i36.GetProductReviewsUseCase>(),
+        gh<_i108.AddReviewUseCase>(),
+        gh<_i190.EditReviewUseCase>(),
+        gh<_i95.DeleteReviewUseCase>(),
+      ),
+    );
     gh.factory<_i325.CartCubit>(
       () => _i325.CartCubit(
         gh<_i163.GetCartItemsUseCase>(),
@@ -414,6 +428,18 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i991.DeleteAddressUseCase>(),
         gh<_i811.SetDefaultAddressUseCase>(),
         gh<_i886.UpdateAddressUseCase>(),
+      ),
+    );
+    gh.factory<_i226.ReviewableProductsCubit>(
+      () => _i226.ReviewableProductsCubit(
+        gh<_i842.GetReviewableProductsUseCase>(),
+      ),
+    );
+    gh.factory<_i602.UserReviewsCubit>(
+      () => _i602.UserReviewsCubit(
+        gh<_i502.GetUserReviewsUseCase>(),
+        gh<_i190.EditReviewUseCase>(),
+        gh<_i95.DeleteReviewUseCase>(),
       ),
     );
     gh.factory<_i725.ProfileCubit>(
