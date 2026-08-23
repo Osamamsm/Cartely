@@ -1996,6 +1996,40 @@ class S {
       args: [],
     );
   }
+
+  /// `My Reviews`
+  String get my_reviews {
+    return Intl.message('My Reviews', name: 'my_reviews', desc: '', args: []);
+  }
+
+  /// `Edited`
+  String get edited {
+    return Intl.message('Edited', name: 'edited', desc: '', args: []);
+  }
+
+  /// `{form, select, one{You have {label} item to review} other{You have {label} items to review}}`
+  String pendingReviewsTitle(String form, String label) {
+    return Intl.select(
+      form,
+      {
+        'one': 'You have $label item to review',
+        'other': 'You have $label items to review',
+      },
+      name: 'pendingReviewsTitle',
+      desc: '',
+      args: [form, label],
+    );
+  }
+
+  /// `Tap to rate your recent purchases`
+  String get pendingReviewsSubtitle {
+    return Intl.message(
+      'Tap to rate your recent purchases',
+      name: 'pendingReviewsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

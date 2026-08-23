@@ -255,6 +255,16 @@
   "review_comment_error": "يرجى إدخال تعليق.",
   "edit_review": "تعديل المراجعة",
   "delete_review": "حذف المراجعة",
-  "delete_review_confirmation": "هل أنت متأكد أنك تريد حذف المراجعة؟"
+  "delete_review_confirmation": "هل أنت متأكد أنك تريد حذف المراجعة؟",
+  "my_reviews": "مراجعاتي",
+  "edited":"تم التعديل",
+  "pendingReviewsTitle": "{form, select, one{لديك منتج {label} بانتظار التقييم} other{لديك {label} منتجات بانتظار التقييم}}",
+  "@pendingReviewsTitle": {
+    "placeholders": {
+      "form": { "type": "String" },
+      "label": { "type": "String" }
+    }
+  },
+  "pendingReviewsSubtitle": "اضغط لتقييم مشترياتك الأخيرة"
 }
 

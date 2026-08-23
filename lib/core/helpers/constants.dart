@@ -5,6 +5,7 @@ import 'package:e_commerce/features/auth/presentation/logic/sign_out_cubit/sign_
 import 'package:e_commerce/features/orders/presentation/views/orders_view.dart';
 import 'package:e_commerce/features/profile/domain/entities/user_profile_entity.dart';
 import 'package:e_commerce/features/profile/presentation/views/personal_details_view.dart';
+import 'package:e_commerce/features/reviews/presentation/views/my_reviews_view.dart';
 import 'package:e_commerce/features/wish_list/presentation/views/wish_list_view.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +55,10 @@ class Constants {
           context.read<SignOutCubit>().signOut();
         },
       ),
+
+      MenuItem(icon: Icons.reviews_outlined, label: s.my_reviews, onTap: () {
+        context.push(MyReviewsView.routeName);
+      })
     ];
   }
 

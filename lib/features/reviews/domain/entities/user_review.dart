@@ -33,6 +33,22 @@ class UserReview extends Equatable {
     return languageCode == 'ar' ? productNameAr : productNameEn;
   }
 
+  factory UserReview.placeholder() {
+    return UserReview(
+      id: 'placeholder',
+      orderLineId: 'placeholder',
+      productId: 'placeholder',
+      productNameEn: 'placeholder',
+      productNameAr: 'placeholder',
+      productImageUrl:
+          'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      rating: 0,
+      comment: '',
+      createdAt: DateTime.now(),
+      updatedAt: null,
+    );
+  }
+
   @override
   List<Object?> get props => [
     id,

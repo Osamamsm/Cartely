@@ -42,7 +42,7 @@ class ReviewableProductModel {
       variationAr: json['variation_ar'] as String?,
       quantity: (json['quantity'] as num).toInt(),
       price: (json['price'] as num).toDouble(),
-      purchasedAt: DateTime.parse(json['order_created_at'] as String),
+      purchasedAt: DateTime.parse(json['purchased_at'] as String),
     );
   }
 

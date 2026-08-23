@@ -45,6 +45,9 @@ import 'package:e_commerce/features/profile/presentation/views/edit_profile_view
 import 'package:e_commerce/features/profile/presentation/views/personal_details_view.dart';
 import 'package:e_commerce/features/profile/presentation/views/profile_view.dart';
 import 'package:e_commerce/features/reviews/presentation/logic/product_reviews_cubit/product_reviews_cubit.dart';
+import 'package:e_commerce/features/reviews/presentation/logic/reviewable_products_cubit/reviewable_products_cubit.dart';
+import 'package:e_commerce/features/reviews/presentation/logic/user_reviews_ccubit/user_reviews_cubit.dart';
+import 'package:e_commerce/features/reviews/presentation/views/my_reviews_view.dart';
 import 'package:e_commerce/features/settings/presentation/views/settings_view.dart';
 import 'package:e_commerce/features/splash/views/splash_view.dart';
 import 'package:e_commerce/features/wish_list/presentation/logic/get_wish_list_cubit/get_wish_list_cubit.dart';
@@ -311,6 +314,21 @@ GoRouter createRouter(AuthCubit authCubit) {
             child: PaymentConfirmationView(),
           );
         }),
+      ),
+      GoRoute(
+        path: MyReviewsView.routeName,
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<UserReviewsCubit>()..loadMyReviews(),
+            ),
+            BlocProvider(
+              create: (context) =>
+                  getIt<ReviewableProductsCubit>()..loadReviewableProducts(),
+            ),
+          ],
+          child: const MyReviewsView(),
+        ),
       ),
     ],
   );

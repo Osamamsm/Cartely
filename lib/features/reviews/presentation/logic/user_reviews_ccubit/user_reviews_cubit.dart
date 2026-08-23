@@ -115,26 +115,24 @@ class UserReviewsCubit extends Cubit<UserReviewsState> {
 
     result.fold(
       (failure) => emit(
-        UserReviewsActionFailed(
+        UserReviewsActionResult(
           message: failure.message,
-          isException: true,
+          isError: true,
           reviews: rollbackReviews,
           currentPage: rollbackPage,
           hasMore: rollbackHasMore,
         ),
       ),
       (operationResult) {
-        if (!operationResult.success) {
-          emit(
-            UserReviewsActionFailed(
-              message: operationResult.message,
-              isException: false,
-              reviews: rollbackReviews,
-              currentPage: rollbackPage,
-              hasMore: rollbackHasMore,
-            ),
-          );
-        }
+        emit(
+          UserReviewsActionResult(
+            message: operationResult.message,
+            isError: !operationResult.success,
+            reviews: operationResult.success ? optimisticList : rollbackReviews,
+            currentPage: current.currentPage,
+            hasMore: current.hasMore,
+          ),
+        );
       },
     );
   }
@@ -157,26 +155,24 @@ class UserReviewsCubit extends Cubit<UserReviewsState> {
 
     result.fold(
       (failure) => emit(
-        UserReviewsActionFailed(
+        UserReviewsActionResult(
           message: failure.message,
-          isException: true,
+          isError: true,
           reviews: rollbackReviews,
           currentPage: rollbackPage,
           hasMore: rollbackHasMore,
         ),
       ),
       (operationResult) {
-        if (!operationResult.success) {
-          emit(
-            UserReviewsActionFailed(
-              message: operationResult.message,
-              isException: false,
-              reviews: rollbackReviews,
-              currentPage: rollbackPage,
-              hasMore: rollbackHasMore,
-            ),
-          );
-        }
+        emit(
+          UserReviewsActionResult(
+            message: operationResult.message,
+            isError: !operationResult.success,
+            reviews: operationResult.success ? optimisticList : rollbackReviews,
+            currentPage: current.currentPage,
+            hasMore: current.hasMore,
+          ),
+        );
       },
     );
   }

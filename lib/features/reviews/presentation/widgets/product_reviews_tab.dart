@@ -31,7 +31,9 @@ class ProductReviewsTab extends StatelessWidget {
             ..showSnackBar(
               SnackBar(
                 content: Text(state.message),
-                backgroundColor: state.isError ? theme.colorScheme.error : null,
+                backgroundColor: state.isError
+                    ? theme.colorScheme.error
+                    : Colors.green,
               ),
             );
         }
@@ -58,7 +60,7 @@ class ProductReviewsTab extends StatelessWidget {
             ReviewsSummaryHeader(
               avgRating: avgRating,
               reviewsCount: reviewsCount,
-              onWriteReview: () => openReviewSheet(
+              onWriteReview: () => openProductReviewSheet(
                 context: context,
                 isEdit: false,
                 productId: productId,

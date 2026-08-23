@@ -46,7 +46,7 @@ class ReviewCard extends StatelessWidget {
               Spacer(flex: 1),
               CustomPopupMenuButton(
                 onEdit: () {
-                  openReviewSheet(
+                  openProductReviewSheet(
                     context: context,
                     reviewId: review.id,
                     initialComment: review.comment,
