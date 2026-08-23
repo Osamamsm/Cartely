@@ -1,5 +1,5 @@
 import 'package:e_commerce/features/product/data/models/product_details.dart';
-import 'package:e_commerce/features/product/product_details/presentation/widgets/custom_rating_bar.dart';
+import 'package:e_commerce/features/reviews/presentation/widgets/custom_rating_bar.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 

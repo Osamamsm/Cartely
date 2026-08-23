@@ -44,6 +44,7 @@ import 'package:e_commerce/features/product/product_details/presentation/views/p
 import 'package:e_commerce/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:e_commerce/features/profile/presentation/views/personal_details_view.dart';
 import 'package:e_commerce/features/profile/presentation/views/profile_view.dart';
+import 'package:e_commerce/features/reviews/presentation/logic/product_reviews_cubit/product_reviews_cubit.dart';
 import 'package:e_commerce/features/settings/presentation/views/settings_view.dart';
 import 'package:e_commerce/features/splash/views/splash_view.dart';
 import 'package:e_commerce/features/wish_list/presentation/logic/get_wish_list_cubit/get_wish_list_cubit.dart';
@@ -168,9 +169,17 @@ GoRouter createRouter(AuthCubit authCubit) {
         path: ProductDetailsView.routeName,
         builder: (context, state) {
           final productId = state.extra as String;
-          return BlocProvider(
-            create: (context) =>
-                getIt<ProductDetailsCubit>()..loadProductDetails(productId),
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    getIt<ProductDetailsCubit>()..loadProductDetails(productId),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    getIt<ProductReviewsCubit>()..loadReviews(productId),
+              ),
+            ],
             child: const ProductDetailsView(),
           );
         },

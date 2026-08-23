@@ -33,7 +33,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
     await _fetchPage(page: 1, append: false);
   }
 
-  Future<void> filterByRating({required double rating}) async {
+  Future<void> filterByRating(double? rating) async {
     if (_productId == null) return;
     _ratingFilter = rating;
     emit(const ProductReviewsLoading());
@@ -117,27 +117,17 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
         ),
       ),
       (operationResult) async {
+        emit(
+          ProductReviewsActionResult(
+            message: operationResult.message,
+            isError: !operationResult.success,
+            reviews: current.reviews,
+            currentPage: current.currentPage,
+            hasMore: current.hasMore,
+          ),
+        );
         if (operationResult.success) {
-          emit(
-            ProductReviewsActionResult(
-              message: operationResult.message,
-              isError: true,
-              reviews: current.reviews,
-              currentPage: current.currentPage,
-              hasMore: current.hasMore,
-            ),
-          );
           await _fetchPage(page: 1, append: false);
-        } else {
-          emit(
-            ProductReviewsActionResult(
-              message: operationResult.message,
-              isError: true,
-              reviews: current.reviews,
-              currentPage: current.currentPage,
-              hasMore: current.hasMore,
-            ),
-          );
         }
       },
     );
@@ -190,30 +180,15 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
           hasMore: rollbackHasMore,
         ),
       ),
-      (operationResult) {
-        if (!operationResult.success) {
-          emit(
-            ProductReviewsActionResult(
-              message: operationResult.message,
-              isError:
-                  false, // business-level "failure" but not exception — see note below
-              reviews: rollbackReviews,
-              currentPage: rollbackPage,
-              hasMore: rollbackHasMore,
-            ),
-          );
-        } else {
-          emit(
-            ProductReviewsActionResult(
-              message: operationResult.message,
-              isError: false,
-              reviews: optimisticList,
-              currentPage: current.currentPage,
-              hasMore: current.hasMore,
-            ),
-          );
-        }
-      },
+      (operationResult) => emit(
+        ProductReviewsActionResult(
+          message: operationResult.message,
+          isError: !operationResult.success,
+          reviews: operationResult.success ? optimisticList : rollbackReviews,
+          currentPage: current.currentPage,
+          hasMore: current.hasMore,
+        ),
+      ),
     );
   }
 
@@ -243,29 +218,15 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
           hasMore: rollbackHasMore,
         ),
       ),
-      (operationResult) {
-        if (!operationResult.success) {
-          emit(
-            ProductReviewsActionResult(
-              message: operationResult.message,
-              isError: false,
-              reviews: rollbackReviews,
-              currentPage: rollbackPage,
-              hasMore: rollbackHasMore,
-            ),
-          );
-        } else {
-          emit(
-            ProductReviewsActionResult(
-              message: operationResult.message,
-              isError: false,
-              reviews: optimisticList,
-              currentPage: current.currentPage,
-              hasMore: current.hasMore,
-            ),
-          );
-        }
-      },
+      (operationResult) => emit(
+        ProductReviewsActionResult(
+          message: operationResult.message,
+          isError: !operationResult.success,
+          reviews: operationResult.success ? optimisticList : rollbackReviews,
+          currentPage: current.currentPage,
+          hasMore: current.hasMore,
+        ),
+      ),
     );
   }
 }

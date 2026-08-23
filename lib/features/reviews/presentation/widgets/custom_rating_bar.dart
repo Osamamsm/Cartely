@@ -7,11 +7,13 @@ class CustomRatingBar extends StatelessWidget {
     required this.isReadOnly,
     required this.initialRating,
     required this.itemSize,
+    this.onRatingUpdate,
   });
 
   final bool isReadOnly;
   final double initialRating;
   final double itemSize;
+  final void Function(double rating)? onRatingUpdate;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class CustomRatingBar extends StatelessWidget {
       allowHalfRating: true,
       ignoreGestures: isReadOnly,
       initialRating: initialRating,
-      onRatingUpdate: (rating) {},
+      onRatingUpdate: onRatingUpdate ?? (rating) {},
       itemCount: 5,
       itemSize: itemSize,
     );
