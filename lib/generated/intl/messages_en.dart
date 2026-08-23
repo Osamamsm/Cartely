@@ -64,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "address_updated_successfully": MessageLookupByLibrary.simpleMessage(
       "Address updated successfully",
     ),
+    "all": MessageLookupByLibrary.simpleMessage("All"),
     "apartment_number": MessageLookupByLibrary.simpleMessage(
       "Apartment number",
     ),
@@ -133,6 +134,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "default_": MessageLookupByLibrary.simpleMessage("Default"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "delete_review": MessageLookupByLibrary.simpleMessage("Delete Review"),
+    "delete_review_confirmation": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete this review?",
+    ),
     "deliveryStatus": MessageLookupByLibrary.simpleMessage("Delivery Status"),
     "delivery_address": MessageLookupByLibrary.simpleMessage(
       "DELIVERY ADDRESS",
@@ -142,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Edit"),
     "edit_address": MessageLookupByLibrary.simpleMessage("Edit Address"),
     "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+    "edit_review": MessageLookupByLibrary.simpleMessage("Edit Review"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_hint": MessageLookupByLibrary.simpleMessage("Enter your email"),
     "emptyCart": MessageLookupByLibrary.simpleMessage("Your cart is empty"),
@@ -211,6 +217,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "No addresses yet",
     ),
     "no_changes_done": MessageLookupByLibrary.simpleMessage("No changes done"),
+    "no_reviews_yet": MessageLookupByLibrary.simpleMessage("No reviews yet"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "offers_promotions": MessageLookupByLibrary.simpleMessage(
       "Offers & Promotions",
@@ -312,6 +319,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "product_description": MessageLookupByLibrary.simpleMessage(
       "Product Description",
     ),
+    "product_info": MessageLookupByLibrary.simpleMessage("Product Information"),
     "product_reviews": MessageLookupByLibrary.simpleMessage("Customer Reviews"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profile_updated_successfully": MessageLookupByLibrary.simpleMessage(
@@ -336,6 +344,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "review": m5,
+    "review_comment_error": MessageLookupByLibrary.simpleMessage(
+      "Please enter a comment.",
+    ),
     "review_hint_text": MessageLookupByLibrary.simpleMessage(
       "Share your thoughts about this product...",
     ),
@@ -353,6 +364,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "security": MessageLookupByLibrary.simpleMessage("Security"),
     "see_all_reviews": MessageLookupByLibrary.simpleMessage("See All Reviews"),
     "select_language": MessageLookupByLibrary.simpleMessage("Select Language"),
+    "select_rating_error": MessageLookupByLibrary.simpleMessage(
+      "Please select a rating.",
+    ),
     "select_theme": MessageLookupByLibrary.simpleMessage("Select Theme"),
     "set_as_default": MessageLookupByLibrary.simpleMessage("Set as Default"),
     "set_as_default_address": MessageLookupByLibrary.simpleMessage(

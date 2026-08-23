@@ -1926,6 +1926,76 @@ class S {
   String get inStock {
     return Intl.message('In Stock', name: 'inStock', desc: '', args: []);
   }
+
+  /// `Product Information`
+  String get product_info {
+    return Intl.message(
+      'Product Information',
+      name: 'product_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message('All', name: 'all', desc: '', args: []);
+  }
+
+  /// `No reviews yet`
+  String get no_reviews_yet {
+    return Intl.message(
+      'No reviews yet',
+      name: 'no_reviews_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a rating.`
+  String get select_rating_error {
+    return Intl.message(
+      'Please select a rating.',
+      name: 'select_rating_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a comment.`
+  String get review_comment_error {
+    return Intl.message(
+      'Please enter a comment.',
+      name: 'review_comment_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Review`
+  String get edit_review {
+    return Intl.message('Edit Review', name: 'edit_review', desc: '', args: []);
+  }
+
+  /// `Delete Review`
+  String get delete_review {
+    return Intl.message(
+      'Delete Review',
+      name: 'delete_review',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this review?`
+  String get delete_review_confirmation {
+    return Intl.message(
+      'Are you sure you want to delete this review?',
+      name: 'delete_review_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

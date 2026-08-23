@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "address_updated_successfully": MessageLookupByLibrary.simpleMessage(
       "تم تحديث العنوان بنجاح",
     ),
+    "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "apartment_number": MessageLookupByLibrary.simpleMessage("رقم الشقة"),
     "app_name": MessageLookupByLibrary.simpleMessage("E-Commerce App"),
     "apply": MessageLookupByLibrary.simpleMessage("تطبيق"),
@@ -112,6 +113,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "dark": MessageLookupByLibrary.simpleMessage("داكن"),
     "default_": MessageLookupByLibrary.simpleMessage("الافتراضي"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "delete_review": MessageLookupByLibrary.simpleMessage("حذف المراجعة"),
+    "delete_review_confirmation": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد حذف المراجعة؟",
+    ),
     "deliveryStatus": MessageLookupByLibrary.simpleMessage("حالة التوصيل"),
     "delivery_address": MessageLookupByLibrary.simpleMessage("عنوان التوصيل"),
     "discount": MessageLookupByLibrary.simpleMessage("الخصم"),
@@ -119,6 +124,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
     "edit_address": MessageLookupByLibrary.simpleMessage("تعديل العنوان"),
     "edit_profile": MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
+    "edit_review": MessageLookupByLibrary.simpleMessage("تعديل المراجعة"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
     "email_hint": MessageLookupByLibrary.simpleMessage(
       "أدخل البريد الالكتروني",
@@ -184,6 +190,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "لا توجد عناوين بعد",
     ),
     "no_changes_done": MessageLookupByLibrary.simpleMessage("لا توجد تغييرات"),
+    "no_reviews_yet": MessageLookupByLibrary.simpleMessage(
+      "لا توجد مراجعات حتى الآن",
+    ),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "offers_promotions": MessageLookupByLibrary.simpleMessage(
       "العروض الترويجية",
@@ -274,6 +283,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الانتقال للدفع",
     ),
     "product_description": MessageLookupByLibrary.simpleMessage("وصف المنتج"),
+    "product_info": MessageLookupByLibrary.simpleMessage("معلومات المنتج"),
     "product_reviews": MessageLookupByLibrary.simpleMessage("اراء العملاء"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "profile_updated_successfully": MessageLookupByLibrary.simpleMessage(
@@ -295,6 +305,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "review": m5,
+    "review_comment_error": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال تعليق.",
+    ),
     "review_hint_text": MessageLookupByLibrary.simpleMessage(
       "شارك ارائك حول هذا المنتج",
     ),
@@ -312,6 +325,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "security": MessageLookupByLibrary.simpleMessage("الامان"),
     "see_all_reviews": MessageLookupByLibrary.simpleMessage("شاهد جميع الاراء"),
     "select_language": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
+    "select_rating_error": MessageLookupByLibrary.simpleMessage(
+      "يرجى اختيار تقييم.",
+    ),
     "select_theme": MessageLookupByLibrary.simpleMessage("اختر المظهر"),
     "set_as_default": MessageLookupByLibrary.simpleMessage("تعيين كافتراضي"),
     "set_as_default_address": MessageLookupByLibrary.simpleMessage(
