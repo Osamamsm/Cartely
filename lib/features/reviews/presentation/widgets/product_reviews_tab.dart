@@ -55,34 +55,47 @@ class ProductReviewsTab extends StatelessWidget {
 
         final loaded = state as ProductReviewsLoaded;
 
-        return CustomScrollView(
-          slivers: [
-            ReviewsSummaryHeader(
-              avgRating: avgRating,
-              reviewsCount: reviewsCount,
-              onWriteReview: () => openProductReviewSheet(
-                context: context,
-                isEdit: false,
-                productId: productId,
+        return Stack(
+          children: [
+            CustomScrollView(
+              slivers: [
+                ReviewsSummaryHeader(
+                  avgRating: avgRating,
+                  reviewsCount: reviewsCount,
+                  onWriteReview: () => openProductReviewSheet(
+                    context: context,
+                    isEdit: false,
+                    productId: productId,
+                  ),
+                ),
+                SliverPersistentHeader(
+                  pinned: true,
+                  delegate: FilterChipsHeaderDelegate(
+                    onSelect: (rating) => context
+                        .read<ProductReviewsCubit>()
+                        .filterByRating(rating),
+                    backgroundColor: theme.scaffoldBackgroundColor,
+                    selectedRating: loaded.selectedRating,
+                  ),
+                ),
+                ProductReviewsList(reviews: loaded.reviews),
+                SliverToBoxAdapter(
+                  child: loaded.isLoadingMore
+                      ? const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 20),
+                          child: Center(child: CircularProgressIndicator()),
+                        )
+                      : vGap(20),
+                ),
+              ],
+            ),
+            if (loaded.isFiltering)
+              const Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: LinearProgressIndicator(minHeight: 2),
               ),
-            ),
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: FilterChipsHeaderDelegate(
-                onSelect: (rating) =>
-                    context.read<ProductReviewsCubit>().filterByRating(rating),
-                backgroundColor: theme.scaffoldBackgroundColor,
-              ),
-            ),
-            ProductReviewsList(reviews: loaded.reviews),
-            SliverToBoxAdapter(
-              child: loaded.isLoadingMore
-                  ? const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
-                      child: Center(child: CircularProgressIndicator()),
-                    )
-                  : vGap(20),
-            ),
           ],
         );
       },

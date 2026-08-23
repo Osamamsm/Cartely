@@ -29,6 +29,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
 
   Future<void> loadReviews(String productId) async {
     _productId = productId;
+    _ratingFilter = null;
     emit(const ProductReviewsLoading());
     await _fetchPage(page: 1, append: false);
   }
@@ -36,7 +37,22 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
   Future<void> filterByRating(double? rating) async {
     if (_productId == null) return;
     _ratingFilter = rating;
-    emit(const ProductReviewsLoading());
+
+    final current = state;
+    if (current is ProductReviewsLoaded) {
+      // Keep the list/chips mounted; just flag that a filtered fetch is
+      // in flight and update the selected chip immediately.
+      emit(
+        current.copyWith(
+          isFiltering: true,
+          selectedRating: rating,
+          clearSelectedRating: rating == null,
+        ),
+      );
+    } else {
+      emit(const ProductReviewsLoading());
+    }
+
     await _fetchPage(page: 1, append: false);
   }
 
@@ -64,7 +80,14 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
             emit(current.copyWith(isLoadingMore: false));
           }
         } else {
-          emit(ProductReviewsLoadFailure(failure.message));
+          final current = state;
+          if (current is ProductReviewsLoaded) {
+            // Filter fetch failed: drop back out of "filtering" so the UI
+            // doesn't spin forever, but keep whatever was on screen.
+            emit(current.copyWith(isFiltering: false));
+          } else {
+            emit(ProductReviewsLoadFailure(failure.message));
+          }
         }
       },
       (reviews) {
@@ -85,6 +108,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
               reviews: reviews,
               currentPage: page,
               hasMore: hasMore,
+              selectedRating: _ratingFilter,
             ),
           );
         }
@@ -114,6 +138,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
           reviews: current.reviews,
           currentPage: current.currentPage,
           hasMore: current.hasMore,
+          selectedRating: current.selectedRating,
         ),
       ),
       (operationResult) async {
@@ -124,6 +149,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
             reviews: current.reviews,
             currentPage: current.currentPage,
             hasMore: current.hasMore,
+            selectedRating: current.selectedRating,
           ),
         );
         if (operationResult.success) {
@@ -178,6 +204,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
           reviews: rollbackReviews,
           currentPage: rollbackPage,
           hasMore: rollbackHasMore,
+          selectedRating: current.selectedRating,
         ),
       ),
       (operationResult) => emit(
@@ -187,6 +214,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
           reviews: operationResult.success ? optimisticList : rollbackReviews,
           currentPage: current.currentPage,
           hasMore: current.hasMore,
+          selectedRating: current.selectedRating,
         ),
       ),
     );
@@ -216,6 +244,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
           reviews: rollbackReviews,
           currentPage: rollbackPage,
           hasMore: rollbackHasMore,
+          selectedRating: current.selectedRating,
         ),
       ),
       (operationResult) => emit(
@@ -225,6 +254,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
           reviews: operationResult.success ? optimisticList : rollbackReviews,
           currentPage: current.currentPage,
           hasMore: current.hasMore,
+          selectedRating: current.selectedRating,
         ),
       ),
     );
