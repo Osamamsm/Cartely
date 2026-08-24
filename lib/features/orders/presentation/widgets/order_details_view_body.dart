@@ -155,13 +155,13 @@ class _OrderSummaryCard extends StatelessWidget {
                 ),
                 vGap(6),
                 Text(
-                  '\$${orderDetails.total.toStringAsFixed(2)}',
+                  '${orderDetails.total.toStringAsFixed(2)} ${S.of(context).egp}',
                   style: textTheme.titleLarge?.copyWith(
                     color: colors.onSurface,
                   ),
                 ),
                 vGap(4),
-                StatusBadge(status: orderDetails.orderStatus),
+                OrderStatusBadge(status: orderDetails.orderStatus),
               ],
             ),
           ),
@@ -333,7 +333,7 @@ class _OrderItemTile extends StatelessWidget {
           ),
           hGap(12),
           Text(
-            '\$${item.price.toStringAsFixed(2)}',
+            '${item.price.toStringAsFixed(2)} ${S.of(context).egp}',
             style: textTheme.titleSmall?.copyWith(color: colors.onSurface),
           ),
         ],
@@ -385,7 +385,7 @@ class _TotalsCard extends StatelessWidget {
                 style: textTheme.titleMedium?.copyWith(color: colors.onSurface),
               ),
               Text(
-                '\$${orderDetails.total.toStringAsFixed(2)}',
+                '${orderDetails.total.toStringAsFixed(2)} ${S.of(context).egp}',
                 style: textTheme.titleLarge?.copyWith(color: colors.onSurface),
               ),
             ],
@@ -400,10 +400,7 @@ class _TotalsCard extends StatelessWidget {
                   color: colors.onSurface.withValues(alpha: 0.55),
                 ),
               ),
-              Text(
-                orderDetails.paymentStatus,
-                style: textTheme.labelMedium?.copyWith(color: colors.primary),
-              ),
+              PaymentStatusBadge(status: orderDetails.paymentStatus),
             ],
           ),
         ],
@@ -434,7 +431,7 @@ class _TotalRow extends StatelessWidget {
           ),
         ),
         Text(
-          '\$${value.toStringAsFixed(2)}',
+          '${value.toStringAsFixed(2)} ${S.of(context).egp}',
           style: theme.textTheme.bodyMedium?.copyWith(
             color: valueColor ?? colors.onSurface,
             fontWeight: FontWeight.w600,

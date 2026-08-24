@@ -3,6 +3,7 @@ import 'package:e_commerce/core/widgets/product_image.dart';
 import 'package:e_commerce/features/home/presentation/widgets/fav_button.dart';
 import 'package:e_commerce/features/product/data/models/product.dart';
 import 'package:e_commerce/features/product/product_details/presentation/views/product_details_view.dart';
+import 'package:e_commerce/generated/l10n.dart';
 //import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -72,7 +73,7 @@ class ProductCard extends StatelessWidget {
             children: [
               if (hasDiscount) ...[
                 Text(
-                  'E£${product.basePrice.toStringAsFixed(2)}',
+                  '${product.basePrice.toStringAsFixed(2)} ${S.of(context).egp}',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     decoration: TextDecoration.lineThrough,
                     decorationColor: Theme.of(
@@ -85,7 +86,7 @@ class ProductCard extends StatelessWidget {
                 ),
                 hGap(6),
                 Text(
-                  'E£${product.discountedPrice.toStringAsFixed(2)}',
+                  '${product.discountedPrice.toStringAsFixed(2)} ${S.of(context).egp}',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: Theme.of(context).colorScheme.error,
                     fontWeight: FontWeight.bold,
@@ -93,7 +94,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ] else
                 Text(
-                  'E£${product.basePrice.toStringAsFixed(2)}',
+                  '${product.basePrice.toStringAsFixed(2)} ${S.of(context).egp}',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
             ],

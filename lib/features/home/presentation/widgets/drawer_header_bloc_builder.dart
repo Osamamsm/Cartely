@@ -4,6 +4,7 @@ import 'package:e_commerce/core/widgets/custom_error_header.dart';
 import 'package:e_commerce/features/profile/domain/entities/user_profile_entity.dart';
 import 'package:e_commerce/features/profile/presentation/logic/cubit/profile_cubit.dart';
 import 'package:e_commerce/features/profile/presentation/logic/cubit/profile_state.dart';
+import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -73,7 +74,7 @@ class _CustomDrawerHeader extends StatelessWidget {
         Text(
           userProfileEntity.fullName.isNotEmpty
               ? userProfileEntity.fullName
-              : 'Guest User',
+              : S.of(context).guest_user,
           style: theme.textTheme.titleLarge,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -87,7 +88,7 @@ class _CustomDrawerHeader extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
-              userProfileEntity.role,
+              S.of(context).customer,
               style: theme.textTheme.bodySmall,
             ),
           ),

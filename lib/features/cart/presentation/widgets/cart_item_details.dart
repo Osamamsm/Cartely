@@ -40,12 +40,12 @@ class CartItemDetails extends StatelessWidget {
           const SizedBox(height: 4),
 
           Text(
-            '${cartItem.price.toStringAsFixed(2)} EGP',
+            '${cartItem.price.toStringAsFixed(2)} ${S.of(context).egp}',
             style: Theme.of(context).textTheme.bodyMedium,
           ),
 
           Text(
-            '${s.total}: ${cartItem.lineSubtotal.toStringAsFixed(2)} EGP',
+            '${s.total}: ${cartItem.lineSubtotal.toStringAsFixed(2)} ${S.of(context).egp}',
             style: Theme.of(context).textTheme.titleMedium,
           ),
         ],

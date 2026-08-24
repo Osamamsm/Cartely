@@ -6,6 +6,7 @@ import 'package:e_commerce/core/widgets/show_error_dialog.dart';
 import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
 import 'package:e_commerce/features/addresses/presentation/logic/addresses_cubit/addresses_cubit.dart';
 import 'package:e_commerce/features/addresses/presentation/views/edit_address_view.dart';
+import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -27,6 +28,20 @@ class AddressCardHeader extends StatelessWidget {
     }
   }
 
+  String getLocalizedLabel(String label, BuildContext context) {
+    final s = S.of(context);
+    switch (label) {
+      case 'Home':
+        return s.home;
+      case 'Work':
+        return s.work;
+      case 'Other':
+        return s.other;
+      default:
+        return label;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -44,7 +59,10 @@ class AddressCardHeader extends StatelessWidget {
           ),
         ),
         hGap(12),
-        Text(address.label, style: Theme.of(context).textTheme.titleMedium),
+        Text(
+          getLocalizedLabel(address.label, context),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
         hGap(8),
         if (address.isDefault) DefaultFlagWidget(),
         const Spacer(),
@@ -55,8 +73,10 @@ class AddressCardHeader extends StatelessWidget {
           onDelete: () {
             showCustomDialog(
               context: context,
-              message: "Are you sure ,you want to delete this address",
+              message: S.of(context).address_delete_confirmation,
               dialogType: DialogType.warning,
+              okBtnText: S.of(context).yes,
+              cancelBtnText: S.of(context).no,
               onOkPressed: () {
                 context.read<AddressesCubit>().deleteAddress(address.id!);
               },

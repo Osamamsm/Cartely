@@ -40,7 +40,6 @@ class ButtonThemes {
       style: OutlinedButton.styleFrom(
         backgroundColor: scheme.surface.withValues(alpha: 0.4),
         foregroundColor: scheme.onSurface,
-        minimumSize: const Size(double.infinity, 52),
         side: BorderSide(color: scheme.outline, width: 1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         textStyle: const TextStyle(

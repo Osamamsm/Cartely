@@ -16,6 +16,22 @@ ImageProvider resolveUserAvatarImage({File? pickedImage, String? avatarUrl}) {
   }
 }
 
+TextDirection getTextDirection(String text) {
+    for (final char in text.runes) {
+      final character = String.fromCharCode(char);
+
+      if (RegExp(r'[A-Za-z]').hasMatch(character)) {
+        return TextDirection.ltr;
+      }
+
+      if (RegExp(r'[\u0590-\u08FF]').hasMatch(character)) {
+        return TextDirection.rtl;
+      }
+    }
+
+    return TextDirection.ltr;
+  }
+
 String getVariationsText(BuildContext context, CartItem cartItem) {
   final isArabic = Localizations.localeOf(context).languageCode == 'ar';
 

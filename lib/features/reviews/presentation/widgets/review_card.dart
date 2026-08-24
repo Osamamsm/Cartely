@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:e_commerce/core/helpers/functions.dart';
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/core/widgets/custom_popup_menu_button.dart';
 import 'package:e_commerce/core/widgets/show_error_dialog.dart';
@@ -100,13 +101,17 @@ class ReviewCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: Theme.of(
                     context,
-                  ).colorScheme.onSurface.withValues(alpha:  0.6),
+                  ).colorScheme.onSurface.withValues(alpha: 0.6),
                 ),
               ),
             ],
           ),
           vGap(10),
-          Text(review.comment, style: Theme.of(context).textTheme.bodyMedium),
+          Text(
+            review.comment,
+            textDirection: getTextDirection(review.comment),
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
         ],
       ),
     );

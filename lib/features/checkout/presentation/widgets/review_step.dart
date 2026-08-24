@@ -174,6 +174,7 @@ class _OrderItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -210,21 +211,17 @@ class _OrderItemCard extends StatelessWidget {
 
                 const SizedBox(height: 4),
 
-                Row(
-                  children: [
-                    Text(
-                      '${item.price.toStringAsFixed(2)} EGP',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    Text(
-                      ' x ${item.quantity}',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
+                Text(
+                  s.itemPriceQuantity(
+                    item.price.toStringAsFixed(2),
+                    s.egp,
+                    item.quantity,
+                  ),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
 
                 Text(
-                  '${S.of(context).total}: ${item.lineSubtotal.toStringAsFixed(2)} EGP',
+                  '${S.of(context).total}: ${item.lineSubtotal.toStringAsFixed(2)} ${S.of(context).egp}',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ],

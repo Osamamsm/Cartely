@@ -1,5 +1,6 @@
 import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
 import 'package:e_commerce/features/addresses/presentation/widgets/address_card.dart';
+import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class SavedAddressesViewBody extends StatelessWidget {
@@ -8,7 +9,11 @@ class SavedAddressesViewBody extends StatelessWidget {
   final List<AddressEntity> addresses;
 
   Map<String, List<AddressEntity>> _groupAddressesByType() {
-    Map<String, List<AddressEntity>> grouped = {'Home': [], 'Work': [], 'Other': []};
+    Map<String, List<AddressEntity>> grouped = {
+      'Home': [],
+      'Work': [],
+      'Other': [],
+    };
 
     for (var address in addresses) {
       if (grouped.containsKey(address.label)) {
@@ -20,6 +25,20 @@ class SavedAddressesViewBody extends StatelessWidget {
 
     grouped.removeWhere((key, value) => value.isEmpty);
     return grouped;
+  }
+
+  String getLocalizedLabel(String label, BuildContext context) {
+    final s = S.of(context);
+    switch (label) {
+      case 'Home':
+        return s.home;
+      case 'Work':
+        return s.work;
+      case 'Other':
+        return s.other;
+      default:
+        return label;
+    }
   }
 
   @override
@@ -43,7 +62,7 @@ class SavedAddressesViewBody extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 4, bottom: 12),
                     child: Text(
-                      category.toUpperCase(),
+                      getLocalizedLabel(category, context).toUpperCase(),
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),

@@ -1,5 +1,6 @@
 import 'package:e_commerce/features/orders/domain/entity/order.dart';
 import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_cubit.dart';
+import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,17 +14,33 @@ class FilterChipsRow extends StatefulWidget {
 class _FilterChipsRowState extends State<FilterChipsRow> {
   OrderStatus? _selectedFilter;
 
-  static const _filters = {
-    null: 'All',
-    OrderStatus.pending: 'Pending',
-    OrderStatus.confirmed: 'Confirmed',
-    OrderStatus.processing: 'Processing',
-    OrderStatus.shipped: 'Shipped',
-    OrderStatus.delivered: 'Delivered',
-    OrderStatus.outForDelivery: 'Out for Delivery',
-    OrderStatus.cancelled: 'Cancelled',
-    OrderStatus.returned: 'Returned',
-  };
+  static const _filters = [
+    null,
+    OrderStatus.pending,
+    OrderStatus.confirmed,
+    OrderStatus.processing,
+    OrderStatus.shipped,
+    OrderStatus.delivered,
+    OrderStatus.outForDelivery,
+    OrderStatus.cancelled,
+    OrderStatus.returned,
+  ];
+
+  String _getFilterLabel(BuildContext context, OrderStatus? filter) {
+    final s = S.of(context);
+
+    return switch (filter) {
+      null => s.all,
+      OrderStatus.pending => s.pending,
+      OrderStatus.confirmed => s.confirmed,
+      OrderStatus.processing => s.processing,
+      OrderStatus.shipped => s.shipped,
+      OrderStatus.delivered => s.delivered,
+      OrderStatus.outForDelivery => s.outForDelivery,
+      OrderStatus.cancelled => s.cancelled,
+      OrderStatus.returned => s.returned,
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +52,10 @@ class _FilterChipsRowState extends State<FilterChipsRow> {
         itemCount: _filters.length,
         separatorBuilder: (_, __) => const SizedBox(width: 10),
         itemBuilder: (context, index) {
-          final filter = _filters.keys.elementAt(index);
+          final filter = _filters[index];
 
           return _FilterChip(
-            label: _filters[filter]!,
+            label: _getFilterLabel(context, filter),
             selected: _selectedFilter == filter,
             onTap: () {
               setState(() {

@@ -69,7 +69,7 @@ class _ProductsFilterSortBarState extends State<ProductsFilterSortBar> {
           hGap(8),
           FilterChipWidget(
             label: _filters.priceRange != null
-                ? '\$${_filters.priceRange!.start.toInt()}–\$${_filters.priceRange!.end.toInt()}'
+                ? '${_filters.priceRange!.start.toInt()}–${_filters.priceRange!.end.toInt()} ${S.of(context).egp}'
                 : S.of(context).price,
             icon: Icons.attach_money,
             isActive: _filters.priceRange != null,

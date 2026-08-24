@@ -88,14 +88,16 @@ class _CustomDrawerFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image(
-      image: AssetImage(
-        Theme.of(context).brightness == Brightness.light
-            ? "assets/logo/dark_on_light_logo.png"
-            : "assets/logo/light_on_dark_logo.png",
+    return Expanded(
+      child: Image(
+        image: AssetImage(
+          Theme.of(context).brightness == Brightness.light
+              ? "assets/logo/dark_on_light_logo.png"
+              : "assets/logo/light_on_dark_logo.png",
+        ),
+        height: 65,
+        width: 65,
       ),
-      height: 65,
-      width: 65,
     );
   }
 }

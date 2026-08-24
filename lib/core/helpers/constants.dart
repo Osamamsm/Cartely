@@ -65,32 +65,36 @@ class Constants {
     ];
   }
 
-  static List<PaymentMethod> paymentMethods = [
-    PaymentMethod(
-      id: 'card',
-      type: PaymentType.card,
-      label: 'Debit/Credit Card',
-      description: 'Visa, Mastercard, Amex',
-      isDefault: true,
-      isEnabled: true,
-    ),
-    PaymentMethod(
-      id: 'wallet',
-      type: PaymentType.digitalWallet,
-      label: 'Digital Wallet',
-      description: 'Coming Soon',
-      isDefault: false,
-      isEnabled: false,
-    ),
-    PaymentMethod(
-      id: 'cash',
-      type: PaymentType.cashOnDelivery,
-      label: 'Cash on Delivery',
-      description: 'Pay when you receive',
-      isDefault: false,
-      isEnabled: true,
-    ),
-  ];
+  static List<PaymentMethod> getPaymentMethods(BuildContext context) {
+    final s = S.of(context);
+
+    return [
+      PaymentMethod(
+        id: 'card',
+        type: PaymentType.card,
+        label: s.debitCreditCard,
+        description: s.debitCreditCardDescription,
+        isDefault: true,
+        isEnabled: true,
+      ),
+      PaymentMethod(
+        id: 'wallet',
+        type: PaymentType.digitalWallet,
+        label: s.digitalWallet,
+        description: s.digitalWalletDescription,
+        isDefault: false,
+        isEnabled: false,
+      ),
+      PaymentMethod(
+        id: 'cash',
+        type: PaymentType.cashOnDelivery,
+        label: s.cashOnDelivery,
+        description: s.cashOnDeliveryDescription,
+        isDefault: false,
+        isEnabled: true,
+      ),
+    ];
+  }
 
   static List<Map<String, dynamic>> getProfileMenuSections(
     BuildContext context,
@@ -200,7 +204,7 @@ class Constants {
           },
           {
             "label": s.account_status,
-            "value": 'Active',
+            "value": s.active,
             "icon": Icons.verified_outlined,
             "valueColor": const Color(0xFF34d399),
           },

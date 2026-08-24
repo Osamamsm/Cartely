@@ -42,7 +42,7 @@ class CheckoutFormBody extends StatelessWidget {
                     child: AddressStep(),
                   ),
                   PaymentStep(
-                    paymentMethods: Constants.paymentMethods,
+                    paymentMethods: Constants.getPaymentMethods(context),
                     selectedPaymentType: context
                         .read<CheckoutCubit>()
                         .state
@@ -63,14 +63,15 @@ class CheckoutFormBody extends StatelessWidget {
                           label: '',
                           isDefault: false,
                         ),
-                    selectedPayment: Constants.paymentMethods.firstWhere(
-                      (p) =>
-                          p.type ==
-                          context
-                              .read<CheckoutCubit>()
-                              .state
-                              .selectedPaymentType,
-                    ),
+                    selectedPayment: Constants.getPaymentMethods(context)
+                        .firstWhere(
+                          (p) =>
+                              p.type ==
+                              context
+                                  .read<CheckoutCubit>()
+                                  .state
+                                  .selectedPaymentType,
+                        ),
                     cart: context.read<CheckoutCubit>().state.cart!,
                   ),
                 ],

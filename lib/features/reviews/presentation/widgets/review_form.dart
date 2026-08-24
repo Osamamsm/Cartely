@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/helpers/functions.dart';
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/features/reviews/presentation/widgets/custom_rating_bar.dart';
 import 'package:e_commerce/generated/l10n.dart';
@@ -74,6 +75,7 @@ class _ReviewFormState extends State<ReviewForm> {
         ),
         vGap(10),
         TextField(
+          textDirection: getTextDirection(widget.initialComment),
           controller: _commentController,
           maxLines: 3,
           decoration: InputDecoration(

@@ -2145,6 +2145,196 @@ class S {
       args: [],
     );
   }
+
+  /// `Active`
+  String get active {
+    return Intl.message('Active', name: 'active', desc: '', args: []);
+  }
+
+  /// `Are you sure, you want to delete this address?`
+  String get address_delete_confirmation {
+    return Intl.message(
+      'Are you sure, you want to delete this address?',
+      name: 'address_delete_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message('Pending', name: 'pending', desc: '', args: []);
+  }
+
+  /// `Confirmed`
+  String get confirmed {
+    return Intl.message('Confirmed', name: 'confirmed', desc: '', args: []);
+  }
+
+  /// `Processing`
+  String get processing {
+    return Intl.message('Processing', name: 'processing', desc: '', args: []);
+  }
+
+  /// `Shipped`
+  String get shipped {
+    return Intl.message('Shipped', name: 'shipped', desc: '', args: []);
+  }
+
+  /// `Delivered`
+  String get delivered {
+    return Intl.message('Delivered', name: 'delivered', desc: '', args: []);
+  }
+
+  /// `Out for Delivery`
+  String get outForDelivery {
+    return Intl.message(
+      'Out for Delivery',
+      name: 'outForDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancelled`
+  String get cancelled {
+    return Intl.message('Cancelled', name: 'cancelled', desc: '', args: []);
+  }
+
+  /// `Returned`
+  String get returned {
+    return Intl.message('Returned', name: 'returned', desc: '', args: []);
+  }
+
+  /// `EGP`
+  String get egp {
+    return Intl.message('EGP', name: 'egp', desc: '', args: []);
+  }
+
+  /// `Pending`
+  String get paymentStatusPending {
+    return Intl.message(
+      'Pending',
+      name: 'paymentStatusPending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paid`
+  String get paymentStatusPaid {
+    return Intl.message('Paid', name: 'paymentStatusPaid', desc: '', args: []);
+  }
+
+  /// `Failed`
+  String get paymentStatusFailed {
+    return Intl.message(
+      'Failed',
+      name: 'paymentStatusFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Processing`
+  String get paymentStatusProcessing {
+    return Intl.message(
+      'Processing',
+      name: 'paymentStatusProcessing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refunded`
+  String get paymentStatusRefunded {
+    return Intl.message(
+      'Refunded',
+      name: 'paymentStatusRefunded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Debit/Credit Card`
+  String get debitCreditCard {
+    return Intl.message(
+      'Debit/Credit Card',
+      name: 'debitCreditCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Visa, Mastercard, Amex`
+  String get debitCreditCardDescription {
+    return Intl.message(
+      'Visa, Mastercard, Amex',
+      name: 'debitCreditCardDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Digital Wallet`
+  String get digitalWallet {
+    return Intl.message(
+      'Digital Wallet',
+      name: 'digitalWallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coming Soon`
+  String get digitalWalletDescription {
+    return Intl.message(
+      'Coming Soon',
+      name: 'digitalWalletDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cash on Delivery`
+  String get cashOnDelivery {
+    return Intl.message(
+      'Cash on Delivery',
+      name: 'cashOnDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay when you receive`
+  String get cashOnDeliveryDescription {
+    return Intl.message(
+      'Pay when you receive',
+      name: 'cashOnDeliveryDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{price} {currency} × {quantity}`
+  String itemPriceQuantity(Object price, Object currency, Object quantity) {
+    return Intl.message(
+      '$price $currency × $quantity',
+      name: 'itemPriceQuantity',
+      desc: '',
+      args: [price, currency, quantity],
+    );
+  }
+
+  /// `Guest User`
+  String get guest_user {
+    return Intl.message('Guest User', name: 'guest_user', desc: '', args: []);
+  }
+
+  /// `Customer`
+  String get customer {
+    return Intl.message('Customer', name: 'customer', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,3 +1,4 @@
+import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class SummaryRow extends StatelessWidget {
@@ -28,7 +29,7 @@ class SummaryRow extends StatelessWidget {
                 ),
         ),
         Text(
-          '\$${value.toStringAsFixed(2)}',
+          '${value.toStringAsFixed(2)} ${S.of(context).egp}',
           style: isTotal
               ? theme.textTheme.titleMedium
               : theme.textTheme.bodyMedium,

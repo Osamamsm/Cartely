@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:e_commerce/core/helpers/functions.dart';
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/core/widgets/custom_popup_menu_button.dart';
 import 'package:e_commerce/core/widgets/product_image.dart';
@@ -70,7 +71,10 @@ class UserReviewCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 6),
-                Text(review.comment),
+                Text(
+                  review.comment,
+                  textDirection: getTextDirection(review.comment),
+                ),
               ],
             ),
           ),

@@ -24,7 +24,7 @@ class ProductHeaderSection extends StatelessWidget {
         Row(
           children: [
             Text(
-              'E£${productDetails.discountedPrice ?? productDetails.basePrice}',
+              '${productDetails.discountedPrice ?? productDetails.basePrice} ${S.of(context).egp}',
               style: Theme.of(context).textTheme.titleSmall,
             ),
             Spacer(flex: 1),

@@ -31,7 +31,7 @@ class _PriceRangeBottomSheetState extends State<PriceRangeBottomSheet> {
     _range = widget.currentRange ?? RangeValues(0, widget.maxPrice);
   }
 
-  String _fmt(double value) => '\$${value.toInt()}';
+  String _fmt(double value) => '${value.toInt()} ${S.of(context).egp}';
 
   @override
   Widget build(BuildContext context) {

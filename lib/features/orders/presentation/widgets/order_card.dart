@@ -41,7 +41,7 @@ class OrderCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '\$${order.total.toStringAsFixed(2)}',
+                        '${order.total.toStringAsFixed(2)} ${s.egp}',
                         style: textTheme.titleMedium?.copyWith(
                           color: colors.onPrimaryContainer,
                         ),
@@ -57,9 +57,8 @@ class OrderCard extends StatelessWidget {
                       vGap(2),
                       Text(
                         s.placedOn(
-                          DateFormat(
-                            'MMM d, yyyy',
-                            Localizations.localeOf(context).languageCode,
+                          DateFormat.yMMMd(
+                            Localizations.localeOf(context).toString(),
                           ).format(order.createdAt),
                         ),
                         style: textTheme.bodySmall?.copyWith(
@@ -84,7 +83,7 @@ class OrderCard extends StatelessWidget {
               ],
             ),
             vGap(12),
-            StatusBadge(status: order.orderStatus),
+            OrderStatusBadge(status: order.orderStatus),
             if (order.orderStatus == OrderStatus.shipped) ...[
               vGap(12),
               Text(
