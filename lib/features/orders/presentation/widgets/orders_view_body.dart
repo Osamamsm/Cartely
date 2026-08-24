@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/core/widgets/empty_body.dart';
+import 'package:e_commerce/core/widgets/error_body.dart';
 import 'package:e_commerce/features/home/presentation/views/home_view.dart';
 import 'package:e_commerce/features/orders/domain/entity/order.dart';
 import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_cubit.dart';
@@ -17,10 +18,6 @@ class OrdersViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colors = theme.colorScheme;
-    final textTheme = theme.textTheme;
-    final l10n = S.of(context);
 
     return Column(
       children: [
@@ -32,14 +29,10 @@ class OrdersViewBody extends StatelessWidget {
           child: BlocBuilder<GetOrdersCubit, GetOrdersState>(
             builder: (context, state) {
               if (state is GetOrdersFailure) {
-                return Center(
-                  child: Text(
-                    l10n.ordersError(state.message),
-                    style: textTheme.bodyMedium?.copyWith(
-                      color: colors.onSurface.withValues(alpha: 0.55),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+                return ErrorBody(
+                  errMessage: state.message,
+                  onRetry: () => context.read<GetOrdersCubit>().getOrders(),
+                  goHomeEnabled: true,
                 );
               }
               if (state is GetOrdersSuccess) {

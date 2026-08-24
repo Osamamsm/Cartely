@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/helpers/constants.dart';
 import 'package:e_commerce/core/widgets/empty_body.dart';
+import 'package:e_commerce/core/widgets/error_body.dart';
 import 'package:e_commerce/features/home/presentation/views/home_view.dart';
 import 'package:e_commerce/features/product/data/models/product.dart';
 import 'package:e_commerce/features/wish_list/presentation/logic/get_wish_list_cubit/get_wish_list_cubit.dart';
@@ -7,7 +8,6 @@ import 'package:e_commerce/features/wish_list/presentation/logic/get_wish_list_c
 import 'package:e_commerce/features/wish_list/presentation/logic/wish_list_cubit/wish_list_cubit.dart';
 import 'package:e_commerce/features/wish_list/presentation/logic/wish_list_cubit/wish_list_state.dart';
 import 'package:e_commerce/features/wish_list/presentation/widgets/wish_list_grid_view.dart';
-import 'package:e_commerce/features/wish_list/presentation/widgets/wishlist_failure_body.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +29,11 @@ class WishListViewBody extends StatelessWidget {
         child: BlocBuilder<GetWishListCubit, GetWishlistState>(
           builder: (context, state) {
             if (state.status == WishlistStatus.failed) {
-              return WishlistFailureBody(message: state.errMessage);
+              return ErrorBody(
+                errMessage: state.errMessage,
+                onRetry: () => context.read<GetWishListCubit>().getWishList(),
+                goHomeEnabled: true,
+              );
             } else if (state.status == WishlistStatus.loaded) {
               final products = state.products;
               if (products.isEmpty) {

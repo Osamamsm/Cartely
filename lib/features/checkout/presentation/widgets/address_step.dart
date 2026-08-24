@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/core/widgets/empty_body.dart';
+import 'package:e_commerce/core/widgets/error_body.dart';
 import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
 import 'package:e_commerce/features/addresses/presentation/logic/addresses_cubit/addresses_cubit.dart';
 import 'package:e_commerce/features/addresses/presentation/views/add_address_view.dart';
@@ -22,11 +23,10 @@ class AddressStep extends StatelessWidget {
     return BlocBuilder<AddressesCubit, AddressesState>(
       builder: (context, state) {
         if (state.status == AddressesStatus.failure) {
-          return Center(
-            child: Text(
-              "error",
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
+          return ErrorBody(
+            onRetry: () => context.read<AddressesCubit>().getAddresses(),
+            errMessage: state.errorMessage!,
+            goHomeEnabled: true,
           );
         } else if (state.status == AddressesStatus.success) {
           if (state.addresses.isEmpty) {
