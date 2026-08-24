@@ -43,9 +43,7 @@ class EmptyBody extends StatelessWidget {
               Text(
                 title!,
                 textAlign: TextAlign.center,
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+                style: theme.textTheme.headlineSmall,
               ),
               vGap(8),
             ],
@@ -53,12 +51,12 @@ class EmptyBody extends StatelessWidget {
               message,
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                color: theme.colorScheme.onSurfaceVariant,
               ),
             ),
             if (actionLabel != null && onAction != null) ...[
               vGap(20),
-              OutlinedButton(onPressed: onAction, child: Text(actionLabel!)),
+              FilledButton(onPressed: onAction, child: Text(actionLabel!)),
             ],
           ],
         ),

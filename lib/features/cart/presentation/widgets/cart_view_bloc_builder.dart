@@ -1,11 +1,14 @@
+import 'package:e_commerce/core/widgets/empty_body.dart';
 import 'package:e_commerce/core/widgets/error_body.dart';
 import 'package:e_commerce/features/cart/domain/entities/cart.dart';
 import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce/features/cart/presentation/logic/cart_cubit/cart_state.dart';
 import 'package:e_commerce/features/cart/presentation/widgets/cart_view_body.dart';
-import 'package:e_commerce/features/cart/presentation/widgets/empty_cart_body.dart';
+import 'package:e_commerce/features/home/presentation/views/home_view.dart';
+import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class CartViewBlocBuilder extends StatelessWidget {
@@ -25,7 +28,15 @@ class CartViewBlocBuilder extends StatelessWidget {
           );
         } else {
           if (state.cart.items.isEmpty) {
-            return EmptyCartBody();
+            return EmptyBody(
+              icon: Icons.shopping_cart_outlined,
+              title: S.of(context).my_cart,
+              message: S.of(context).emptyCartDescription,
+              actionLabel: S.of(context).startShopping,
+              onAction: () {
+                context.go(HomeView.routeName);
+              },
+            );
           }
           return CartViewBody(cart: state.cart);
         }
