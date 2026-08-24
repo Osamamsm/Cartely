@@ -288,6 +288,8 @@
   "empty_wishlist_description": "Tap the heart icon on products to save them to your wishlist.",
   "shop_now": "Shop Now",
   "no_orders": "No orders",
-  "no_orders_description": "You haven't placed any orders yet."
+  "no_orders_description": "You haven't placed any orders yet.",
+  "no_results": "No results",
+  "no_results_description": "No products found matching your search."
 }
 

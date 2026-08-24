@@ -2120,6 +2120,21 @@ class S {
       args: [],
     );
   }
+
+  /// `No results`
+  String get no_results {
+    return Intl.message('No results', name: 'no_results', desc: '', args: []);
+  }
+
+  /// `No products found matching your search.`
+  String get no_results_description {
+    return Intl.message(
+      'No products found matching your search.',
+      name: 'no_results_description',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

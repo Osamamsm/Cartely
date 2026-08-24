@@ -276,6 +276,8 @@
   "empty_wishlist_description": "اضغط على أيقونة القلب في المنتجات لحفظها في سلة الرغبات الخاصة بك.",
   "shop_now": "تسوق الآن",
   "no_orders": "لا توجد طلبات",
-  "no_orders_description": "لم تقم بأي طلبات بعد."
+  "no_orders_description": "لم تقم بأي طلبات بعد.",
+  "no_results": "لا توجد نتائج",
+  "no_results_description": "لم يتم العثور على أي منتجات تطابق بحثك."
 }
 

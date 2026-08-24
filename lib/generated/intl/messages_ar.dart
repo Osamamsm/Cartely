@@ -207,6 +207,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_orders_description": MessageLookupByLibrary.simpleMessage(
       "لم تقم بأي طلبات بعد.",
     ),
+    "no_results": MessageLookupByLibrary.simpleMessage("لا توجد نتائج"),
+    "no_results_description": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على أي منتجات تطابق بحثك.",
+    ),
     "no_reviews": MessageLookupByLibrary.simpleMessage("لا توجد مراجعات"),
     "no_reviews_description": MessageLookupByLibrary.simpleMessage(
       "لم تقم بتقييم أي منتجات بعد.",

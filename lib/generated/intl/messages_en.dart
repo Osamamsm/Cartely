@@ -236,6 +236,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_orders_description": MessageLookupByLibrary.simpleMessage(
       "You haven\'t placed any orders yet.",
     ),
+    "no_results": MessageLookupByLibrary.simpleMessage("No results"),
+    "no_results_description": MessageLookupByLibrary.simpleMessage(
+      "No products found matching your search.",
+    ),
     "no_reviews": MessageLookupByLibrary.simpleMessage("No reviews"),
     "no_reviews_description": MessageLookupByLibrary.simpleMessage(
       "You haven\'t reviewed any products yet.",
