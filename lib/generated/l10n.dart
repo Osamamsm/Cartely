@@ -2065,6 +2065,21 @@ class S {
   String get add_address {
     return Intl.message('Add Address', name: 'add_address', desc: '', args: []);
   }
+
+  /// `No reviews`
+  String get no_reviews {
+    return Intl.message('No reviews', name: 'no_reviews', desc: '', args: []);
+  }
+
+  /// `You haven't reviewed any products yet.`
+  String get no_reviews_description {
+    return Intl.message(
+      'You haven\'t reviewed any products yet.',
+      name: 'no_reviews_description',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -281,6 +281,8 @@
   "rate_your_purchases": "Rate Your Purchases",
   "rate_this_product": "Rate this product",
   "no_addresses_found_message": "You don't have any addresses yet.",
-  "add_address": "Add Address"
+  "add_address": "Add Address",
+  "no_reviews": "No reviews",
+  "no_reviews_description": "You haven't reviewed any products yet."
 }
 

@@ -1,8 +1,10 @@
+import 'package:e_commerce/core/widgets/empty_body.dart';
 import 'package:e_commerce/core/widgets/error_body.dart';
 import 'package:e_commerce/features/reviews/domain/entities/user_review.dart';
 import 'package:e_commerce/features/reviews/presentation/logic/user_reviews_ccubit/user_reviews_cubit.dart';
 import 'package:e_commerce/features/reviews/presentation/widgets/pending_reviews_banner.dart';
 import 'package:e_commerce/features/reviews/presentation/widgets/user_review_card.dart';
+import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -65,7 +67,11 @@ class MyReviewsViewBody extends StatelessWidget {
                         :final isLoadingMore,
                       ):
                         if (reviews.isEmpty) {
-                          return const Text('No reviews found');
+                          return EmptyBody(
+                            icon: Icons.rate_review_outlined,
+                            title: S.of(context).no_reviews,
+                            message: S.of(context).no_reviews_description,
+                          );
                         }
                         return _LoadedUserReviewsList(reviews: reviews, isLoadingMore: isLoadingMore);
                     }
