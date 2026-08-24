@@ -49,16 +49,19 @@ class Constants {
         },
       ),
       MenuItem(
+        icon: Icons.reviews_outlined,
+        label: s.my_reviews,
+        onTap: () {
+          context.push(MyReviewsView.routeName);
+        },
+      ),
+      MenuItem(
         icon: Icons.logout,
         label: s.sign_out,
         onTap: () {
           context.read<SignOutCubit>().signOut();
         },
       ),
-
-      MenuItem(icon: Icons.reviews_outlined, label: s.my_reviews, onTap: () {
-        context.push(MyReviewsView.routeName);
-      })
     ];
   }
 

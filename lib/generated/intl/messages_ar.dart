@@ -62,7 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "apartment_number": MessageLookupByLibrary.simpleMessage("رقم الشقة"),
-    "app_name": MessageLookupByLibrary.simpleMessage("E-Commerce App"),
+    "app_name": MessageLookupByLibrary.simpleMessage("Cartely"),
     "apply": MessageLookupByLibrary.simpleMessage("تطبيق"),
     "apt_suite_etc": MessageLookupByLibrary.simpleMessage("المنزل/الشقة/الخ"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),

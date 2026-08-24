@@ -1,4 +1,3 @@
-//todo: integrate reviews feature with ui *****
 //todo: fixing light theme *****
 //todo: testing all loading, empty and failure states across the ui *****
 //todo: testing all flows within the app *****

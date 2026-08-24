@@ -71,7 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "apartment_number": MessageLookupByLibrary.simpleMessage(
       "Apartment number",
     ),
-    "app_name": MessageLookupByLibrary.simpleMessage("E-Commerce App"),
+    "app_name": MessageLookupByLibrary.simpleMessage("Cartely"),
     "apply": MessageLookupByLibrary.simpleMessage("Apply"),
     "apt_suite_etc": MessageLookupByLibrary.simpleMessage(
       "Apt. Suite, etc. (Optional)",

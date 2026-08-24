@@ -862,9 +862,9 @@ class S {
     return Intl.message('Retry', name: 'retry', desc: '', args: []);
   }
 
-  /// `E-Commerce App`
+  /// `Cartely`
   String get app_name {
-    return Intl.message('E-Commerce App', name: 'app_name', desc: '', args: []);
+    return Intl.message('Cartely', name: 'app_name', desc: '', args: []);
   }
 
   /// `Profile updated successfully`
