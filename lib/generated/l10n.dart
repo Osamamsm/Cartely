@@ -2105,6 +2105,21 @@ class S {
   String get shop_now {
     return Intl.message('Shop Now', name: 'shop_now', desc: '', args: []);
   }
+
+  /// `No orders`
+  String get no_orders {
+    return Intl.message('No orders', name: 'no_orders', desc: '', args: []);
+  }
+
+  /// `You haven't placed any orders yet.`
+  String get no_orders_description {
+    return Intl.message(
+      'You haven\'t placed any orders yet.',
+      name: 'no_orders_description',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -203,6 +203,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "يبدو أنه ليس لديك أي عنوان محفوظ.",
     ),
     "no_changes_done": MessageLookupByLibrary.simpleMessage("لا توجد تغييرات"),
+    "no_orders": MessageLookupByLibrary.simpleMessage("لا توجد طلبات"),
+    "no_orders_description": MessageLookupByLibrary.simpleMessage(
+      "لم تقم بأي طلبات بعد.",
+    ),
     "no_reviews": MessageLookupByLibrary.simpleMessage("لا توجد مراجعات"),
     "no_reviews_description": MessageLookupByLibrary.simpleMessage(
       "لم تقم بتقييم أي منتجات بعد.",

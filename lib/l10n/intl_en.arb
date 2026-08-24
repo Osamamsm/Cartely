@@ -286,6 +286,8 @@
   "no_reviews_description": "You haven't reviewed any products yet.",
   "empty_wishlist": "Your wishlist is empty",
   "empty_wishlist_description": "Tap the heart icon on products to save them to your wishlist.",
-  "shop_now": "Shop Now"
+  "shop_now": "Shop Now",
+  "no_orders": "No orders",
+  "no_orders_description": "You haven't placed any orders yet."
 }
 

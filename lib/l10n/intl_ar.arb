@@ -274,6 +274,8 @@
   "no_reviews_description": "لم تقم بتقييم أي منتجات بعد.",
   "empty_wishlist": "سلة الرغبات فارغة",
   "empty_wishlist_description": "اضغط على أيقونة القلب في المنتجات لحفظها في سلة الرغبات الخاصة بك.",
-  "shop_now": "تسوق الآن"
+  "shop_now": "تسوق الآن",
+  "no_orders": "لا توجد طلبات",
+  "no_orders_description": "لم تقم بأي طلبات بعد."
 }
 

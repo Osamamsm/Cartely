@@ -1,4 +1,6 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
+import 'package:e_commerce/core/widgets/empty_body.dart';
+import 'package:e_commerce/features/home/presentation/views/home_view.dart';
 import 'package:e_commerce/features/orders/domain/entity/order.dart';
 import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_cubit.dart';
 import 'package:e_commerce/features/orders/presentation/logic/get_orders_cubit/get_orders_state.dart';
@@ -7,6 +9,7 @@ import 'package:e_commerce/features/orders/presentation/widgets/order_card.dart'
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class OrdersViewBody extends StatelessWidget {
@@ -42,13 +45,14 @@ class OrdersViewBody extends StatelessWidget {
               if (state is GetOrdersSuccess) {
                 final orders = state.orders;
                 if (orders.isEmpty) {
-                  return Center(
-                    child: Text(
-                      l10n.noOrdersFound,
-                      style: textTheme.bodyMedium?.copyWith(
-                        color: colors.onSurface.withValues(alpha: 0.55),
-                      ),
-                    ),
+                  return EmptyBody(
+                    icon: Icons.shopping_bag_outlined,
+                    title: S.of(context).no_orders,
+                    message: S.of(context).no_orders_description,
+                    actionLabel: S.of(context).shop_now,
+                    onAction: () {
+                      context.go(HomeView.routeName);
+                    },
                   );
                 }
                 return ListView.builder(

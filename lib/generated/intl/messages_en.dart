@@ -232,6 +232,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "You don\'t have any addresses yet.",
     ),
     "no_changes_done": MessageLookupByLibrary.simpleMessage("No changes done"),
+    "no_orders": MessageLookupByLibrary.simpleMessage("No orders"),
+    "no_orders_description": MessageLookupByLibrary.simpleMessage(
+      "You haven\'t placed any orders yet.",
+    ),
     "no_reviews": MessageLookupByLibrary.simpleMessage("No reviews"),
     "no_reviews_description": MessageLookupByLibrary.simpleMessage(
       "You haven\'t reviewed any products yet.",
