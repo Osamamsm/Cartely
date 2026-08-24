@@ -2080,6 +2080,31 @@ class S {
       args: [],
     );
   }
+
+  /// `Your wishlist is empty`
+  String get empty_wishlist {
+    return Intl.message(
+      'Your wishlist is empty',
+      name: 'empty_wishlist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap the heart icon on products to save them to your wishlist.`
+  String get empty_wishlist_description {
+    return Intl.message(
+      'Tap the heart icon on products to save them to your wishlist.',
+      name: 'empty_wishlist_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shop Now`
+  String get shop_now {
+    return Intl.message('Shop Now', name: 'shop_now', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

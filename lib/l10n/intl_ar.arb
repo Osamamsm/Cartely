@@ -271,6 +271,9 @@
   "no_addresses_found_message": "يبدو أنه ليس لديك أي عنوان محفوظ.",
   "add_address": "أضف عنوان",
   "no_reviews": "لا توجد مراجعات",
-  "no_reviews_description": "لم تقم بتقييم أي منتجات بعد."
+  "no_reviews_description": "لم تقم بتقييم أي منتجات بعد.",
+  "empty_wishlist": "سلة الرغبات فارغة",
+  "empty_wishlist_description": "اضغط على أيقونة القلب في المنتجات لحفظها في سلة الرغبات الخاصة بك.",
+  "shop_now": "تسوق الآن"
 }
 

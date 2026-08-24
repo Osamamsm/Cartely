@@ -138,6 +138,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "emptyCartDescription": MessageLookupByLibrary.simpleMessage(
       "يبدو أنك لم تضف أي منتجات بعد. ابدأ بالتسوق وأضف منتجاتك المفضلة.",
     ),
+    "empty_wishlist": MessageLookupByLibrary.simpleMessage("سلة الرغبات فارغة"),
+    "empty_wishlist_description": MessageLookupByLibrary.simpleMessage(
+      "اضغط على أيقونة القلب في المنتجات لحفظها في سلة الرغبات الخاصة بك.",
+    ),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "error_body_subtitle": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
@@ -359,6 +363,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shipping": MessageLookupByLibrary.simpleMessage("الشحن"),
     "shipping_to": MessageLookupByLibrary.simpleMessage("الشحن الى"),
     "shop_by_category": MessageLookupByLibrary.simpleMessage("تسوق حسب الفئة"),
+    "shop_now": MessageLookupByLibrary.simpleMessage("تسوق الآن"),
     "showDetails": MessageLookupByLibrary.simpleMessage("عرض التفاصيل"),
     "showProductsRatedAtLeast": MessageLookupByLibrary.simpleMessage(
       "عرض المنتجات التي تقييمها على الأقل…",

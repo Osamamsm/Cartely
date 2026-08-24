@@ -283,6 +283,9 @@
   "no_addresses_found_message": "You don't have any addresses yet.",
   "add_address": "Add Address",
   "no_reviews": "No reviews",
-  "no_reviews_description": "You haven't reviewed any products yet."
+  "no_reviews_description": "You haven't reviewed any products yet.",
+  "empty_wishlist": "Your wishlist is empty",
+  "empty_wishlist_description": "Tap the heart icon on products to save them to your wishlist.",
+  "shop_now": "Shop Now"
 }
 

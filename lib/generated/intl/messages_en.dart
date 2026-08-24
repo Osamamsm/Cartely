@@ -159,6 +159,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "emptyCartDescription": MessageLookupByLibrary.simpleMessage(
       "Looks like you haven\'t added anything yet. Start exploring and add your favorite products.",
     ),
+    "empty_wishlist": MessageLookupByLibrary.simpleMessage(
+      "Your wishlist is empty",
+    ),
+    "empty_wishlist_description": MessageLookupByLibrary.simpleMessage(
+      "Tap the heart icon on products to save them to your wishlist.",
+    ),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enter_new_password": MessageLookupByLibrary.simpleMessage(
       "Enter New Password",
@@ -404,6 +410,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shop_by_category": MessageLookupByLibrary.simpleMessage(
       "Shop By Category",
     ),
+    "shop_now": MessageLookupByLibrary.simpleMessage("Shop Now"),
     "showDetails": MessageLookupByLibrary.simpleMessage("Show Details"),
     "showProductsRatedAtLeast": MessageLookupByLibrary.simpleMessage(
       "Show products rated at least…",
