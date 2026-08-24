@@ -23,7 +23,9 @@ class _CartItemWidgetState extends State<CartItemWidget> {
       height: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Theme.of(
+          context,
+        ).colorScheme.primaryContainer.withValues(alpha: 0.5),
       ),
       width: double.infinity,
       child: Row(

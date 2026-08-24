@@ -33,7 +33,7 @@ class ProductReviewsTab extends StatelessWidget {
                 content: Text(state.message),
                 backgroundColor: state.isError
                     ? theme.colorScheme.error
-                    : Colors.green,
+                    : theme.colorScheme.tertiary,
               ),
             );
         }
@@ -78,6 +78,7 @@ class ProductReviewsTab extends StatelessWidget {
                     selectedRating: loaded.selectedRating,
                   ),
                 ),
+                SliverToBoxAdapter(child: SizedBox(height: 8)),
                 ProductReviewsList(reviews: loaded.reviews),
                 SliverToBoxAdapter(
                   child: loaded.isLoadingMore

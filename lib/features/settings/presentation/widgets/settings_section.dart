@@ -25,17 +25,18 @@ class SettingsSection extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 title,
-                style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                  color: Colors.white.withValues(alpha: 0.6),
-                  letterSpacing: 1.5,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.labelSmall!.copyWith(letterSpacing: 1.5),
               ),
             ],
           ),
         ),
         Container(
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.05),
+            color: Theme.of(
+              context,
+            ).colorScheme.primaryContainer.withValues(alpha: 0.5),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: Colors.white.withValues(alpha: 0.1),

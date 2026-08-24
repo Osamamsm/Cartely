@@ -8,9 +8,7 @@ class ButtonThemes {
         foregroundColor: scheme.onPrimary,
         minimumSize: const Size(double.infinity, 52),
         elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         textStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w600,
@@ -31,6 +29,24 @@ class ButtonThemes {
           fontSize: 14,
           fontWeight: FontWeight.w500,
           decoration: TextDecoration.underline,
+        ),
+      ),
+    );
+  }
+
+  // Optional glass variant for secondary/outlined actions on top of blobs
+  static OutlinedButtonThemeData outlinedGlassButtonTheme(ColorScheme scheme) {
+    return OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        backgroundColor: scheme.surface.withValues(alpha: 0.4),
+        foregroundColor: scheme.onSurface,
+        minimumSize: const Size(double.infinity, 52),
+        side: BorderSide(color: scheme.outline, width: 1),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        textStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.3,
         ),
       ),
     );

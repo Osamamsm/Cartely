@@ -25,24 +25,22 @@ class ProfileMenuItem extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: isSignout ? Theme.of(context).colorScheme.error : Colors.white,
+              color: isSignout
+                  ? Theme.of(context).colorScheme.error
+                  : Theme.of(context).colorScheme.onPrimaryContainer,
             ),
             hGap(16),
             Expanded(
               child: Text(
                 title,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: isSignout ? Theme.of(context).colorScheme.error : Colors.white,
+                  color: isSignout
+                      ? Theme.of(context).colorScheme.error
+                      : Theme.of(context).colorScheme.onPrimaryContainer,
                 ),
               ),
             ),
-            isSignout
-                ? const SizedBox()
-                : Icon(
-                    Icons.chevron_right,
-                    color: Colors.white.withValues(alpha: 0.5),
-                    size: 25,
-                  ),
+            isSignout ? const SizedBox() : Icon(Icons.chevron_right, size: 25),
           ],
         ),
       ),

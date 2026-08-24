@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/widgets/empty_body.dart';
 import 'package:e_commerce/features/reviews/domain/entities/product_review.dart';
 import 'package:e_commerce/features/reviews/presentation/widgets/review_card.dart';
 import 'package:e_commerce/generated/l10n.dart';
@@ -13,7 +14,13 @@ class ProductReviewsList extends StatelessWidget {
     final theme = Theme.of(context);
 
     if (reviews.isEmpty) {
-      return const _ProductReviewsEmptyBody();
+      return SliverToBoxAdapter(
+        child: EmptyBody(
+          icon: Icons.rate_review_outlined,
+          title: S.of(context).no_reviews,
+          message: S.of(context).no_reviews_description,
+        ),
+      );
     }
 
     return SliverPadding(
@@ -26,27 +33,6 @@ class ProductReviewsList extends StatelessWidget {
         separatorBuilder: (context, index) {
           return Divider(color: theme.colorScheme.outline, height: 20);
         },
-      ),
-    );
-  }
-}
-
-class _ProductReviewsEmptyBody extends StatelessWidget {
-  const _ProductReviewsEmptyBody();
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return SliverToBoxAdapter(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 40),
-        child: Center(
-          child: Text(
-            S.of(context).no_reviews_yet,
-            style: theme.textTheme.bodyMedium,
-          ),
-        ),
       ),
     );
   }

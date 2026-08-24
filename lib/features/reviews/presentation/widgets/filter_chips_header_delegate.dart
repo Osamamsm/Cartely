@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:e_commerce/core/helpers/spacing.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -22,17 +24,22 @@ class FilterChipsHeaderDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => _height;
 
   @override
-  Widget build(
-    BuildContext context,
-    double shrinkOffset,
-    bool overlapsContent,
-  ) {
-    return _FilterChipsRow(
-      onSelect: onSelect,
-      backgroundColor: backgroundColor,
-      selectedRating: selectedRating,
-    );
-  }
+Widget build(
+  BuildContext context,
+  double shrinkOffset,
+  bool overlapsContent,
+) {
+  return ClipRect(
+    child: BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+      child: _FilterChipsRow(
+        onSelect: onSelect,
+        backgroundColor: backgroundColor.withValues(alpha: 0.55),
+        selectedRating: selectedRating,
+      ),
+    ),
+  );
+}
 
   @override
   bool shouldRebuild(covariant FilterChipsHeaderDelegate oldDelegate) {

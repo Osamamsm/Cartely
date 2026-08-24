@@ -29,7 +29,7 @@ class PlacedOrderModel implements PlaceOrderResultModel {
         orderId: json['order_id'] as String,
         orderNumber: json['order_number'] as String,
         total: (json['total'] as num).toDouble(),
-        checkoutUrl: json['checkout_url'] as String,
+        checkoutUrl: json['checkout_url'] as String?,
       );
 
   @override

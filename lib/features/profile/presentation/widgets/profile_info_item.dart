@@ -22,29 +22,25 @@ class ProfileInfoItem extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+            color: Theme.of(
+              context,
+            ).colorScheme.onPrimaryContainer.withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Icon(icon, color: Theme.of(context).colorScheme.primary, size: 20),
+          child: Icon(
+            icon,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
+            size: 20,
+          ),
         ),
         hGap(16),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                label,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Colors.white.withValues(alpha: 0.6),
-                ),
-              ),
+              Text(label, style: Theme.of(context).textTheme.bodySmall),
               vGap(4),
-              Text(
-                value,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: valueColor ?? Colors.white,
-                ),
-              ),
+              Text(value, style: Theme.of(context).textTheme.bodyMedium),
             ],
           ),
         ),

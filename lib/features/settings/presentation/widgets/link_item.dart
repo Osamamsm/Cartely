@@ -31,20 +31,12 @@ class LinkItem extends StatelessWidget {
               Expanded(
                 child: Text(
                   label,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
-              Icon(
-                Icons.open_in_new,
-                color: Theme.of(
-                  context,
-                ).colorScheme.primary.withValues(alpha: 0.8),
-                size: 18,
-              ),
+              Icon(Icons.open_in_new, size: 18),
             ],
           ),
         ),

@@ -26,11 +26,12 @@ class _ForgotPasswordViewBodyState extends State<ForgotPasswordViewBody> {
         child: Column(
           crossAxisAlignment: .start,
           children: [
+            vGap(10),
             Text(
               S.of(context).forgot_password_subtitle,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            vGap(30),
+            vGap(20),
             EmailTextField(
               onSaved: (value) {
                 email = value!;
@@ -41,7 +42,9 @@ class _ForgotPasswordViewBodyState extends State<ForgotPasswordViewBody> {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
-                  context.read<ForgotPasswordCubit>().requestPasswordReset(email);
+                  context.read<ForgotPasswordCubit>().requestPasswordReset(
+                    email,
+                  );
                 }
               },
               child: Text(S.of(context).reset_password),

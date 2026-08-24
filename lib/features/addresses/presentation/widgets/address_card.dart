@@ -16,19 +16,21 @@ class AddressCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.4),
+          color: Theme.of(
+            context,
+          ).colorScheme.primaryContainer.withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+            color: Theme.of(
+              context,
+            ).colorScheme.primaryContainer.withValues(alpha: 0.3),
             width: 1,
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AddressCardHeader(
-              address: address,
-            ),
+            AddressCardHeader(address: address),
             vGap(16),
             Text(
               getFormattedAddress(address: address),

@@ -332,6 +332,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Personal Details",
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "phone_number_hint": MessageLookupByLibrary.simpleMessage(
+      "Enter your phone number",
+    ),
     "place_order": MessageLookupByLibrary.simpleMessage("Place Order"),
     "placedOn": m3,
     "placing_order": MessageLookupByLibrary.simpleMessage(

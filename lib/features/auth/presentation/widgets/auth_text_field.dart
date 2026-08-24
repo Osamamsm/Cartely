@@ -11,7 +11,8 @@ class LabeledAuthTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.keyboardType,
-    this.obscureText, this.controller,
+    this.obscureText,
+    this.controller,
   });
 
   final String label;
@@ -30,7 +31,7 @@ class LabeledAuthTextField extends StatelessWidget {
       crossAxisAlignment: .start,
       mainAxisSize: .min,
       children: [
-        Text(label, style: Theme.of(context).textTheme.bodyLarge),
+        Text(label, style: Theme.of(context).textTheme.titleSmall),
         vGap(5),
         TextFormField(
           textInputAction: TextInputAction.next,

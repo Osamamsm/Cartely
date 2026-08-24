@@ -46,7 +46,7 @@ class ReviewsSummaryHeader extends StatelessWidget {
                 Text(
                   S.of(context).review(reviewsCount),
                   style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.outline,
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                   ),
                 ),
               ],

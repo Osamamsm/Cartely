@@ -298,6 +298,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "التفاصيل الشخصية",
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "phone_number_hint": MessageLookupByLibrary.simpleMessage("أدخل رقم هاتفك"),
     "place_order": MessageLookupByLibrary.simpleMessage("تأكيد الطلب"),
     "placedOn": m3,
     "placing_order": MessageLookupByLibrary.simpleMessage("جارٍ تقديم طلبك..."),

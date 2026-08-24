@@ -38,20 +38,18 @@ class CustomLabeledTextFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.5),
-            fontSize: 12,
-          ),
-        ),
+        Text(label, style: Theme.of(context).textTheme.titleMedium),
         vGap(12),
         TextFormField(
           enabled: enabled,
           decoration: InputDecoration(
             hintText: hintText,
-            prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-            suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
+            prefixIcon: prefixIcon != null
+                ? Icon(prefixIcon, color: Color(0xFF64748B))
+                : null,
+            suffixIcon: suffixIcon != null
+                ? Icon(suffixIcon, color: Color(0xFF64748B))
+                : null,
           ),
           initialValue: initialValue,
           obscureText: obscureText,

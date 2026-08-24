@@ -50,7 +50,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   password = value!;
                 },
               ),
-              vGap(5),
+              vGap(10),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
@@ -60,7 +60,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   child: Text(s.forgot_password),
                 ),
               ),
-              vGap(5),
+              vGap(10),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {

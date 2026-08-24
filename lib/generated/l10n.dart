@@ -2135,6 +2135,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Enter your phone number`
+  String get phone_number_hint {
+    return Intl.message(
+      'Enter your phone number',
+      name: 'phone_number_hint',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

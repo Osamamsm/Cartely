@@ -44,16 +44,17 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   name = value!;
                 },
               ),
-              vGap(20),
+              vGap(15),
               EmailTextField(
                 onSaved: (value) {
                   email = value!;
                 },
               ),
-              vGap(20),
+              vGap(15),
               CustomLabeledTextFormField(
                 label: S.of(context).phone_number,
-                suffixIcon: Icons.phone,
+                hintText: S.of(context).phone_number_hint,
+                prefixIcon: Icons.phone,
                 validator: Validators.phoneNumberValidator,
                 onSaved: (value) {
                   phoneNumber = value!;
@@ -61,7 +62,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 keyboardType: TextInputType.phone,
                 obscureText: false,
               ),
-              vGap(20),
+              vGap(15),
               PasswordTextField(
                 passwordController: passwordController,
                 validator: Validators.passwordValidator,
@@ -71,7 +72,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   password = value!;
                 },
               ),
-              vGap(20),
+              vGap(15),
               PasswordTextField(
                 label: S.of(context).confirm_password,
                 hintText: S.of(context).confirm_password_hint,
@@ -85,7 +86,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   );
                 },
               ),
-              vGap(20),
+              vGap(15),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {

@@ -11,18 +11,30 @@ class StepButton extends StatelessWidget {
   final VoidCallback onTap;
   final IconData icon;
   final bool enabled;
+
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+
     return InkWell(
       onTap: enabled ? onTap : null,
+      borderRadius: BorderRadius.circular(50),
       child: Container(
+        width: 28,
+        height: 28,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: enabled
-              ? Theme.of(context).colorScheme.primary
-              : Theme.of(context).colorScheme.primary.withValues(alpha: .1),
+              ? scheme.primary
+              : scheme.primary.withValues(alpha: .12),
         ),
-        child: Icon(icon, color: Theme.of(context).colorScheme.onSecondary),
+        child: Icon(
+          icon,
+          size: 16,
+          color: enabled
+              ? scheme.onPrimary
+              : scheme.onSurface.withValues(alpha: .35),
+        ),
       ),
     );
   }

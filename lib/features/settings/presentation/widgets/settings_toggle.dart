@@ -19,8 +19,11 @@ class SettingsToggle extends StatelessWidget {
   final IconData icon;
   final List<Color> colors;
   final Function(bool) onChanged;
+
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: Row(
@@ -32,25 +35,27 @@ class SettingsToggle extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title, style: Theme.of(context).textTheme.titleSmall),
-                vGap(2),
-                Text(
-                  subtitle ?? '',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
+                if (subtitle != null && subtitle!.isNotEmpty) ...[
+                  vGap(2),
+                  Text(
+                    subtitle!,
+                    style: TextStyle(
+                      color: scheme.primary,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
           ),
           Switch(
             value: value,
             onChanged: onChanged,
-            activeThumbColor: const Color.fromARGB(255, 255, 255, 255),
-            activeTrackColor: const Color.fromARGB(255, 112, 1, 216),
-            inactiveThumbColor: Colors.white,
-            inactiveTrackColor: Colors.white.withValues(alpha: 0.2),
+            activeThumbColor: scheme.onPrimary,
+            activeTrackColor: scheme.primary,
+            inactiveThumbColor: scheme.onSurface.withValues(alpha: 0.6),
+            inactiveTrackColor: scheme.outline.withValues(alpha: 0.3),
           ),
         ],
       ),

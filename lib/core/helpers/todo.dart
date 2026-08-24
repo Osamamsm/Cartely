@@ -1,5 +1,3 @@
-//todo: fixing light theme *****
-//todo: testing all loading, empty and failure states across the ui *****
 //todo: testing all flows within the app *****
 //todo: add offline first  
 //TODO: refactor the elevated button across the app to be consistent 

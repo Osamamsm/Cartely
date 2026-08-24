@@ -61,7 +61,11 @@ class _CustomDrawerButton extends StatelessWidget {
               color: Theme.of(context).colorScheme.primaryContainer,
               shape: BoxShape.circle,
             ),
-            child: Icon(icon, color: Colors.white, size: 28),
+            child: Icon(
+              icon,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+              size: 28,
+            ),
           ),
           vGap(5),
           Text(

@@ -22,11 +22,7 @@ class OrderPlacedBody extends StatelessWidget {
         Text(
           textAlign: TextAlign.center,
           S.of(context).order_placed_message,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
         vGap(12),
         Padding(
@@ -41,7 +37,6 @@ class OrderPlacedBody extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 28),
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.06),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
           ),
@@ -49,11 +44,7 @@ class OrderPlacedBody extends StatelessWidget {
             children: [
               Text(
                 S.of(context).order_number,
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.4),
-                  fontSize: 11,
-                  letterSpacing: 1.2,
-                ),
+                style: TextStyle(fontSize: 11, letterSpacing: 1.2),
               ),
               const SizedBox(height: 6),
               Text(
@@ -73,21 +64,13 @@ class OrderPlacedBody extends StatelessWidget {
             children: [
               Expanded(
                 child: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    side: BorderSide(
-                      color: Colors.white.withValues(alpha: 0.15),
-                    ),
-                    backgroundColor: Colors.white.withValues(alpha: 0.04),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
                   onPressed: () {
                     context.push(OrdersView.routeName);
                   },
-                  child: Text(S.of(context).view_orders),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Text(S.of(context).view_orders),
+                  ),
                 ),
               ),
               const SizedBox(width: 14),

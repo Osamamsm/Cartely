@@ -290,6 +290,7 @@
   "no_orders": "No orders",
   "no_orders_description": "You haven't placed any orders yet.",
   "no_results": "No results",
-  "no_results_description": "No products found matching your search."
+  "no_results_description": "No products found matching your search.",
+  "phone_number_hint": "Enter your phone number"
 }
 

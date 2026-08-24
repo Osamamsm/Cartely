@@ -97,9 +97,11 @@ class ReviewCard extends StatelessWidget {
               hGap(8),
               Text(
                 DateFormat("yyyy/MM/dd").format(review.createdAt),
-                style: Theme.of(
-                  context,
-                ).textTheme.bodySmall!.copyWith(color: Colors.grey),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha:  0.6),
+                ),
               ),
             ],
           ),

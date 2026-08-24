@@ -31,10 +31,7 @@ class ProductDetailsView extends StatelessWidget {
           selector: (state) => state.isWishListed(productId),
           builder: (context, isWishListed) {
             return IconButton(
-              icon: Icon(
-                isWishListed ? Icons.favorite : Icons.favorite_border,
-                color: Theme.of(context).colorScheme.primary,
-              ),
+              icon: Icon(isWishListed ? Icons.favorite : Icons.favorite_border),
               onPressed: () => context.read<WishlistCubit>().toggle(productId),
             );
           },
@@ -42,7 +39,10 @@ class ProductDetailsView extends StatelessWidget {
         const CartButton(),
       ],
       customBottomNavigationBar: ProductPurchaseBar(),
-      child: ProductDetailsViewBody(productId: productId, openReviewForm: openReviewForm),
+      child: ProductDetailsViewBody(
+        productId: productId,
+        openReviewForm: openReviewForm,
+      ),
     );
   }
 }

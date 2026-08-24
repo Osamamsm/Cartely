@@ -12,6 +12,7 @@ ThemeData buildDarkTheme() {
     scaffoldBackgroundColor: const Color(0xFF0F172A),
     inputDecorationTheme: InputThemes.darkInputTheme,
     elevatedButtonTheme: ButtonThemes.elevatedButtonTheme(darkColorScheme),
+    outlinedButtonTheme: ButtonThemes.outlinedGlassButtonTheme(darkColorScheme),
     textButtonTheme: ButtonThemes.textButtonTheme(darkColorScheme),
     dividerTheme: const DividerThemeData(
       color: Color(0xFF1E293B), // Slate-800
