@@ -1,16 +1,18 @@
 import 'package:e_commerce/core/helpers/spacing.dart';
+import 'package:e_commerce/core/widgets/empty_body.dart';
 import 'package:e_commerce/features/addresses/domain/entities/address_entity.dart';
 import 'package:e_commerce/features/addresses/presentation/logic/addresses_cubit/addresses_cubit.dart';
+import 'package:e_commerce/features/addresses/presentation/views/add_address_view.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_cubit/checkout_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/logic/checkout_flow_cubit/checkout_flow_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/add_new_address_button.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/address_details_section.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/continue_button.dart';
-import 'package:e_commerce/features/addresses/presentation/widgets/empty_addresses_body.dart';
 import 'package:e_commerce/features/checkout/presentation/widgets/selectable_card_widget.dart';
 import 'package:e_commerce/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class AddressStep extends StatelessWidget {
   const AddressStep({super.key});
@@ -28,7 +30,15 @@ class AddressStep extends StatelessWidget {
           );
         } else if (state.status == AddressesStatus.success) {
           if (state.addresses.isEmpty) {
-            return const EmptyAddressesBody();
+            return EmptyBody(
+              icon: Icons.location_on,
+              title: S.of(context).no_addresses_found,
+              message: S.of(context).no_addresses_found_message,
+              actionLabel: S.of(context).add_address,
+              onAction: () {
+                context.push(AddAddressView.routeName);
+              },
+            );
           } else {
             final addresses = state.addresses;
             return _AddressesSelectorList(addresses: addresses);
@@ -63,8 +73,10 @@ class _AddressesSelectorListState extends State<_AddressesSelectorList> {
   @override
   Widget build(BuildContext context) {
     context.read<CheckoutCubit>().setAddress(
-          widget.addresses.firstWhere((address) => address.id == selectedAddress.id),
-        );
+      widget.addresses.firstWhere(
+        (address) => address.id == selectedAddress.id,
+      ),
+    );
     return Column(
       children: [
         Expanded(

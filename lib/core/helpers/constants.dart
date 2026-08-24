@@ -24,14 +24,14 @@ class Constants {
         icon: Icons.favorite_border_outlined,
         label: s.wishlist,
         onTap: () {
-          GoRouter.of(context).push(WishListView.routeName);
+          context.push(WishListView.routeName);
         },
       ),
       MenuItem(
         icon: Icons.map,
         label: s.saved_addresses,
         onTap: () {
-          GoRouter.of(context).push(SavedAddressesView.routeName);
+          context.push(SavedAddressesView.routeName);
         },
       ),
       // MenuItem(

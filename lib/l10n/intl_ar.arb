@@ -267,6 +267,8 @@
   },
   "pendingReviewsSubtitle": "اضغط لتقييم مشترياتك الأخيرة",
   "rate_your_purchases": "قيم مشترياتك",
-  "rate_this_product": "قيم هذا المنتج"
+  "rate_this_product": "قيم هذا المنتج",
+  "no_addresses_found_message": "يبدو أنه ليس لديك أي عنوان محفوظ.",
+  "add_address": "أضف عنوان"
 }
 

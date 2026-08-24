@@ -16,7 +16,7 @@ class SavedAddressesView extends StatelessWidget {
       actionWidgets: [
         IconButton(
           onPressed: () {
-            GoRouter.of(context).push(AddAddressView.routeName);
+            context.push(AddAddressView.routeName);
           },
           icon: const Icon(Icons.add),
         ),

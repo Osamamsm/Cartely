@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "معلومات الحساب",
     ),
     "account_status": MessageLookupByLibrary.simpleMessage("حالة الحساب"),
+    "add_address": MessageLookupByLibrary.simpleMessage("أضف عنوان"),
     "add_address_to_continue_checkout": MessageLookupByLibrary.simpleMessage(
       "أضف عنوان شحن للمتابعة في طلبك.",
     ),
@@ -193,6 +194,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_addresses": MessageLookupByLibrary.simpleMessage("لا توجد عناوين"),
     "no_addresses_found": MessageLookupByLibrary.simpleMessage(
       "لا توجد عناوين بعد",
+    ),
+    "no_addresses_found_message": MessageLookupByLibrary.simpleMessage(
+      "يبدو أنه ليس لديك أي عنوان محفوظ.",
     ),
     "no_changes_done": MessageLookupByLibrary.simpleMessage("لا توجد تغييرات"),
     "no_reviews_yet": MessageLookupByLibrary.simpleMessage(

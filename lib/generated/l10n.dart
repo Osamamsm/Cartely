@@ -2050,6 +2050,21 @@ class S {
       args: [],
     );
   }
+
+  /// `You don't have any addresses yet.`
+  String get no_addresses_found_message {
+    return Intl.message(
+      'You don\'t have any addresses yet.',
+      name: 'no_addresses_found_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Address`
+  String get add_address {
+    return Intl.message('Add Address', name: 'add_address', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
