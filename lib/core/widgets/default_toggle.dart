@@ -17,10 +17,11 @@ class DefaultToggle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+        color: scheme.primary.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
@@ -54,10 +55,10 @@ class DefaultToggle extends StatelessWidget {
           Switch(
             value: value,
             onChanged: onChanged,
-            inactiveThumbColor: const Color.fromARGB(255, 177, 95, 254),
-            inactiveTrackColor: const Color.fromARGB(255, 200, 145, 255),
-            activeThumbColor: const Color.fromARGB(255, 147, 51, 234),
-            activeTrackColor: const Color.fromARGB(255, 54, 2, 102),
+            activeThumbColor: scheme.onPrimary,
+            activeTrackColor: scheme.primary,
+            inactiveThumbColor: scheme.onSurface.withValues(alpha: 0.6),
+            inactiveTrackColor: scheme.outline.withValues(alpha: 0.3),
           ),
         ],
       ),

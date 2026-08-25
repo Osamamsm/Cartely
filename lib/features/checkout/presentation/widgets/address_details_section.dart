@@ -10,24 +10,22 @@ class AddressDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            getFormattedAddress(address: address),
-            style: Theme.of(context).textTheme.titleSmall,
-          ),
-          vGap(4),
-          Text(
-            '${address.city} ${address.street}',
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium!.copyWith(color: Colors.grey),
-          ),
-          vGap(4),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          getFormattedAddress(address: address),
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        vGap(4),
+        Text(
+          '${address.city} ${address.street}',
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium!.copyWith(color: Colors.grey),
+        ),
+        vGap(4),
+      ],
     );
   }
 }
