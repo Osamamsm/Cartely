@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/logo/dark_on_light_logo.png" alt="ShopSphere Logo" width="280"/>
+  <img src="assets/logo/dark_on_light_logo.png" alt="Cartely Logo" width="280"/>
 </p>
 
-<h1 align="center">ShopSphere — E-Commerce Mobile App</h1>
+<h1 align="center">Cartely — E-Commerce Mobile App</h1>
 
 <p align="center">
   A full-featured, production-grade e-commerce mobile application built with <strong>Flutter</strong>, powered by <strong>Supabase</strong> as a backend and <strong>Firebase</strong> for push notifications.
@@ -190,8 +190,8 @@ lib/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Osamamsm/E-commerce.git
-   cd e_commerce
+   git clone https://github.com/Osamamsm/Cartely.git
+   cd cartely
    ```
 
 2. **Install dependencies**
